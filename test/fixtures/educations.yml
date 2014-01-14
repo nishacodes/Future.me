@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  kind: MyString
+  major: MyString
+  grad_yr: 1
+  person_id: 1
+  school_id: 1
+
+two:
+  kind: MyString
+  major: MyString
+  grad_yr: 1
+  person_id: 1
+  school_id: 1
