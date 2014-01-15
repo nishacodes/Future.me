@@ -1,6 +1,5 @@
 require 'oauth'
 require 'json'
-require 'open-uri'
 
 consumer = OAuth::Consumer.new("77ze1x9zbqkfe7", "vnVI2BZxFEm8QxNM")
 access_token = OAuth::AccessToken.new(consumer, "e974f1f1-9f42-4ab0-af97-b32bd6229e22", "f732020e-436c-4b34-882c-c29973bfb5e3")
