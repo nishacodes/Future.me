@@ -1,10 +1,9 @@
-class CreateJoinTableCompanyDepartment < ActiveRecord::Migration
+class CreateJoinTableCompanyDepartments < ActiveRecord::Migration
   def change
-    create_table :company_departments, id: false do |t|
-      t.belongs_to :company
-      t.belongs_to :department
+    create_join_table :companies, :departments do |t|
+      t.index :company_id
+      t.index :department_id
     end
   end
-  
 end
 

@@ -4,7 +4,7 @@ class CreateEducations < ActiveRecord::Migration
       t.string :kind
       t.string :major
       t.integer :grad_yr
-      t.integer :person_id
+      # t.integer :person_id
       t.integer :school_id
 
       t.timestamps
