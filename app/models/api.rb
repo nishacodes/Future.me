@@ -1,8 +1,3 @@
-require 'oauth' #probs wont need
-require 'json' #probs wont need
-# require_relative 'company'
-# require 'debugger'
-
 class Api
   CONSUMER = OAuth::Consumer.new("77ze1x9zbqkfe7", "vnVI2BZxFEm8QxNM")
   ACCESS_TOKEN = OAuth::AccessToken.new(CONSUMER, "e974f1f1-9f42-4ab0-af97-b32bd6229e22", 
