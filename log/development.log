@@ -1416,3 +1416,566 @@ Served asset /pages.js - 304 Not Modified (0ms)
 Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-16 12:49:57 -0500
 Served asset /jquery_ujs.js - 304 Not Modified (0ms)
 >>>>>>> c514ececae01bc53da21cb1fb5611c022adedb41
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-16 14:29:52 -0500
+Connecting to database specified by database.yml
+Processing by PagesController#index as HTML
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.6ms)[0m  INSERT INTO "companies" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Thu, 16 Jan 2014 19:29:52 UTC +00:00], ["name", "Google"], ["updated_at", Thu, 16 Jan 2014 19:29:52 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  Rendered pages/index.html.erb within layouts/application (2.2ms)
+Compiled pages.css  (35ms)  (pid 1854)
+Compiled application.css  (39ms)  (pid 1854)
+Compiled jquery.js  (4ms)  (pid 1854)
+Compiled jquery_ujs.js  (1ms)  (pid 1854)
+Compiled pages.js  (133ms)  (pid 1854)
+Compiled application.js  (166ms)  (pid 1854)
+Completed 200 OK in 322.8ms (Views: 277.8ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-16 14:29:52 -0500
+Served asset /application.css - 200 OK (13ms)
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-01-16 14:29:52 -0500
+Served asset /pages.css - 200 OK (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-16 14:29:52 -0500
+Served asset /application.js - 200 OK (42ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-16 14:29:52 -0500
+Served asset /jquery.js - 200 OK (3ms)
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-01-16 14:29:52 -0500
+Served asset /pages.js - 200 OK (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-16 14:29:52 -0500
+Served asset /jquery_ujs.js - 200 OK (2ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-16 14:30:23 -0500
+Processing by PagesController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "companies" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Thu, 16 Jan 2014 19:30:23 UTC +00:00], ["name", "Google"], ["updated_at", Thu, 16 Jan 2014 19:30:23 UTC +00:00]]
+  [1m[35m (7.8ms)[0m  commit transaction
+  Rendered pages/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 18.4ms (Views: 7.5ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-16 14:30:23 -0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-16 14:30:23 -0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-01-16 14:30:23 -0500
+Served asset /pages.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-16 14:30:23 -0500
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-01-16 14:30:23 -0500
+Served asset /pages.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-16 14:30:23 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-16 14:31:18 -0500
+Connecting to database specified by database.yml
+Processing by PagesController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.1ms)[0m  INSERT INTO "companies" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Thu, 16 Jan 2014 19:31:18 UTC +00:00], ["name", "Google"], ["updated_at", Thu, 16 Jan 2014 19:31:18 UTC +00:00]]
+  [1m[36m (7.8ms)[0m  [1mcommit transaction[0m
+  Rendered pages/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 94.5ms (Views: 22.6ms | ActiveRecord: 11.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-16 14:31:18 -0500
+Served asset /application.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-16 14:31:18 -0500
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-01-16 14:31:18 -0500
+Served asset /pages.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-16 14:31:18 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-01-16 14:31:19 -0500
+Served asset /pages.js - 304 Not Modified (31ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-16 14:31:19 -0500
+Served asset /application.js - 304 Not Modified (4ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-16 14:31:32 -0500
+Processing by PagesController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "companies" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Thu, 16 Jan 2014 19:31:32 UTC +00:00], ["name", "Google"], ["updated_at", Thu, 16 Jan 2014 19:31:32 UTC +00:00]]
+  [1m[35m (7.7ms)[0m  commit transaction
+  Rendered pages/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 15.9ms (Views: 5.4ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-16 14:31:32 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-16 14:31:32 -0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-01-16 14:31:32 -0500
+Served asset /pages.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-01-16 14:31:32 -0500
+Served asset /pages.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-16 14:31:32 -0500
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-16 14:31:32 -0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-16 14:31:33 -0500
+Processing by PagesController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "companies" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Thu, 16 Jan 2014 19:31:34 UTC +00:00], ["name", "Google"], ["updated_at", Thu, 16 Jan 2014 19:31:34 UTC +00:00]]
+  [1m[36m (7.9ms)[0m  [1mcommit transaction[0m
+  Rendered pages/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 16.6ms (Views: 6.2ms | ActiveRecord: 8.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-16 14:31:34 -0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-01-16 14:31:34 -0500
+Served asset /pages.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-16 14:31:34 -0500
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-16 14:31:34 -0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-01-16 14:31:34 -0500
+Served asset /pages.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-16 14:31:34 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-16 14:43:57 -0500
+Connecting to database specified by database.yml
+
+LoadError (Expected /Users/sarahransohoff/FIProjects/Future.me/app/models/api.rb to define Api):
+  app/controllers/pages_controller.rb:2:in `<class:PagesController>'
+  app/controllers/pages_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+  Rendered /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-16 14:44:32 -0500
+
+LoadError (cannot load such file -- debugger):
+  app/models/api.rb:4:in `<top (required)>'
+  app/controllers/pages_controller.rb:2:in `<class:PagesController>'
+  app/controllers/pages_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-16 14:44:33 -0500
+Processing by PagesController#index as HTML
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.8ms)[0m  INSERT INTO "companies" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Thu, 16 Jan 2014 19:44:33 UTC +00:00], ["name", nil], ["updated_at", Thu, 16 Jan 2014 19:44:33 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  Rendered pages/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 154.4ms (Views: 25.9ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-01-16 14:44:33 -0500
+Served asset /pages.css - 304 Not Modified (12ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-16 14:44:33 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-01-16 14:44:33 -0500
+Served asset /pages.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-16 14:44:33 -0500
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-16 14:44:33 -0500
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-16 14:44:33 -0500
+Served asset /application.js - 304 Not Modified (8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-16 14:44:38 -0500
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 16 Jan 2014 19:44:39 UTC +00:00], ["firstname", "Derek"], ["lastname", "Silverman"], ["linkedin_id", "YbYpQPheug"], ["updated_at", Thu, 16 Jan 2014 19:44:39 UTC +00:00]]
+  [1m[35m (7.9ms)[0m  commit transaction
+Processing by PagesController#index as HTML
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  Rendered pages/index.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 8.6ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <h1>Companies</h1>
+    2: 
+    3:   <%= @company.name %>
+    4: 
+    5: <h1>People</h1>
+  app/views/pages/index.html.erb:3:in `_app_views_pages_index_html_erb__3364916155774339669_70216251045340'
+
+
+  Rendered /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-16 14:45:56 -0500
+Processing by PagesController#index as HTML
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+ERROR: compiling _app_views_pages_index_html_erb__3364916155774339669_70216240968860 RAISED /Users/sarahransohoff/FIProjects/Future.me/app/views/pages/index.html.erb:9: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/sarahransohoff/FIProjects/Future.me/app/views/pages/index.html.erb:11: syntax error, unexpected end-of-input, expecting keyword_end
+Function body:           def _app_views_pages_index_html_erb__3364916155774339669_70216240968860(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "pages/index";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_concat('<h1>Person</h1>
+
+  ');@output_buffer.append=  @people.each do |person| @output_buffer.safe_concat('
+');@output_buffer.safe_concat('    ');@output_buffer.append= ( person.firstname );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('    ');@output_buffer.append= ( person.lastname );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('    ');@output_buffer.append= ( person.linkedin_id );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('
+<h1>People</h1>');@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/template.rb:297:in `module_eval'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/template.rb:297:in `compile'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/template.rb:244:in `block in compile!'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/template.rb:232:in `synchronize'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/template.rb:232:in `compile!'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/template.rb:144:in `block in render'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/notifications.rb:125:in `instrument'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/template.rb:143:in `render'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/renderer/template_renderer.rb:47:in `block (2 levels) in render_template'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/notifications.rb:123:in `block in instrument'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/notifications.rb:123:in `instrument'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/renderer/template_renderer.rb:46:in `block in render_template'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/renderer/template_renderer.rb:18:in `render'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_view/renderer/renderer.rb:17:in `render'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/abstract_controller/rendering.rb:110:in `_render_template'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/abstract_controller/rendering.rb:88:in `render'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/rendering.rb:16:in `render'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/Users/sarahransohoff/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activerecord-3.2.16/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/abstract_controller/base.rb:167:in `process_action'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/callbacks.rb:414:in `_run__4009321603044058992__process_action__2509625517966499630__callbacks'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/notifications.rb:123:in `block in instrument'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/notifications.rb:123:in `instrument'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activerecord-3.2.16/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/abstract_controller/base.rb:121:in `process'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/abstract_controller/rendering.rb:45:in `process'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal.rb:203:in `dispatch'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_controller/metal.rb:246:in `block in action'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/routing/route_set.rb:73:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/routing/route_set.rb:36:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/journey-1.0.4/lib/journey/router.rb:68:in `block in call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/journey-1.0.4/lib/journey/router.rb:56:in `each'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/journey-1.0.4/lib/journey/router.rb:56:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/routing/route_set.rb:608:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.4.5/lib/rack/etag.rb:23:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.4.5/lib/rack/conditionalget.rb:25:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.4.5/lib/rack/session/abstract/id.rb:210:in `context'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.4.5/lib/rack/session/abstract/id.rb:205:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/cookies.rb:341:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activerecord-3.2.16/lib/active_record/query_cache.rb:64:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activerecord-3.2.16/lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/callbacks.rb:405:in `_run__4162077292469629710__call__2051955420172821034__callbacks'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/railties-3.2.16/lib/rails/rack/logger.rb:32:in `call_app'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/railties-3.2.16/lib/rails/rack/logger.rb:16:in `block in call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/tagged_logging.rb:22:in `tagged'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/railties-3.2.16/lib/rails/rack/logger.rb:16:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.4.5/lib/rack/methodoverride.rb:21:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.4.5/lib/rack/runtime.rb:17:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/activesupport-3.2.16/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.4.5/lib/rack/lock.rb:15:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/static.rb:63:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/railties-3.2.16/lib/rails/engine.rb:484:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/railties-3.2.16/lib/rails/application.rb:231:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.4.5/lib/rack/content_length.rb:14:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/railties-3.2.16/lib/rails/rack/log_tailer.rb:17:in `call'
+/Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.4.5/lib/rack/handler/webrick.rb:59:in `service'
+/Users/sarahransohoff/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+/Users/sarahransohoff/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+/Users/sarahransohoff/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+  Rendered pages/index.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 2.8ms
+
+ActionView::Template::Error (/Users/sarahransohoff/FIProjects/Future.me/app/views/pages/index.html.erb:9: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/sarahransohoff/FIProjects/Future.me/app/views/pages/index.html.erb:11: syntax error, unexpected end-of-input, expecting keyword_end):
+    6:     <%= person.linkedin_id %>
+    7: 
+    8: <h1>People</h1>
+  actionpack (3.2.16) lib/action_view/template.rb:297:in `module_eval'
+  actionpack (3.2.16) lib/action_view/template.rb:297:in `compile'
+  actionpack (3.2.16) lib/action_view/template.rb:244:in `block in compile!'
+  actionpack (3.2.16) lib/action_view/template.rb:232:in `synchronize'
+  actionpack (3.2.16) lib/action_view/template.rb:232:in `compile!'
+  actionpack (3.2.16) lib/action_view/template.rb:144:in `block in render'
+  activesupport (3.2.16) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.16) lib/action_view/template.rb:143:in `render'
+  actionpack (3.2.16) lib/action_view/renderer/template_renderer.rb:47:in `block (2 levels) in render_template'
+  actionpack (3.2.16) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (3.2.16) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.16) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.16) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.16) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (3.2.16) lib/action_view/renderer/template_renderer.rb:46:in `block in render_template'
+  actionpack (3.2.16) lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+  actionpack (3.2.16) lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+  actionpack (3.2.16) lib/action_view/renderer/template_renderer.rb:18:in `render'
+  actionpack (3.2.16) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.16) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.16) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.16) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.16) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.16) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.16) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.16) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.16) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.16) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.16) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /Users/sarahransohoff/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (3.2.16) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.16) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.16) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  activerecord (3.2.16) lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+  actionpack (3.2.16) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.16) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.16) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.16) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.16) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.16) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.16) lib/active_support/callbacks.rb:414:in `_run__4009321603044058992__process_action__2509625517966499630__callbacks'
+  activesupport (3.2.16) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.16) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.16) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.16) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.16) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.16) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.16) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.16) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.16) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.16) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.16) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.16) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.16) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.16) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.16) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.16) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.16) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.16) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.16) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.16) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.16) lib/action_dispatch/routing/route_set.rb:608:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.16) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.16) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.16) lib/active_support/callbacks.rb:405:in `_run__4162077292469629710__call__2051955420172821034__callbacks'
+  activesupport (3.2.16) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.16) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.16) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.16) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.16) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.16) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.16) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.16) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.16) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.16) lib/rails/engine.rb:484:in `call'
+  railties (3.2.16) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.16) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/sarahransohoff/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/sarahransohoff/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/sarahransohoff/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (31.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-16 14:46:08 -0500
+Processing by PagesController#index as HTML
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  Rendered pages/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 6.2ms (Views: 5.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-16 14:46:08 -0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-16 14:46:08 -0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-16 14:46:08 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-01-16 14:46:08 -0500
+Served asset /pages.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-01-16 14:46:08 -0500
+Served asset /pages.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-16 14:46:08 -0500
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-16 14:46:30 -0500
+Processing by PagesController#index as HTML
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+  Rendered pages/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 7.4ms (Views: 5.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-01-16 14:46:30 -0500
+Served asset /pages.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-01-16 14:46:30 -0500
+Served asset /pages.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-16 14:46:30 -0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-16 14:46:30 -0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-16 14:46:30 -0500
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-16 14:46:30 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)

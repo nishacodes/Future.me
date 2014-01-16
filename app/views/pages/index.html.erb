@@ -1,5 +1,11 @@
-<h1>Companies</h1>
+<h1>Person</h1>
 
-  <%= @company.name %>
+  <%= @people.each do |person| %>
+    <%= person.firstname %>
+    <%= person.lastname %>
+    <%= person.linkedin_id %>
+    <br>
+  <% end %>
+
 
 <h1>People</h1>
