@@ -1,5 +1,5 @@
-require 'debugger'
 require 'linkedin-scraper'
+require 'debugger'
 
 class Scraper
   attr_reader :profile
@@ -17,7 +17,13 @@ class Scraper
   end
 
   def education
-    @profile.education
+    schools = @profile.education
+    schools.each do |school|
+      School.create(:name => school[:name])
+      Education.create(:kind => school[:description].split(",")[0], 
+        :major => school[:description].split(",")[1], :grad_yr => school[:period], 
+        :person_id => , :school_id => )
+    end
   end
 
   def certification
