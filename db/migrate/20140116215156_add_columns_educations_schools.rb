@@ -1,4 +1,4 @@
-class AddColumns < ActiveRecord::Migration
+class AddColumnsEducationsSchools < ActiveRecord::Migration
   def change
     add_column :educations, :person_id, :integer
     add_column :schools, :location_id, :integer
