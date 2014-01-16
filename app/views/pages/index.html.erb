@@ -1,5 +1,38 @@
-<h1>Companies</h1>
+<h1>Person</h1>
 
-  <%= @company.name %>
+<ul>
+  <% @companies.each do |c| %>
+    <li> <%= c.name %> </li>
+  <% end %>
+</ul>
+
 
 <h1>People</h1>
+
+<ul>
+  <% @people.each do |p| %>
+    <li> 
+      <%= p.firstname %> 
+      <%= p.lastname %> 
+      <%= p.linkedin_id %> 
+    </li>
+  <% end %>
+</ul>
+
+
+<h1>Schools</h1>
+
+<ul>
+  <% @schools.each do |s| %>
+    <li> <%= s.name %> </li>
+  <% end %>
+</ul>
+
+
+<h1>Degrees</h1>
+
+<ul>
+  <% @educations.each do |e| %>
+    <li> <%= e.name %> </li>
+  <% end %>
+</ul>
