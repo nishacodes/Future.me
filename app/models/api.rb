@@ -8,8 +8,7 @@ access_token = OAuth::AccessToken.new(consumer, "e974f1f1-9f42-4ab0-af97-b32bd62
 fields = ['first-name', 'last-name', 'headline', 'industry', 'distance', 'num-connections', 'positions', 'educations', 'member-url-resources'].join(',')
 
 # Make a request for JSON data
-json_txt = access_token.get("http://api.linkedin.com/v1/people/~:(#{fields})", 'x-li-format' => 'json').body
-# converts JSON into ruby
+json_txt = access_token.get("http://api.linkedin.com/v1/people-search:(people,facets)?facet=maiden-name", 'x-li-format' => 'json').body
 profile = JSON.parse(json_txt)
 puts "Profile data:"
 puts JSON.pretty_generate(profile)
