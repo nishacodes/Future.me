@@ -449,3 +449,154 @@ Migrating to PeopleSchools (20140115154048)
   [1m[35m (0.1ms)[0m  select sqlite_version(*)
   [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+DEPRECATION WARNING: You're trying to create an attribute `person_id'. Writing arbitrary attributes on a model is deprecated. Please just use `attr_writer` etc. (called from irb_binding at (irb):26)
+DEPRECATION WARNING: You're trying to create an attribute `person_id'. Writing arbitrary attributes on a model is deprecated. Please just use `attr_writer` etc. (called from irb_binding at (irb):30)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCompanies (20140114224713)
+Migrating to CreateIndustries (20140114224811)
+Migrating to CreateDepartments (20140114224848)
+Migrating to CreateSchools (20140114225043)
+Migrating to CreateEducations (20140114225423)
+Migrating to CreatePeople (20140114225510)
+Migrating to CreateLocations (20140114225709)
+Migrating to CreateJobtitles (20140114225802)
+Migrating to CompaniesDepartments (20140115153150)
+Migrating to CompaniesIndustries (20140115154011)
+Migrating to CompaniesPeople (20140115154029)
+Migrating to CompaniesLocations (20140115154037)
+Migrating to PeopleSchools (20140115154048)
+Migrating to RenameTableCompaniesDepartments (20140115171117)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "companies_departments" RENAME TO "company_departments"
+SQLite3::SQLException: no such table: companies_departments: ALTER TABLE "companies_departments" RENAME TO "company_departments"
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCompanies (20140114224713)
+Migrating to CreateIndustries (20140114224811)
+Migrating to CreateDepartments (20140114224848)
+Migrating to CreateSchools (20140114225043)
+Migrating to CreateEducations (20140114225423)
+Migrating to CreatePeople (20140114225510)
+Migrating to CreateLocations (20140114225709)
+Migrating to CreateJobtitles (20140114225802)
+Migrating to CompaniesDepartments (20140115153150)
+Migrating to CompaniesIndustries (20140115154011)
+Migrating to CompaniesPeople (20140115154029)
+Migrating to CompaniesLocations (20140115154037)
+Migrating to PeopleSchools (20140115154048)
+Migrating to RenameTable (20140115171536)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "companies_departments" RENAME TO "company_departments"
+SQLite3::SQLException: no such table: companies_departments: ALTER TABLE "companies_departments" RENAME TO "company_departments"
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCompanies (20140114224713)
+Migrating to CreateIndustries (20140114224811)
+Migrating to CreateDepartments (20140114224848)
+Migrating to CreateSchools (20140114225043)
+Migrating to CreateEducations (20140114225423)
+Migrating to CreatePeople (20140114225510)
+Migrating to CreateLocations (20140114225709)
+Migrating to CreateJobtitles (20140114225802)
+Migrating to CompaniesDepartments (20140115153150)
+Migrating to CompaniesIndustries (20140115154011)
+Migrating to CompaniesPeople (20140115154029)
+Migrating to CompaniesLocations (20140115154037)
+Migrating to PeopleSchools (20140115154048)
+Migrating to RenameTable (20140115171536)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "companies_deparments" RENAME TO "company_departments"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140115171536')[0m
+  [1m[35m (2.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+DEPRECATION WARNING: You're trying to create an attribute `company_id'. Writing arbitrary attributes on a model is deprecated. Please just use `attr_writer` etc. (called from irb_binding at (irb):11)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCompanies (20140114224713)
+Migrating to CreateIndustries (20140114224811)
+Migrating to CreateDepartments (20140114224848)
+Migrating to CreateSchools (20140114225043)
+Migrating to CreateEducations (20140114225423)
+Migrating to CreatePeople (20140114225510)
+Migrating to CreateLocations (20140114225709)
+Migrating to CreateJobtitles (20140114225802)
+Migrating to CompaniesDepartments (20140115153150)
+Migrating to CompaniesIndustries (20140115154011)
+Migrating to CompaniesPeople (20140115154029)
+Migrating to CompaniesLocations (20140115154037)
+Migrating to PeopleSchools (20140115154048)
+Migrating to RenameTable (20140115171536)
+Migrating to RenameTables (20140115174736)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "companies_industries" RENAME TO "company_industries"
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "companies_people" RENAME TO "company_people"[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "companies_locations" RENAME TO "company_locations"
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "people_schools" RENAME TO "person_schools"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140115174736')
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+DEPRECATION WARNING: You're trying to create an attribute `company_id'. Writing arbitrary attributes on a model is deprecated. Please just use `attr_writer` etc. (called from irb_binding at (irb):6)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: You're trying to create an attribute `company_id'. Writing arbitrary attributes on a model is deprecated. Please just use `attr_writer` etc. (called from irb_binding at (irb):3)
+DEPRECATION WARNING: You're trying to create an attribute `company_id'. Writing arbitrary attributes on a model is deprecated. Please just use `attr_writer` etc. (called from irb_binding at (irb):6)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: You're trying to create an attribute `company_id'. Writing arbitrary attributes on a model is deprecated. Please just use `attr_writer` etc. (called from irb_binding at (irb):5)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+DEPRECATION WARNING: You're trying to create an attribute `company_id'. Writing arbitrary attributes on a model is deprecated. Please just use `attr_writer` etc. (called from irb_binding at (irb):5)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: You're trying to create an attribute `company_id'. Writing arbitrary attributes on a model is deprecated. Please just use `attr_writer` etc. (called from irb_binding at (irb):5)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCompanies (20140114224713)
+Migrating to CreateIndustries (20140114224811)
+Migrating to CreateDepartments (20140114224848)
+Migrating to CreateSchools (20140114225043)
+Migrating to CreateEducations (20140114225423)
+Migrating to CreatePeople (20140114225510)
+Migrating to CreateLocations (20140114225709)
+Migrating to CreateJobtitles (20140114225802)
+Migrating to CompaniesDepartments (20140115153150)
+Migrating to CompaniesIndustries (20140115154011)
+Migrating to CompaniesPeople (20140115154029)
+Migrating to CompaniesLocations (20140115154037)
+Migrating to PeopleSchools (20140115154048)
+Migrating to RenameTable (20140115171536)
+Migrating to RenameTables (20140115174736)
+Migrating to FixColumnName (20140115234038)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TEMPORARY TABLE "altered_person_schools" ("person_id" integer, "school_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "person_schools"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "person_schools"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "person_schools" ("person_id" integer, "school_id" integer) [0m
+  [1m[35m (0.0ms)[0m  SELECT * FROM "altered_person_schools"
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "altered_person_schools"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140115234038')
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml

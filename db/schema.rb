@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115154048) do
+ActiveRecord::Schema.define(:version => 20140115234038) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -19,22 +19,22 @@ ActiveRecord::Schema.define(:version => 20140115154048) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "companies_deparments", :id => false, :force => true do |t|
+  create_table "company_departments", :id => false, :force => true do |t|
     t.integer "company_id"
     t.integer "department_id"
   end
 
-  create_table "companies_industries", :id => false, :force => true do |t|
+  create_table "company_industries", :id => false, :force => true do |t|
     t.integer "company_id"
     t.integer "industry_id"
   end
 
-  create_table "companies_locations", :id => false, :force => true do |t|
+  create_table "company_locations", :id => false, :force => true do |t|
     t.integer "company_id"
     t.integer "location_id"
   end
 
-  create_table "companies_people", :id => false, :force => true do |t|
+  create_table "company_people", :id => false, :force => true do |t|
     t.integer "company_id"
     t.integer "person_id"
   end
@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(:version => 20140115154048) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "people_schools", :id => false, :force => true do |t|
-    t.integer "people_id"
+  create_table "person_schools", :id => false, :force => true do |t|
+    t.integer "person_id"
     t.integer "school_id"
   end
 
