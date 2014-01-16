@@ -46,6 +46,7 @@ class Api
     i = 0
     json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(public-profile-url))?company-id=#{id}&current-company=true&sort=connections&count=10&start=#{i}", 'x-li-format' => 'json').body
     parsed = JSON.parse(json_txt)
+    
   end
   
 end
