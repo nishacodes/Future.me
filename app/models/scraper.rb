@@ -33,6 +33,7 @@ class Scraper
   def current_companies
     companies = @profile.current_companies
     companies.each do |company|
+      # get company id, it's in json companyId
       company_temp = Company.create(:name => company[:company])
       Jobtitle.create(:title=> company[:title], :start_date => company[:start_date],
         :end_date => company[:end_date], :company_id => company_temp.id, :person_id => person_id)
