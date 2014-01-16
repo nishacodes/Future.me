@@ -1,6 +1,6 @@
-require 'oauth'
-require 'json'
-# require ''
+require 'oauth' #probs wont need
+require 'json' #probs wont need
+# require_relative 'company'
 require 'debugger'
 
 class Api
@@ -37,12 +37,13 @@ class Api
     i = 0
     json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search?company-id=#{id}&current-company=true&sort=connections&count=25&start=#{i}", 'x-li-format' => 'json').body
     parsed = JSON.parse(json_txt)
-    parsed["companyType"]
-    parsed["employeeCountRange"]
-    parsed["industries"]
-    parsed["locations"]
-    parsed["name"]
-    parsed["websiteUrl"]
+    # CAN WE GET LINKEDIN URL OF EMPLOYEES???
+    parsed["values"][0]["companyType"]
+    parsed["values"][0]["employeeCountRange"]
+    parsed["values"][0]["industries"]
+    parsed["values"][0]["locations"]
+    parsed["values"][0]["name"]
+    parsed["values"][0]["websiteUrl"]
     # while num_results
     # returns current employees
   end
