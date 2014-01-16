@@ -5,7 +5,7 @@ gem 'sqlite3'
 gem 'jquery-rails'
 gem 'oauth'
 gem 'json'
-# gem 'linkedin-scraper'
+gem 'linkedin-scraper'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
