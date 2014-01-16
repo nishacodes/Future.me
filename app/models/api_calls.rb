@@ -1,54 +1,35 @@
+
 require 'oauth'
 require 'json'
-# require ''
-require 'debugger'
 
-class Api
-  CONSUMER = OAuth::Consumer.new("77ze1x9zbqkfe7", "vnVI2BZxFEm8QxNM")
-  ACCESS_TOKEN = OAuth::AccessToken.new(CONSUMER, "e974f1f1-9f42-4ab0-af97-b32bd6229e22", 
-    "f732020e-436c-4b34-882c-c29973bfb5e3")
-  FIELDS = ['first-name', 'last-name', 'public-profile-url', 'site-standard-profile-request', 'headline', 'industry', 'distance', 'num-connections', 'positions', 'educations', 'member-url-resources'].join(',')
+consumer = OAuth::Consumer.new("77ze1x9zbqkfe7", "vnVI2BZxFEm8QxNM")
+access_token = OAuth::AccessToken.new(consumer, "e974f1f1-9f42-4ab0-af97-b32bd6229e22", "f732020e-436c-4b34-882c-c29973bfb5e3")
+ 
+# Pick some fields
+fields = ['id', 'first-name', 'last-name', 'headline', 'industry', 'distance', 'num-connections', 'positions', 'educations', 'member-url-resources'].join(',')
 
-  def get_user_profile
-    json_txt = ACCESS_TOKEN.get("http://api.linkedin.com/v1/people/~:(#{FIELDS})", 'x-li-format' => 'json').body
-    parsed = JSON.parse(json_txt)
-    # returns all FIELDS
-  end
+# Make a request for JSON data
+json_txt = access_token.get("http://api.linkedin.com/v1/people-search:(people,facets)?facet=maiden-name", 'x-li-format' => 'json').body
+profile = JSON.parse(json_txt)
+puts "Profile data:"
+puts JSON.pretty_generate(profile)
 
-  def get_person_profile(id)
-    json_txt = ACCESS_TOKEN.get("http://api.linkedin.com/v1/people::(id=#{id}):(#{FIELDS})", 'x-li-format' => 'json').body
-    parsed = JSON.parse(json_txt)
-    # returns some FIELDS
-  end
-
-  def find_company_id(email)
-    json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/companies?email-domain=#{email}", 'x-li-format' => 'json').body
-    parsed = JSON.parse(json_txt)
-    # returns company name and id
-  end
-
-  def company_details(id)
-    json_txt = ACCESS_TOKEN.get("http://api.linkedin.com/v1/companies/#{id}:(name,industries,company-type,locations,website-url,employee-count-range)", 'x-li-format' => 'json').body
-    parsed = JSON.parse(json_txt)
-    # returns name industry
-  end
-
-  def company_employees(id)
-    i = 0
-    json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search?company-id=#{id}&current-company=true&sort=connections&count=25&start=#{i}", 'x-li-format' => 'json').body
-    parsed = JSON.parse(json_txt)
-    parsed["companyType"]
-    parsed["employeeCountRange"]
-    parsed["industries"]
-    parsed["locations"]
-    parsed["name"]
-    parsed["websiteUrl"]
-    # while num_results
-    # returns current employees
-  end
-  
-end
-
-a = Api.new
-debugger
-puts 'hi'
+# returns all things defined in fields for Derek's profile
+# get_person_profile
+json_txt = access_token.get("http://api.linkedin.com/v1/people/~:(#{fields})", 'x-li-format' => 'json').body
+# returns name and linkedin url of a person
+# get_user_profile
+json_txt = access_token.get("http://api.linkedin.com/v1/people::(id=MjbuON9bxM):(first-name,last-name,public-profile-url,headline,industry,num-connections,positions,educations)", 'x-li-format' => 'json').body
+json_txt = access_token.get("https://api.linkedin.com/v1/people/id=QzskgUlMvl", 'x-li-format' => 'json').body
+# returns all names and ids of people who have keyword of X
+# 
+json_txt = access_token.get("http://api.linkedin.com/v1/people-search?keywords=Google",'x-li-format' => 'json').body
+# returns name and id of all people who work at a company
+# company_employees (slightly altered)
+json_txt = access_token.get("https://api.linkedin.com/v1/people-search?company-name=The%20Flatiron%20School&current-company=true&sort=connections", 'x-li-format' => 'json').body
+# returns company name and id with email domain
+# find_company_profile(email)
+json_txt = access_token.get("https://api.linkedin.com/v1/companies?email-domain=accenture.com", 'x-li-format' => 'json').body
+# returns id name description industry size type and logo-url of company
+# 
+json_txt = access_token.get("http://api.linkedin.com/v1/companies/2677373:(id,name,industry)", 'x-li-format' => 'json').body
