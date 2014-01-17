@@ -25,33 +25,33 @@ class Api
   end
 
   def create_person(parsed)
-    firstname = parsed["firstName"]
-    lastname = parsed["lastName"]
-    linkedin_id = parsed["id"]
+    @firstname = parsed["firstName"]
+    @lastname = parsed["lastName"]
+    @linkedin_id = parsed["id"]
     Person.create(:firstname => firstname, :lastname => lastname, :linkedin_id => linkedin_id)
   end
 
   def find_company(email)
     json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/companies?email-domain=#{email}", 'x-li-format' => 'json').body
     parsed = JSON.parse(json_txt)["values"][0]
-    @company_id = parsed["id"]
-    @company_name = parsed["name"]
-    company_details
+    # @company_id = parsed["id"]
+    # @company_name = parsed["name"]
+    # company_details
   end
 
-  def company_details
+  def company_details(company_id)
     json_txt = ACCESS_TOKEN.get("http://api.linkedin.com/v1/companies/#{@company_id}:(name,industries,company-type,locations,website-url,employee-count-range)", 'x-li-format' => 'json').body
     parsed = JSON.parse(json_txt)
-    @company_industry = parsed["industries"]["values"][0]["name"]
-    @company_postalcode = parsed["locations"]["values"][0]["address"]["postalCode"]
-    company_employees
+    # @company_industry = parsed["industries"]["values"][0]["name"]
+    # @company_postalcode = parsed["locations"]["values"][0]["address"]["postalCode"]
+    # @company_employees
     # returns name industry
   end
 
-  def company_employees
+  def company_employees(id)
     i = 0
-    json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(public-profile-url))?company-id=#{@company_id}&current-company=true&sort=connections&count=10&start=#{i}", 'x-li-format' => 'json').body
-    parsed = JSON.parse(json_txt)
+    json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(first-name,last-name,id,public-profile-url))?company-id=#{@company_id}&current-company=true&sort=connections&count=10&start=#{i}", 'x-li-format' => 'json').body
+    parsed = JSON.parse(json_txt)["people"]["values"][0]
   end
   
 end

@@ -5512,3 +5512,264 @@ Served asset /application.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-17 00:58:29 -0500
 Served asset /application.css - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-17 11:53:03 -0500
+Connecting to database specified by database.yml
+Processing by PagesController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.7ms)[0m  INSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Fri, 17 Jan 2014 16:53:04 UTC +00:00], ["linkedin_id", nil], ["name", nil], ["updated_at", Fri, 17 Jan 2014 16:53:04 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "industries" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Fri, 17 Jan 2014 16:53:04 UTC +00:00], ["name", nil], ["updated_at", Fri, 17 Jan 2014 16:53:04 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "company_industries" ("company_id", "industry_id") VALUES (?, ?)  [["company_id", 45], ["industry_id", 19]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "locations" ("city", "country", "created_at", "lat", "long", "postalcode", "state", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["city", nil], ["country", nil], ["created_at", Fri, 17 Jan 2014 16:53:04 UTC +00:00], ["lat", nil], ["long", nil], ["postalcode", nil], ["state", nil], ["updated_at", Fri, 17 Jan 2014 16:53:04 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "company_locations" ("company_id", "location_id") VALUES (?, ?)  [["company_id", 45], ["location_id", 14]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Completed 500 Internal Server Error in 729.7ms
+
+NameError (undefined local variable or method `get_person' for #<Populate:0x007fae74344f20>):
+  app/models/populate.rb:15:in `run'
+  app/controllers/pages_controller.rb:4:in `index'
+
+
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-17 11:53:04 -0500
+Processing by PagesController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Fri, 17 Jan 2014 16:53:04 UTC +00:00], ["linkedin_id", nil], ["name", nil], ["updated_at", Fri, 17 Jan 2014 16:53:04 UTC +00:00]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "industries" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 17 Jan 2014 16:53:04 UTC +00:00], ["name", nil], ["updated_at", Fri, 17 Jan 2014 16:53:04 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "company_industries" ("company_id", "industry_id") VALUES (?, ?)[0m  [["company_id", 46], ["industry_id", 20]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "locations" ("city", "country", "created_at", "lat", "long", "postalcode", "state", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["city", nil], ["country", nil], ["created_at", Fri, 17 Jan 2014 16:53:04 UTC +00:00], ["lat", nil], ["long", nil], ["postalcode", nil], ["state", nil], ["updated_at", Fri, 17 Jan 2014 16:53:04 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "company_locations" ("company_id", "location_id") VALUES (?, ?)[0m  [["company_id", 46], ["location_id", 15]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Completed 500 Internal Server Error in 453.5ms
+
+NameError (undefined local variable or method `get_person' for #<Populate:0x007fae7397eb08>):
+  app/models/populate.rb:15:in `run'
+  app/controllers/pages_controller.rb:4:in `index'
+
+
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-17 11:53:31 -0500
+Processing by PagesController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Fri, 17 Jan 2014 16:53:32 UTC +00:00], ["linkedin_id", nil], ["name", nil], ["updated_at", Fri, 17 Jan 2014 16:53:32 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "industries" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Fri, 17 Jan 2014 16:53:32 UTC +00:00], ["name", nil], ["updated_at", Fri, 17 Jan 2014 16:53:32 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "company_industries" ("company_id", "industry_id") VALUES (?, ?)  [["company_id", 47], ["industry_id", 21]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "locations" ("city", "country", "created_at", "lat", "long", "postalcode", "state", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["city", nil], ["country", nil], ["created_at", Fri, 17 Jan 2014 16:53:32 UTC +00:00], ["lat", nil], ["long", nil], ["postalcode", nil], ["state", nil], ["updated_at", Fri, 17 Jan 2014 16:53:32 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "company_locations" ("company_id", "location_id") VALUES (?, ?)  [["company_id", 47], ["location_id", 16]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Completed 500 Internal Server Error in 1011.2ms
+
+NameError (undefined local variable or method `firstname' for #<Populate:0x007fae742e66f0>):
+  app/models/populate.rb:36:in `create_people'
+  app/models/populate.rb:15:in `run'
+  app/controllers/pages_controller.rb:4:in `index'
+
+
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-17 11:54:14 -0500
+Processing by PagesController#index as HTML
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Fri, 17 Jan 2014 16:54:14 UTC +00:00], ["linkedin_id", nil], ["name", nil], ["updated_at", Fri, 17 Jan 2014 16:54:14 UTC +00:00]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "industries" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 17 Jan 2014 16:54:14 UTC +00:00], ["name", nil], ["updated_at", Fri, 17 Jan 2014 16:54:14 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "company_industries" ("company_id", "industry_id") VALUES (?, ?)[0m  [["company_id", 48], ["industry_id", 22]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "locations" ("city", "country", "created_at", "lat", "long", "postalcode", "state", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["city", nil], ["country", nil], ["created_at", Fri, 17 Jan 2014 16:54:14 UTC +00:00], ["lat", nil], ["long", nil], ["postalcode", nil], ["state", nil], ["updated_at", Fri, 17 Jan 2014 16:54:14 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "company_locations" ("company_id", "location_id") VALUES (?, ?)[0m  [["company_id", 48], ["location_id", 17]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Completed 500 Internal Server Error in 765.6ms
+
+NameError (undefined local variable or method `firstName' for #<Populate:0x007fae743b6c10>):
+  app/models/populate.rb:36:in `create_people'
+  app/models/populate.rb:15:in `run'
+  app/controllers/pages_controller.rb:4:in `index'
+
+
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-17 11:55:39 -0500
+Processing by PagesController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Fri, 17 Jan 2014 16:55:40 UTC +00:00], ["linkedin_id", nil], ["name", nil], ["updated_at", Fri, 17 Jan 2014 16:55:40 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "industries" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Fri, 17 Jan 2014 16:55:40 UTC +00:00], ["name", nil], ["updated_at", Fri, 17 Jan 2014 16:55:40 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "company_industries" ("company_id", "industry_id") VALUES (?, ?)  [["company_id", 49], ["industry_id", 23]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "locations" ("city", "country", "created_at", "lat", "long", "postalcode", "state", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["city", nil], ["country", nil], ["created_at", Fri, 17 Jan 2014 16:55:40 UTC +00:00], ["lat", nil], ["long", nil], ["postalcode", nil], ["state", nil], ["updated_at", Fri, 17 Jan 2014 16:55:40 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "company_locations" ("company_id", "location_id") VALUES (?, ?)  [["company_id", 49], ["location_id", 18]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Completed 500 Internal Server Error in 2191.9ms
+
+NoMethodError (undefined method `firstName' for #<Api:0x007fae744b6778>):
+  app/models/populate.rb:37:in `create_people'
+  app/models/populate.rb:15:in `run'
+  app/controllers/pages_controller.rb:4:in `index'
+
+
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (47.4ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (53.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-17 11:56:05 -0500
+Connecting to database specified by database.yml
+Processing by PagesController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (6.1ms)[0m  INSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Fri, 17 Jan 2014 16:56:06 UTC +00:00], ["linkedin_id", nil], ["name", nil], ["updated_at", Fri, 17 Jan 2014 16:56:06 UTC +00:00]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "industries" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Fri, 17 Jan 2014 16:56:06 UTC +00:00], ["name", nil], ["updated_at", Fri, 17 Jan 2014 16:56:06 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "company_industries" ("company_id", "industry_id") VALUES (?, ?)  [["company_id", 50], ["industry_id", 24]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "locations" ("city", "country", "created_at", "lat", "long", "postalcode", "state", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["city", nil], ["country", nil], ["created_at", Fri, 17 Jan 2014 16:56:06 UTC +00:00], ["lat", nil], ["long", nil], ["postalcode", nil], ["state", nil], ["updated_at", Fri, 17 Jan 2014 16:56:06 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "company_locations" ("company_id", "location_id") VALUES (?, ?)  [["company_id", 50], ["location_id", 19]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Completed 500 Internal Server Error in 1636.3ms
+
+NoMethodError (undefined method `firstName' for #<Api:0x007f9d5cced988>):
+  app/models/populate.rb:37:in `create_people'
+  app/models/populate.rb:15:in `run'
+  app/controllers/pages_controller.rb:4:in `index'
+
+
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-17 11:58:52 -0500
+Processing by PagesController#index as HTML
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Fri, 17 Jan 2014 16:58:53 UTC +00:00], ["linkedin_id", nil], ["name", nil], ["updated_at", Fri, 17 Jan 2014 16:58:53 UTC +00:00]]
+  [1m[35m (1.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "industries" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 17 Jan 2014 16:58:53 UTC +00:00], ["name", nil], ["updated_at", Fri, 17 Jan 2014 16:58:53 UTC +00:00]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "company_industries" ("company_id", "industry_id") VALUES (?, ?)[0m  [["company_id", 51], ["industry_id", 25]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "locations" ("city", "country", "created_at", "lat", "long", "postalcode", "state", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["city", nil], ["country", nil], ["created_at", Fri, 17 Jan 2014 16:58:53 UTC +00:00], ["lat", nil], ["long", nil], ["postalcode", nil], ["state", nil], ["updated_at", Fri, 17 Jan 2014 16:58:53 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "company_locations" ("company_id", "location_id") VALUES (?, ?)[0m  [["company_id", 51], ["location_id", 20]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Completed 500 Internal Server Error in 843.5ms
+
+NameError (undefined local variable or method `create_people' for #<Populate:0x007f9d5cc4f4b8>):
+  app/models/populate.rb:15:in `run'
+  app/controllers/pages_controller.rb:4:in `index'
+
+
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.8ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (23.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-17 11:59:18 -0500
+Processing by PagesController#index as HTML
+Completed 500 Internal Server Error in 7.2ms
+
+NameError (undefined local variable or method `run' for main:Object):
+  app/models/populate.rb:42:in `<top (required)>'
+  app/controllers/pages_controller.rb:4:in `index'
+
+
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.1ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.4ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-17 11:59:34 -0500
+Processing by PagesController#index as HTML
+Completed 500 Internal Server Error in 7.3ms
+
+NoMethodError (undefined method `run' for nil:NilClass):
+  app/models/populate.rb:42:in `<top (required)>'
+  app/controllers/pages_controller.rb:4:in `index'
+
+
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.2ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.3ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (24.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-17 11:59:45 -0500
+Processing by PagesController#index as HTML
+Completed 500 Internal Server Error in 8.6ms
+
+NoMethodError (undefined method `run' for Populate:Class):
+  app/models/populate.rb:42:in `<top (required)>'
+  app/controllers/pages_controller.rb:4:in `index'
+
+
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.7ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+  Rendered /Users/dereksilverman/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (26.8ms)

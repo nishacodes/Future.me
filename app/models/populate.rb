@@ -12,6 +12,7 @@ class Populate
     create_company
     create_industry
     create_location
+    create_people
   end
 
   def create_company
@@ -31,20 +32,11 @@ class Populate
     # @location.companies << @company
   end
 
-  def get_people
-
-  end
-
-  def create_people
-
-  end
-
-
-
-
-
-
+  # def create_people
+  #   @api.company_employees("18427")
+  #   @person = Person.create(:firstname => @api.firstName, :lastname => @api.lastName, :linkedin_id => @api.linkedin_id, :publicProfileUrl => @api.publicProfileUrl)
+  # end
 
 end
 
-
+Populate.run

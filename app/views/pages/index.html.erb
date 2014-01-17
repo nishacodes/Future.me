@@ -47,3 +47,13 @@
     <li> <%= l.postalcode %> </li>
   <% end %>
 </ul>
+
+<h1>People</h1>
+<ul>
+  <% @people.each do |p| %>
+    <li> <%= p.firstname %> </li>
+    <li> <%= p.lastname %> </li>
+    <li> <%= p.linkedin_id %> </li>
+    <li> <%= p.publicProfileUrl %> </li>
+  <% end %>
+</ul>
