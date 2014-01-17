@@ -24,12 +24,12 @@ class Api
     # returns some FIELDS
   end
 
-  def create_person(parsed)
-    @firstname = parsed["firstName"]
-    @lastname = parsed["lastName"]
-    @linkedin_id = parsed["id"]
-    Person.create(:firstname => firstname, :lastname => lastname, :linkedin_id => linkedin_id)
-  end
+  # def create_person(parsed)
+  #   @firstname = parsed["firstName"]
+  #   @lastname = parsed["lastName"]
+  #   @linkedin_id = parsed["id"]
+  #   Person.create(:firstname => firstname, :lastname => lastname, :linkedin_id => linkedin_id)
+  # end
 
   def find_company(email)
     json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/companies?email-domain=#{email}", 'x-li-format' => 'json').body
