@@ -1,17 +1,15 @@
 class Populate
-  attr_reader :api, :scraper, :company, :location, :person, :industry
+  attr_reader :api, :scraper, :company, :location, :person, :industry, :scrape
 
   DOMAINS = ["google.com", "flatironschool.com", "twitter.com"]
 
   def initialize
   	@api = Api.new
-    # @scraper = Scraper.new
-  end
-  
-  def run
     create_company
     create_industry
     create_location
+    update_people
+    # @scraper = Scraper.new
   end
 
   def create_company
@@ -37,6 +35,21 @@ class Populate
 
   def create_people
 
+  end
+
+
+  def update_people
+    Person.all.each do |person|
+      @scrape = Scraper.new(person.linkedin_url)
+      
+      @scrape.schools.each do |school|
+        person.schools << School.create(:name => school[:name])
+        person.educations <<
+
+      end
+
+
+    end
   end
 
 
