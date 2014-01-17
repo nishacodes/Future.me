@@ -1,0 +1,148 @@
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-17 12:33:31 -0500
+Connecting to database specified by database.yml
+Processing by PagesController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (55.5ms)[0m  INSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Fri, 17 Jan 2014 17:33:33 UTC +00:00], ["linkedin_id", 96622], ["name", "Twitter"], ["updated_at", Fri, 17 Jan 2014 17:33:33 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "industries" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Fri, 17 Jan 2014 17:33:33 UTC +00:00], ["name", "Internet"], ["updated_at", Fri, 17 Jan 2014 17:33:33 UTC +00:00]]
+  [1m[35m (1.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "company_industries" ("company_id", "industry_id") VALUES (?, ?)  [["company_id", 45], ["industry_id", 19]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "locations" ("city", "country", "created_at", "lat", "long", "postalcode", "state", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["city", nil], ["country", nil], ["created_at", Fri, 17 Jan 2014 17:33:33 UTC +00:00], ["lat", nil], ["long", nil], ["postalcode", 94103], ["state", nil], ["updated_at", Fri, 17 Jan 2014 17:33:33 UTC +00:00]]
+  [1m[35m (1.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "company_locations" ("company_id", "location_id") VALUES (?, ?)  [["company_id", 45], ["location_id", 14]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mCompany Load (0.3ms)[0m  SELECT "companies".* FROM "companies" 
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  [1m[35mEducation Load (0.2ms)[0m  SELECT "educations".* FROM "educations" 
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" [0m
+  [1m[35mIndustry Load (0.2ms)[0m  SELECT "industries".* FROM "industries" 
+  [1m[36mLocation Load (0.3ms)[0m  [1mSELECT "locations".* FROM "locations" [0m
+  Rendered pages/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 2491.9ms (Views: 368.3ms | ActiveRecord: 72.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-17 12:33:34 -0500
+Processing by PagesController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Fri, 17 Jan 2014 17:33:35 UTC +00:00], ["linkedin_id", 96622], ["name", "Twitter"], ["updated_at", Fri, 17 Jan 2014 17:33:35 UTC +00:00]]
+  [1m[35m (2.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "industries" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 17 Jan 2014 17:33:35 UTC +00:00], ["name", "Internet"], ["updated_at", Fri, 17 Jan 2014 17:33:35 UTC +00:00]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "company_industries" ("company_id", "industry_id") VALUES (?, ?)[0m  [["company_id", 46], ["industry_id", 20]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "locations" ("city", "country", "created_at", "lat", "long", "postalcode", "state", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["city", nil], ["country", nil], ["created_at", Fri, 17 Jan 2014 17:33:35 UTC +00:00], ["lat", nil], ["long", nil], ["postalcode", 94103], ["state", nil], ["updated_at", Fri, 17 Jan 2014 17:33:35 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "company_locations" ("company_id", "location_id") VALUES (?, ?)[0m  [["company_id", 46], ["location_id", 15]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" [0m
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" 
+  [1m[36mEducation Load (0.1ms)[0m  [1mSELECT "educations".* FROM "educations" [0m
+  [1m[35mSchool Load (0.1ms)[0m  SELECT "schools".* FROM "schools" 
+  [1m[36mIndustry Load (0.2ms)[0m  [1mSELECT "industries".* FROM "industries" [0m
+  [1m[35mLocation Load (0.2ms)[0m  SELECT "locations".* FROM "locations" 
+  Rendered pages/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 1716.2ms (Views: 6.5ms | ActiveRecord: 10.1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-17 12:33:35 -0500
+Served asset /application.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-17 12:33:35 -0500
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-17 12:33:35 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-01-17 12:33:35 -0500
+Served asset /pages.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-01-17 12:33:35 -0500
+Served asset /pages.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-17 12:33:35 -0500
+Served asset /jquery.js - 304 Not Modified (49ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-17 12:34:13 -0500
+Processing by PagesController#index as HTML
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Fri, 17 Jan 2014 17:34:15 UTC +00:00], ["linkedin_id", 96622], ["name", "Twitter"], ["updated_at", Fri, 17 Jan 2014 17:34:15 UTC +00:00]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "industries" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Fri, 17 Jan 2014 17:34:15 UTC +00:00], ["name", "Internet"], ["updated_at", Fri, 17 Jan 2014 17:34:15 UTC +00:00]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "company_industries" ("company_id", "industry_id") VALUES (?, ?)  [["company_id", 47], ["industry_id", 21]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "locations" ("city", "country", "created_at", "lat", "long", "postalcode", "state", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["city", nil], ["country", nil], ["created_at", Fri, 17 Jan 2014 17:34:15 UTC +00:00], ["lat", nil], ["long", nil], ["postalcode", 94103], ["state", nil], ["updated_at", Fri, 17 Jan 2014 17:34:15 UTC +00:00]]
+  [1m[35m (2.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "company_locations" ("company_id", "location_id") VALUES (?, ?)  [["company_id", 47], ["location_id", 16]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" 
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "people".* FROM "people" 
+  [1m[36mEducation Load (0.2ms)[0m  [1mSELECT "educations".* FROM "educations" [0m
+  [1m[35mSchool Load (0.1ms)[0m  SELECT "schools".* FROM "schools" 
+  [1m[36mIndustry Load (0.1ms)[0m  [1mSELECT "industries".* FROM "industries" [0m
+  [1m[35mLocation Load (0.1ms)[0m  SELECT "locations".* FROM "locations" 
+  Rendered pages/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 1706.1ms (Views: 4.3ms | ActiveRecord: 13.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-17 12:34:15 -0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-01-17 12:34:15 -0500
+Served asset /pages.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-01-17 12:34:15 -0500
+Served asset /pages.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-17 12:34:15 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-17 12:34:15 -0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-17 12:34:15 -0500
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-17 12:53:20 -0500
+Processing by PagesController#index as HTML
+Completed 500 Internal Server Error in 1.9ms
+
+SyntaxError (/Users/ndhingra/Dropbox/1NISHA/Code/flatiron/Future.me/app/models/populate.rb:49: syntax error, unexpected keyword_end):
+  app/controllers/pages_controller.rb:4:in `index'
+
+
+  Rendered /Users/ndhingra/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.7ms)
+  Rendered /Users/ndhingra/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+  Rendered /Users/ndhingra/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (179.3ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
