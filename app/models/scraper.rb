@@ -1,19 +1,20 @@
 class Scraper
-  attr_accessor :profile, :schools
+  attr_accessor :profile, :educations
 
   def initialize(publicprofileurl)
     @profile = Linkedin::Profile.get_profile("#{publicprofileurl}")
+    @educations = @profile.education
   end
 
-  def education
-    @schools = @profile.education
-    # @schools.each do |school|
-    #   School.create(:name => school[:name])
-      # Education.create(:kind => school[:description].split(",")[0], 
-      #   :major => school[:description].split(",")[1], :grad_yr => school[:period], 
-      #   :person_id => , :school_id => )
-    # end
-  end
+  # def educations
+  #   @profile.education
+  #   # @schools.each do |school|
+  #   #   School.create(:name => school[:name])
+  #     # Education.create(:kind => school[:description].split(",")[0], 
+  #     #   :major => school[:description].split(",")[1], :grad_yr => school[:period], 
+  #     #   :person_id => , :school_id => )
+  #   # end
+  # end
 
   def certification
     @profile.certifications

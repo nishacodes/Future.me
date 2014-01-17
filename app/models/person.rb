@@ -1,11 +1,8 @@
 class Person < ActiveRecord::Base
   attr_accessible :firstname, :lastname, :linkedin_id, :linkedin_url
-<<<<<<< HEAD
-  validates :linkedin_id, uniqueness: true, presence: true
-  validates :linkedin_url, uniqueness: true, presence: true
-=======
-  validates_uniqueness_of :linkedin_id
->>>>>>> a71952d0a0b083f03b05740acd16618ca6ae2b46
+  # validates :linkedin_id, uniqueness: true, presence: true
+  # validates :linkedin_url, uniqueness: true, presence: true
+
 
   has_many :jobtitles
   

@@ -1,19 +1,15 @@
 class Populate
   attr_reader :api, :scraper, :company, :location, :person, :industry, :scrape
 
-  DOMAINS = ["google.com, twitter.com, flatironschool.com"]
+  DOMAINS = ["google.com", "twitter.com", "flatironschool.com"]
 
   def initialize
   	@api = Api.new
     create_company
     create_industry
     create_location
-<<<<<<< HEAD
-    update_people
-    # @scraper = Scraper.new
-=======
     create_people
->>>>>>> a71952d0a0b083f03b05740acd16618ca6ae2b46
+    update_people
   end
 
   def create_company
@@ -36,23 +32,20 @@ class Populate
   def create_people
     @api.people.each do |personhash|
       Person.create(:firstname => personhash["firstName"], :lastname => personhash["lastName"],
-    :linkedin_id => personhash["id"], :linkedin_url => personhash["publicProfileUrl"])
+        :linkedin_id => personhash["id"], :linkedin_url => personhash["publicProfileUrl"])
     end
   end
-
-<<<<<<< HEAD
 
   def update_people
     Person.all.each do |person|
+      debugger
       @scrape = Scraper.new(person.linkedin_url)
-      
-      @scrape.schools.each do |school|
+      @scrape.educations.each do |school|
+        # debugger
         person.schools << School.create(:name => school[:name])
-        person.educations <<
-
+        education = Education.create(:kind => school[:description], :grad_yr => school[:period],
+         :school_id => school, :person_id => person)
       end
-
-
     end
   end
 
@@ -62,7 +55,5 @@ class Populate
 
 
 
-=======
->>>>>>> a71952d0a0b083f03b05740acd16618ca6ae2b46
 end
 
