@@ -5,19 +5,6 @@
   <% end %>
 </ul>
 
-
-<h1>People</h1>
-<ul>
-  <% @people.each do |p| %>
-    <li> 
-      <%= p.firstname %> 
-      <%= p.lastname %> 
-      <%= p.linkedin_id %> 
-    </li>
-  <% end %>
-</ul>
-
-
 <h1>Schools</h1>
 <ul>
   <% @schools.each do |s| %>
@@ -45,5 +32,15 @@
 <ul>
   <% @locations.each do |l| %>
     <li> <%= l.postalcode %> </li>
+  <% end %>
+</ul>
+
+<h1>People</h1>
+<ul>
+  <% @people.each do |p| %>
+    <li> <%= p.firstname %> </li>
+    <li> <%= p.lastname %> </li>
+    <li> <%= p.linkedin_id %> </li>
+    <li> <%= p.linkedin_url %> </li>
   <% end %>
 </ul>
