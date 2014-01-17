@@ -48,9 +48,9 @@ class Api
     # returns name industry
   end
 
-  def company_employees
+  def company_employees(company_name)
     i = 0
-    json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(public-profile-url))?company-id=#{@company_id}&current-company=true&sort=connections&count=10&start=#{i}", 'x-li-format' => 'json').body
+    json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(first-name,last-name,id,public-profile-url))?company-name=#{company_name}&current-company=true&sort=connections&count=10&start=#{i}", 'x-li-format' => 'json').body
     parsed = JSON.parse(json_txt)
   end
   
