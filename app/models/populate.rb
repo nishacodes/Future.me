@@ -1,7 +1,7 @@
 class Populate
   attr_reader :api, :scraper, :company, :location, :person, :industry
 
-  DOMAINS = ["google.com", "flatironschool.com", "twitter.com"]
+  DOMAINS = ["flat"]
 
   def initialize
   	@api = Api.new
@@ -33,8 +33,8 @@ class Populate
   end
 
   def create_people
-    @api.company_employees("18247")
-    @person = Person.create(:firstname => @api.firstname, :lastname => @api.lastname, :linkedin_id => @api.linkedin_id, :publicProfileUrl => @api.publicprofileurl)
+    @person = Person.create(:firstname => @api.firstname, :lastname => @api.lastname,
+    :linkedin_id => @api.linkedin_id, :linkedin_url => @api.linkedin_url)
   end
 
 end
