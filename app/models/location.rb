@@ -1,5 +1,5 @@
 class Location < ActiveRecord::Base
-  attr_accessible :city, :country, :lat, :long, :state
+  attr_accessible :city, :country, :lat, :long, :state, :postalcode
 
   has_many :schools
 
