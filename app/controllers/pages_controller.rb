@@ -1,8 +1,7 @@
 class PagesController < ApplicationController
   
-  @populate = Populate.new.create_company
-
   def index
+    Populate.new.run
     @companies = Company.all
     @people = Person.all
     @educations = Education.all

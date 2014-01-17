@@ -1,25 +1,50 @@
 class Populate
-  attr_reader :api, :scraper
+  attr_reader :api, :scraper, :company, :location, :person, :industry
 
-	#create a company
+  DOMAINS = ["google.com", "flatironschool.com", "twitter.com"]
+
   def initialize
   	@api = Api.new
     # @scraper = Scraper.new
   end
+  
+  def run
+    create_company
+    create_industry
+    create_location
+  end
 
   def create_company
-    domain = "google.com"
-    company = @api.find_company_id(domain)
-    new_company = Company.create(:name => company["name"], :linkedin_id => company["id"])
-    
-    company_details = @api.company_details(company["id"])
-    new_industry = Industry.create(:name => company_details["industries"]["values"][0]["name"])
-    new_industry.companies << new_company
-    # new_company.industries << new_industry
+    @api.find_company(DOMAINS.last)
+    @company = Company.create(:name => @api.company_name, :linkedin_id => @api.company_id)
+  end
 
-    new_location = Location.create(:postalcode => company_details["locations"]["values"][0]["address"]["postalCode"])
-    new_company.locations << new_location
-    # new_location.companies << new_company
+  def create_industry    
+    @industry = Industry.create(:name => @api.company_industry)
+    @industry.companies << @company
+    # @company.industries << @industry
+  end
+
+  def create_location
+    @location = Location.create(:postalcode => @api.company_postalcode)
+    @company.locations << @location
+    # @location.companies << @company
+  end
+
+  def get_people
 
   end
+
+  def create_people
+
+  end
+
+
+
+
+
+
+
 end
+
+
