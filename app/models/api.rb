@@ -50,12 +50,12 @@ class Api
 
   def company_employees(company_id)
     i = 0
-    json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(firstName,lastName,id,publicProfileUrl))?company-id=#{@company_id}&current-company=true&sort=connections&count=10&start=#{i}", 'x-li-format' => 'json').body
-    parsed = JSON.parse(json_txt)["people"]["values"][0]
-    @firstname = parsed["firstName"]
-    @lastname = parsed["lastName"]
-    @id = parsed["id"]
-    @publicprofileurl = parsed["publicProfileUrl"]
+    json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(first-name,last-name,id,public-profile-url))?company-id=#{company_id}&current-company=true&sort=connections&count=10&start=#{i}", 'x-li-format' => 'json').body
+    parsed = JSON.parse(json_txt)["people"]["values"]
+    # @firstname = parsed["firstName"]
+    # @lastname = parsed["lastName"]
+    # @id = parsed["id"]
+    # @publicprofileurl = parsed["publicProfileUrl"]
   end
   
 end 
