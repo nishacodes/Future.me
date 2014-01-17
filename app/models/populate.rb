@@ -33,7 +33,8 @@ class Populate
   end
 
   def create_people
-    @person = Person.create(:firstname => @api.firstName, :lastname => @api.lastName, :linkedin_id => @api.linkedin_id, :publicProfileUrl => @api.publicProfileUrl)
+    @api.company_employees("18247")
+    @person = Person.create(:firstname => @api.firstname, :lastname => @api.lastname, :linkedin_id => @api.linkedin_id, :publicProfileUrl => @api.publicprofileurl)
   end
 
 end
