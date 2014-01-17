@@ -1,19 +1,8 @@
-require 'linkedin-scraper'
-require 'debugger'
-
 class Scraper
   attr_reader :profile
 
   def initialize(publicprofileurl)
     @profile = Linkedin::Profile.get_profile("#{publicprofileurl}")
-  end
-
-  def create_person
-    Person.create(:name => @profile.name)
-  end
-
-  def person_id
-    Person.last.id
   end
 
   def education
@@ -43,7 +32,12 @@ class Scraper
   end
 
   def past_companies
-    @profile.past_companies
+    past_companies = @profile.past_companies
+    past_companies.each do |company|
+      company_temp = Company.create(:name => past_companies[:company])
+      Jobtitle.create(:title => past_companies[:title], :start_date => past_companies[:start_date],
+        :end_date => past_companies[:end_date], :company_id => company_temp.id, :person_id => person_id)
+    end
   end
 
   def recommended_visitors
@@ -52,7 +46,3 @@ class Scraper
 
 end
 
-# a = Scraper.new("http://www.linkedin.com/in/michaelheikkinen?trk=pub-pbmap")
-
-# debugger
-# puts 'hi'
