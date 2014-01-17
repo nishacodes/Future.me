@@ -9,6 +9,7 @@ class Api
 
   # generalize this thing i keep doing over and over. method would take two arguments: url and hash of k-v pairs
 
+
   def get_admin
     json_txt = ACCESS_TOKEN.get("http://api.linkedin.com/v1/people/~:(#{FIELDS})", 'x-li-format' => 'json').body
     parsed = JSON.parse(json_txt)
@@ -32,7 +33,7 @@ class Api
 
   def find_company_id(email)
     json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/companies?email-domain=#{email}", 'x-li-format' => 'json').body
-    parsed = JSON.parse(json_txt)
+    parsed = JSON.parse(json_txt)["values"][0]
     # returns company name and id
   end
 

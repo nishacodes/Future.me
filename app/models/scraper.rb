@@ -20,9 +20,9 @@ class Scraper
     schools = @profile.education
     schools.each do |school|
       School.create(:name => school[:name])
-      Education.create(:kind => school[:description].split(",")[0], 
-        :major => school[:description].split(",")[1], :grad_yr => school[:period], 
-        :person_id => , :school_id => )
+      # Education.create(:kind => school[:description].split(",")[0], 
+      #   :major => school[:description].split(",")[1], :grad_yr => school[:period], 
+      #   :person_id => , :school_id => )
     end
   end
 
@@ -37,7 +37,7 @@ class Scraper
       company_temp = Company.create(:name => company[:company])
       Jobtitle.create(:title=> company[:title], :start_date => company[:start_date],
         :end_date => company[:end_date], :company_id => company_temp.id, :person_id => person_id)
-      Location.create() # "Via Esprillo    San Diego,  CA  92127  United States"
+      # Location.create() # "Via Esprillo    San Diego,  CA  92127  United States"
     end
 
   end
@@ -52,7 +52,7 @@ class Scraper
 
 end
 
-a = Scraper.new("http://www.linkedin.com/in/michaelheikkinen?trk=pub-pbmap")
+# a = Scraper.new("http://www.linkedin.com/in/michaelheikkinen?trk=pub-pbmap")
 
-debugger
-puts 'hi'
+# debugger
+# puts 'hi'

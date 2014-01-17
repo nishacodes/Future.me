@@ -1,5 +1,5 @@
 class Company < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :linkedin_id
 
   has_many :jobtitles
   has_many :schools
@@ -16,6 +16,7 @@ class Company < ActiveRecord::Base
   has_many :company_locations
   has_many :locations, :through => :company_locations
   
+  # validates_uniqueness_of :name
 
 
 end
