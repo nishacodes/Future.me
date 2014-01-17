@@ -1,6 +1,3 @@
-# require 'json'
-# require 'oauth'
-# require 'debugger'
 class Api
   attr_accessor :company_id, :company_name, :company_industry, :company_postalcode
 
@@ -45,7 +42,6 @@ class Api
     @company_industry = parsed["industries"]["values"][0]["name"]
     @company_postalcode = parsed["locations"]["values"][0]["address"]["postalCode"]
     company_employees
-    # returns name industry
   end
 
   def company_employees
@@ -55,7 +51,3 @@ class Api
   end
   
 end
-
-# a = Api.new
-# debugger
-# puts 'hi'
