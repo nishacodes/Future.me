@@ -2,7 +2,7 @@
 # require 'oauth'
 # require 'debugger'
 class Api
-  attr_reader :company_id, :company_name, :company_industry, :company_postalcode, :firstname, :lastname, :linkedin_id, :linkedin_url
+  attr_reader :company_id, :company_name, :company_industry, :company_postalcode, :firstname, :lastname, :linkedin_id, :linkedin_url, :people
 
 
   CONSUMER = OAuth::Consumer.new("77ze1x9zbqkfe7", "vnVI2BZxFEm8QxNM")
@@ -50,17 +50,9 @@ class Api
 
   def company_employees
     i = 0
-    @company_name.gsub(" ","") 
-    json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(first-name,last-name,id,public-profile-url))?company-name=#{@company_name}&current-company=true&sort=connections&count=10&start=#{i}", 'x-li-format' => 'json').body
-    parsed = JSON.parse(json_txt)["people"]["values"][0]
-    @firstname = parsed["firstName"]
-    @lastname = parsed["lastName"]
-    @linkedin_id = parsed["id"]
-    @linkedin_url = parsed["publicProfileUrl"]
-  end
-  
+    company_gsub = @company_name.gsub(" ","%20") 
+    json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(first-name,last-name,id,public-profile-url))?company-name=#{company_gsub}&current-company=true&sort=connections&count=25&start=#{i}", 'x-li-format' => 'json').body
+    @people = JSON.parse(json_txt)["people"]["values"]
+  end 
 end 
 
-# a = Api.new
-# debugger
-# puts 'hi'

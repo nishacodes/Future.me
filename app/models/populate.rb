@@ -1,7 +1,7 @@
 class Populate
   attr_reader :api, :scraper, :company, :location, :person, :industry
 
-  DOMAINS = ["flat"]
+  DOMAINS = ["google.com, twitter.com, flatironschool.com"]
 
   def initialize
   	@api = Api.new
@@ -33,8 +33,10 @@ class Populate
   end
 
   def create_people
-    @person = Person.create(:firstname => @api.firstname, :lastname => @api.lastname,
-    :linkedin_id => @api.linkedin_id, :linkedin_url => @api.linkedin_url)
+    @api.people.each do |personhash|
+      Person.create(:firstname => personhash["firstName"], :lastname => personhash["lastName"],
+    :linkedin_id => personhash["id"], :linkedin_url => personhash["publicProfileUrl"])
+    end
   end
 
 end
