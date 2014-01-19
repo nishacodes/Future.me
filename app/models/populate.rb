@@ -5,12 +5,12 @@ class Populate
 
   # WHILE TESTING, COMMENT OUT THE METHODS U DONT WANT TO RUN
   def initialize
-  	@api = Api.new
-    create_company
-    create_industry
-    create_location
-    create_people
-    update_people
+  	# @api = Api.new
+   #  create_company
+   #  create_industry
+   #  create_location
+   #  create_people
+   #  update_people
   end
 
   def create_company
