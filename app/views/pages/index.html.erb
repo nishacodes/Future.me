@@ -5,18 +5,12 @@
   <% end %>
 </ul>
 
-<h1>Schools</h1>
-<ul>
-  <% @schools.each do |s| %>
-    <li> <%= s.name %> </li>
-  <% end %>
-</ul>
-
-
 <h1>Degrees</h1>
 <ul>
   <% @educations.each do |e| %>
-    <li> <%= e.name %> </li>
+    <li> <%= e.kind %> </li>
+    <li> <%= e.grad_yr %> </li>
+    <li> <%= e.school_id %> </li>
   <% end %>
 </ul>
 
@@ -42,5 +36,10 @@
     <li> <%= p.lastname %> </li>
     <li> <%= p.linkedin_id %> </li>
     <li> <%= p.linkedin_url %> </li>
+    <li> <h2> SCHOOLS: </h2> </li>
+    <% p.schools.each do |s| %>
+       <li> <%= s.name %> </li>
+    <% end %>
+    <li> --------- </li>
   <% end %>
 </ul>

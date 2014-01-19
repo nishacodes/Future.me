@@ -3,6 +3,6 @@ class School < ActiveRecord::Base
 
   has_many :person_schools
   has_many :people, :through => :person_schools
-  
+  has_many :educations
   has_one :location
 end

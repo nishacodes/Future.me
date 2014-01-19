@@ -5,6 +5,7 @@ class Person < ActiveRecord::Base
 
 
   has_many :jobtitles
+  has_many :educations
   
   has_many :person_schools
   has_many :schools, :through => :person_schools
