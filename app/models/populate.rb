@@ -47,11 +47,11 @@ class Populate
           @scrape.educations.each do |school|
             person.schools << School.create(:name => school[:name])
             education = Education.create(eval(@scrape.education_params)) # eval is a method that removes quotes from a string, so in this case it turns it into a hash
-            school.educations << education 
+            # school.educations << education 
             person.educations << education
             # Save these after shoveling
-            school.save
-            company.save
+            # school.save
+            person.save
           end
 
           # # CREATE CURRENT COMPANIES
@@ -59,10 +59,10 @@ class Populate
             person.companies << Company.create(:name => company[:company])
             jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
             person.jobtitles << jobtitle
-            company.jobtitles << jobtitle
+            # company.jobtitles << jobtitle
             # Save these after shoveling
             person.save
-            company.save
+            # company.save
           end
 
           # CREATE PAST COMPANIES
@@ -70,10 +70,10 @@ class Populate
             person.companies << Company.create(:name => company[:company])
             jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
             person.jobtitles << jobtitle
-            company.jobtitles << jobtitle
+            # company.jobtitles << jobtitle
             # Save these after shoveling
             person.save
-            company.save
+            # company.save
           end 
         end
     end
