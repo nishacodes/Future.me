@@ -15,7 +15,7 @@ class Scraper
     @educations = @profile.education
     @current_companies = @profile.current_companies
     @past_companies = @profile.past_companies
-    # @profile.recommended_visitors  
+    # @profile.recommended_visitors
   end
 
   # Storing the hash here to keep Populate model clean
