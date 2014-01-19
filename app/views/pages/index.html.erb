@@ -5,22 +5,6 @@
   <% end %>
 </ul>
 
-<h1>Schools</h1>
-<ul>
-  <% @schools.each do |s| %>
-    <li> <%= s.name %> </li>
-  <% end %>
-</ul>
-
-
-<h1>Degrees</h1>
-<ul>
-  <% @educations.each do |e| %>
-    <li> <%= e.name %> </li>
-  <% end %>
-</ul>
-
-
 <h1>Industries</h1>
 <ul>
   <% @industries.each do |i| %>
@@ -38,9 +22,28 @@
 <h1>People</h1>
 <ul>
   <% @people.each do |p| %>
-    <li> <%= p.firstname %> </li>
-    <li> <%= p.lastname %> </li>
+    <h4> <li> <%= p.firstname %> <%= p.lastname %></li></h4>
     <li> <%= p.linkedin_id %> </li>
-    <li> <%= p.linkedin_url %> </li>
+    <li> <%= p.linkedin_url %> </li><br>
+    
+    <li>  SCHOOLS: </li>
+    <% p.schools.each do |s| %>
+       <li> <%= s.name %> </li>
+    <% end %>
+    <br>
+    <li>  DEGREES: </li>
+    <% p.educations.each do |e| %>
+      <li> <%= e.kind %> </li>
+      <li> <%= e.grad_yr %> </li>
+      <!-- <li> <%#= e.school %> </li> --> <!-- NOT WORKING -->
+    <% end %>
+    <br>
+    <li>  JOBS: </li>
+    <% p.jobtitles.each do |j| %>
+       <!-- <li> <%#= j.company %> </li> --> <!-- NOT WORKING -->
+       <li> <%= j.title %> </li>
+       <li> <%= j.start_date %> to <%= j.end_date %> </li>
+    <% end %>
+  -----------------------------------------------------------
   <% end %>
 </ul>
