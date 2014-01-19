@@ -5,7 +5,7 @@ class Populate
 
   # WHILE TESTING, COMMENT OUT THE METHODS U DONT WANT TO RUN
   def initialize
-  	# @api = Api.new
+   #  @api = Api.new
    #  create_company
    #  create_industry
    #  create_location
@@ -32,6 +32,7 @@ class Populate
 
   def create_people
     @api.people.each do |personhash|
+      # we can store the params in a variable within class Api, like we did in Scraper
       Person.create(:firstname => personhash["firstName"], :lastname => personhash["lastName"],
         :linkedin_id => personhash["id"], :linkedin_url => personhash["publicProfileUrl"])
     end
@@ -54,7 +55,7 @@ class Populate
             person.save
           end
 
-          # # CREATE CURRENT COMPANIES
+          # CREATE CURRENT COMPANIES
           @scrape.current_companies.each do |company|
             person.companies << Company.create(:name => company[:company])
             jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
