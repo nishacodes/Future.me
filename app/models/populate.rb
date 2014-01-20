@@ -54,68 +54,78 @@ class Populate
   # NEEDS REFACTORING
   def update_people
     Person.all.each do |person|
-       @scrape = Scraper.new(person.linkedin_url)
-        unless @scrape.profile.nil? 
-
-          # CREATE SCHOOLS AND EDUCATIONS
-          @scrape.educations.each do |school|
-            this_school = School.create(:name => school[:name])
-            person.schools << this_school
-            education = Education.create(eval(@scrape.education_params)) # eval is a method that removes quotes from a string, so in this case it turns it into a hash
-            education.update_attributes(:school_id => this_school.id)
-            # school.educations << education 
-            person.educations << education
-            # Save these after shoveling
-            # school.save
-            person.save
-          end
-
-          # CREATE CURRENT COMPANIES
-          @scrape.current_companies.each do |company|
-            this_company = Company.create(:name => company[:company])
-            person.companies << this_company
-            jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
-            jobtitle.update_attributes(:company_id => this_company.id)
-            person.jobtitles << jobtitle
-            # company.jobtitles << jobtitle
-            # Save these after shoveling
-            person.save
-            # company.save
-          end
-
-          # CREATE PAST COMPANIES
-          @scrape.past_companies.each do |company|
-            this_company = Company.create(:name => company[:company])
-            person.companies << this_company
-            jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
-            jobtitle.update_attributes(:company_id => this_company.id)
-            person.jobtitles << jobtitle
-            # company.jobtitles << jobtitle
-            # Save these after shoveling
-            person.save
-            # company.save
-          end 
-        end
+      @scrape = Scraper.new(person.linkedin_url)
+      unless @scrape.profile.nil? 
+        create_schools_and_educations(@scrape, person)
+        create_current_companies(@scrape, person)
+        create_past_companies(@scrape, person)
+      end
     end
-
-    # THE IDEA HERE IS TO SEPARATE UPDATE_PEOPLE INTO SPECIFIC METHODS BUT THERE'S A SCOPE PROBLEM BC LOCAL VARIABLES DON'T CARRY OVER
-    # ALSO WE ONLY WANT TO CREATE 1 INSTANCE OF SCRAPER PER PERSON, THAT'S WHY ALL THE METHODS ARE
-
-    # def create_schools
-    # end
-
-    # def create_educations
-    # end
-
-    # def create_current_companies
-    # end
-
-    # def create_past_companies
-    # end
-
-    # def create_jobtitles
-    # end
-
   end
+
+  # THE IDEA HERE IS TO SEPARATE UPDATE_PEOPLE INTO SPECIFIC METHODS BUT THERE'S A SCOPE PROBLEM BC LOCAL VARIABLES DON'T CARRY OVER
+  # ALSO WE ONLY WANT TO CREATE 1 INSTANCE OF SCRAPER PER PERSON, THAT'S WHY ALL THE METHODS ARE
+
+  def create_schools_and_educations(scrape, person)
+    @scrape.educations.each do |school|
+      this_school = School.create(:name => school[:name])
+      person.schools << this_school
+      education = Education.create(eval(@scrape.education_params)) # eval is a method that removes quotes from a string, so in this case it turns it into a hash
+      # school.educations << education 
+      person.educations << education
+      # Save these after shoveling
+      # school.save
+      person.save
+    end
+  end
+  # def create_schools
+  # end
+
+  # def create_educations
+  # end
+
+  def create_current_companies(scrape, person)
+    @scrape.current_companies.each do |company|
+      # create_companies
+      this_company = Company.create(:name => company[:company])
+      person.companies << this_company
+      jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
+      person.jobtitles << jobtitle
+      # company.jobtitles << jobtitle
+      # Save these after shoveling
+      person.save
+      # company.save
+    end
+  end
+
+  def create_past_companies(scrape, person)
+    @scrape.past_companies.each do |company|
+      # create_companies
+      this_company = Company.create(:name => company[:company])
+      person.companies << this_company
+      jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
+      person.jobtitles << jobtitle
+      # company.jobtitles << jobtitle
+      # Save these after shoveling
+      person.save
+      # company.save
+    end 
+  end
+
+  # can we do this?
+  def create_companies
+    this_company = Company.create(:name => company[:company])
+    person.companies << this_company
+    jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
+    person.jobtitles << jobtitle
+    # company.jobtitles << jobtitle
+    # Save these after shoveling
+    person.save
+    # company.save
+  end
+
+  # def create_jobtitles
+  # end
+
 end
 

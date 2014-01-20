@@ -28370,3 +28370,659 @@ Processing by PagesController#index as HTML
   [1m[36m (0.3ms)[0m  [1mUPDATE "jobtitles" SET "company_id" = 7, "updated_at" = '2014-01-19 21:44:08.603494' WHERE "jobtitles"."id" = 5[0m
   [1m[35m (0.9ms)[0m  commit transaction
   [1m[36mJobtitle Load (0.3ms)[0m  [1mSELECT "jobtitles".* FROM "jobtitles" ORDER BY "jobtitles"."id" DESC LIMIT 1[0m
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-19 21:41:57 -0500
+Connecting to database specified by database.yml
+Processing by PagesController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (7.3ms)[0m  INSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["linkedin_id", 2879109], ["name", "The Flatiron School"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "industries" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["name", "Higher Education"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "company_industries" ("company_id", "industry_id") VALUES (?, ?)  [["company_id", 8], ["industry_id", 5]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "locations" ("city", "country", "created_at", "lat", "long", "postalcode", "state", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["city", nil], ["country", nil], ["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["lat", nil], ["long", nil], ["postalcode", 10010], ["state", nil], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "company_locations" ("company_id", "location_id") VALUES (?, ?)  [["company_id", 8], ["location_id", 5]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Kainne"], ["lastname", "Hansbury"], ["linkedin_id", "dEUo393ih1"], ["linkedin_url", "http://www.linkedin.com/in/kainnehansbury"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Adam"], ["lastname", "Enbar"], ["linkedin_id", "dT2-2gYQAE"], ["linkedin_url", "http://www.linkedin.com/in/adamenbar"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "private"], ["lastname", "private"], ["linkedin_id", "private"], ["linkedin_url", nil], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Rebekah"], ["lastname", "Rombom"], ["linkedin_id", "MjbuON9bxM"], ["linkedin_url", "http://www.linkedin.com/in/rrombom"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Blake"], ["lastname", "Johnson"], ["linkedin_id", "tzw30Q9ssh"], ["linkedin_url", "http://www.linkedin.com/pub/blake-johnson/4/42a/878"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Bandana Kaur"], ["lastname", "Malik"], ["linkedin_id", "fowPZQRCqx"], ["linkedin_url", "http://www.linkedin.com/pub/bandana-kaur-malik/43/385/b0"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Emily"], ["lastname", "Xie"], ["linkedin_id", "qT9BbXzJBa"], ["linkedin_url", "http://www.linkedin.com/in/xieemily"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Ashley"], ["lastname", "Williams"], ["linkedin_id", "xPbibALzHz"], ["linkedin_url", "http://www.linkedin.com/in/ashleygwilliams"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Charlotte"], ["lastname", "Chang"], ["linkedin_id", "81LtDoifh6"], ["linkedin_url", "http://www.linkedin.com/pub/charlotte-chang/1/742/b65"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Derek"], ["lastname", "Silverman"], ["linkedin_id", "YbYpQPheug"], ["linkedin_url", "http://www.linkedin.com/in/dereksilverman"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Mike"], ["lastname", "Spangler"], ["linkedin_id", "BMKcQi5uQy"], ["linkedin_url", "http://www.linkedin.com/pub/mike-spangler/10/3a0/788"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Sonja"], ["lastname", "Hall"], ["linkedin_id", "nFDyNGab_H"], ["linkedin_url", "http://www.linkedin.com/pub/sonja-hall/9/5b9/27b"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Kelly"], ["lastname", "Allen"], ["linkedin_id", "HyVO3cOQAQ"], ["linkedin_url", "http://www.linkedin.com/in/kellylaurenallen"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Jenya"], ["lastname", "Zueva"], ["linkedin_id", "2fgFEciDSu"], ["linkedin_url", "http://www.linkedin.com/pub/jenya-zueva/20/3b/531"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Sarah"], ["lastname", "Ransohoff"], ["linkedin_id", "l5CN5nVnWr"], ["linkedin_url", "http://www.linkedin.com/pub/sarah-ransohoff/46/301/b51"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Ariel"], ["lastname", "Isaacs"], ["linkedin_id", "5WG-BcY8Sw"], ["linkedin_url", "http://www.linkedin.com/in/ajosepha"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Greg"], ["lastname", "Eng"], ["linkedin_id", "AbLG99ubkB"], ["linkedin_url", "http://www.linkedin.com/in/gregeng"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Avi"], ["lastname", "Flombaum"], ["linkedin_id", "bJeDUQYKOM"], ["linkedin_url", "http://www.linkedin.com/in/aviflombaum"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Daniel"], ["lastname", "Chang"], ["linkedin_id", "4i0XkI6gvO"], ["linkedin_url", "http://www.linkedin.com/in/danielchangnyc"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Nisha"], ["lastname", "Batra"], ["linkedin_id", "uCDwo8vRrG"], ["linkedin_url", "http://www.linkedin.com/pub/nisha-batra/15/291/644"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Andrew"], ["lastname", "Callahan"], ["linkedin_id", "QWB-xseVun"], ["linkedin_url", "http://www.linkedin.com/in/andrewcallahan"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "private"], ["lastname", "private"], ["linkedin_id", "private"], ["linkedin_url", nil], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Alex"], ["lastname", "Chiu"], ["linkedin_id", "Lxx95qaLaR"], ["linkedin_url", "http://www.linkedin.com/pub/alex-chiu/45/748/219"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Desmond"], ["lastname", "Rawls"], ["linkedin_id", "R8BnlHz561"], ["linkedin_url", "http://www.linkedin.com/pub/desmond-rawls/20/262/398"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00], ["firstname", "Jonathan"], ["lastname", "Grover"], ["linkedin_id", "uL-Y3Ox_gQ"], ["linkedin_url", "http://www.linkedin.com/in/jonathanggrover"], ["updated_at", Mon, 20 Jan 2014 02:42:00 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mPerson Load (1.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "schools" ("created_at", "location_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:04 UTC +00:00], ["location_id", nil], ["name", "Wesleyan University"], ["updated_at", Mon, 20 Jan 2014 02:42:04 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "person_schools" ("person_id", "school_id") VALUES (?, ?)  [["person_id", 1], ["school_id", 6]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "educations" ("created_at", "grad_yr", "kind", "major", "person_id", "school_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:42:04 UTC +00:00], ["grad_yr", 2005], ["kind", "Bachelor of Arts, History"], ["major", nil], ["person_id", nil], ["school_id", nil], ["updated_at", Mon, 20 Jan 2014 02:42:04 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "educations" SET "school_id" = 6, "updated_at" = '2014-01-20 02:42:04.180197' WHERE "educations"."id" = 6
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "educations" SET "person_id" = 1, "updated_at" = '2014-01-20 02:42:04.184010' WHERE "educations"."id" = 6[0m
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36mSchool Load (0.3ms)[0m  [1mSELECT "schools".* FROM "schools" [0m
+  [1m[35mLocation Load (0.3ms)[0m  SELECT "locations".* FROM "locations" 
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schools" ("created_at", "location_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:52:08 UTC +00:00], ["location_id", nil], ["name", "Saint Stephen's Episcopal School"], ["updated_at", Mon, 20 Jan 2014 02:52:08 UTC +00:00]]
+  [1m[36m (7.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "person_schools" ("person_id", "school_id") VALUES (?, ?)[0m  [["person_id", 1], ["school_id", 7]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "educations" ("created_at", "grad_yr", "kind", "major", "person_id", "school_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:52:08 UTC +00:00], ["grad_yr", 2001], ["kind", "High School"], ["major", nil], ["person_id", nil], ["school_id", nil], ["updated_at", Mon, 20 Jan 2014 02:52:08 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "educations" SET "school_id" = 7, "updated_at" = '2014-01-20 02:52:08.176673' WHERE "educations"."id" = 7[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "educations" SET "person_id" = 1, "updated_at" = '2014-01-20 02:52:08.179992' WHERE "educations"."id" = 7
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00], ["linkedin_id", nil], ["name", "The Flatiron School"], ["updated_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00]]
+  [1m[35m (7.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "company_people" ("company_id", "person_id") VALUES (?, ?)  [["company_id", 9], ["person_id", 1]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "jobtitles" ("company_id", "created_at", "end_date", "person_id", "start_date", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company_id", nil], ["created_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00], ["end_date", nil], ["person_id", nil], ["start_date", Tue, 01 Oct 2013], ["title", "NYC Web Development Fellow"], ["updated_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "jobtitles" SET "company_id" = 9, "updated_at" = '2014-01-20 02:52:16.197278' WHERE "jobtitles"."id" = 6
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "jobtitles" SET "person_id" = 1, "updated_at" = '2014-01-20 02:52:16.201210' WHERE "jobtitles"."id" = 6[0m
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00], ["linkedin_id", nil], ["name", "CrowdTangle"], ["updated_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "company_people" ("company_id", "person_id") VALUES (?, ?)[0m  [["company_id", 10], ["person_id", 1]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "jobtitles" ("company_id", "created_at", "end_date", "person_id", "start_date", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["company_id", nil], ["created_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00], ["end_date", nil], ["person_id", nil], ["start_date", Thu, 01 Aug 2013], ["title", "Project Manager"], ["updated_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mUPDATE "jobtitles" SET "company_id" = 10, "updated_at" = '2014-01-20 02:52:16.216618' WHERE "jobtitles"."id" = 7[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "jobtitles" SET "person_id" = 1, "updated_at" = '2014-01-20 02:52:16.221084' WHERE "jobtitles"."id" = 7
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00], ["linkedin_id", nil], ["name", "Sunday's Best"], ["updated_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "company_people" ("company_id", "person_id") VALUES (?, ?)  [["company_id", 11], ["person_id", 1]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "jobtitles" ("company_id", "created_at", "end_date", "person_id", "start_date", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company_id", nil], ["created_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00], ["end_date", nil], ["person_id", nil], ["start_date", Tue, 01 Sep 2009], ["title", "Co-Founder"], ["updated_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "jobtitles" SET "company_id" = 11, "updated_at" = '2014-01-20 02:52:16.238929' WHERE "jobtitles"."id" = 8
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mUPDATE "jobtitles" SET "person_id" = 1, "updated_at" = '2014-01-20 02:52:16.242389' WHERE "jobtitles"."id" = 8[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00], ["linkedin_id", nil], ["name", "Varick Media Management"], ["updated_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "company_people" ("company_id", "person_id") VALUES (?, ?)[0m  [["company_id", 12], ["person_id", 1]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "jobtitles" ("company_id", "created_at", "end_date", "person_id", "start_date", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["company_id", nil], ["created_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00], ["end_date", Sat, 01 Jun 2013], ["person_id", nil], ["start_date", Sat, 01 Oct 2011], ["title", "Manager, Design Strategy & Sales Operations"], ["updated_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "jobtitles" SET "company_id" = 12, "updated_at" = '2014-01-20 02:52:16.264543' WHERE "jobtitles"."id" = 9[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "jobtitles" SET "person_id" = 1, "updated_at" = '2014-01-20 02:52:16.268107' WHERE "jobtitles"."id" = 9
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00], ["linkedin_id", nil], ["name", "Datran Media"], ["updated_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "company_people" ("company_id", "person_id") VALUES (?, ?)  [["company_id", 13], ["person_id", 1]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "jobtitles" ("company_id", "created_at", "end_date", "person_id", "start_date", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company_id", nil], ["created_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00], ["end_date", Fri, 01 Jul 2011], ["person_id", nil], ["start_date", Sat, 01 Jan 2011], ["title", "Media Planner"], ["updated_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "jobtitles" SET "company_id" = 13, "updated_at" = '2014-01-20 02:52:16.282814' WHERE "jobtitles"."id" = 10
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "jobtitles" SET "person_id" = 1, "updated_at" = '2014-01-20 02:52:16.285449' WHERE "jobtitles"."id" = 10[0m
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00], ["linkedin_id", nil], ["name", "Datran Media"], ["updated_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "company_people" ("company_id", "person_id") VALUES (?, ?)[0m  [["company_id", 14], ["person_id", 1]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "jobtitles" ("company_id", "created_at", "end_date", "person_id", "start_date", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["company_id", nil], ["created_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00], ["end_date", Wed, 01 Dec 2010], ["person_id", nil], ["start_date", Thu, 01 Apr 2010], ["title", "Publisher Coordinator"], ["updated_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "jobtitles" SET "company_id" = 14, "updated_at" = '2014-01-20 02:52:16.305438' WHERE "jobtitles"."id" = 11[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  UPDATE "jobtitles" SET "person_id" = 1, "updated_at" = '2014-01-20 02:52:16.309058' WHERE "jobtitles"."id" = 11
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00], ["linkedin_id", nil], ["name", "The New Yorker"], ["updated_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "company_people" ("company_id", "person_id") VALUES (?, ?)  [["company_id", 15], ["person_id", 1]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "jobtitles" ("company_id", "created_at", "end_date", "person_id", "start_date", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company_id", nil], ["created_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00], ["end_date", Sat, 01 May 2010], ["person_id", nil], ["start_date", Fri, 01 Jan 2010], ["title", "Personal Assistant to Paul Goldberger"], ["updated_at", Mon, 20 Jan 2014 02:52:16 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "jobtitles" SET "company_id" = 15, "updated_at" = '2014-01-20 02:52:16.326368' WHERE "jobtitles"."id" = 12
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mUPDATE "jobtitles" SET "person_id" = 1, "updated_at" = '2014-01-20 02:52:16.329340' WHERE "jobtitles"."id" = 12[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schools" ("created_at", "location_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:52:20 UTC +00:00], ["location_id", nil], ["name", "Saint Michael's College"], ["updated_at", Mon, 20 Jan 2014 02:52:20 UTC +00:00]]
+  [1m[36m (7.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "person_schools" ("person_id", "school_id") VALUES (?, ?)[0m  [["person_id", 2], ["school_id", 8]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "educations" ("created_at", "grad_yr", "kind", "major", "person_id", "school_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:52:21 UTC +00:00], ["grad_yr", 1992], ["kind", "BS, Business Administration"], ["major", nil], ["person_id", nil], ["school_id", nil], ["updated_at", Mon, 20 Jan 2014 02:52:21 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "educations" SET "school_id" = 8, "updated_at" = '2014-01-20 02:52:21.023309' WHERE "educations"."id" = 8[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "educations" SET "person_id" = 2, "updated_at" = '2014-01-20 02:52:21.027260' WHERE "educations"."id" = 8
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "schools" ("created_at", "location_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:52:34 UTC +00:00], ["location_id", nil], ["name", "Saint Michael's College"], ["updated_at", Mon, 20 Jan 2014 02:52:34 UTC +00:00]]
+  [1m[35m (7.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "person_schools" ("person_id", "school_id") VALUES (?, ?)  [["person_id", 2], ["school_id", 9]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "educations" ("created_at", "grad_yr", "kind", "major", "person_id", "school_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:52:34 UTC +00:00], ["grad_yr", 1996], ["kind", ""], ["major", nil], ["person_id", nil], ["school_id", nil], ["updated_at", Mon, 20 Jan 2014 02:52:34 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "educations" SET "school_id" = 9, "updated_at" = '2014-01-20 02:52:34.978808' WHERE "educations"."id" = 9
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "educations" SET "person_id" = 2, "updated_at" = '2014-01-20 02:52:34.982091' WHERE "educations"."id" = 9[0m
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schools" ("created_at", "location_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:52:40 UTC +00:00], ["location_id", nil], ["name", "Dover Sherborn Regional High School"], ["updated_at", Mon, 20 Jan 2014 02:52:40 UTC +00:00]]
+  [1m[36m (7.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "person_schools" ("person_id", "school_id") VALUES (?, ?)[0m  [["person_id", 2], ["school_id", 10]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "educations" ("created_at", "grad_yr", "kind", "major", "person_id", "school_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:52:40 UTC +00:00], ["grad_yr", 1987], ["kind", ""], ["major", nil], ["person_id", nil], ["school_id", nil], ["updated_at", Mon, 20 Jan 2014 02:52:40 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "educations" SET "school_id" = 10, "updated_at" = '2014-01-20 02:52:40.902721' WHERE "educations"."id" = 10[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "educations" SET "person_id" = 2, "updated_at" = '2014-01-20 02:52:40.906569' WHERE "educations"."id" = 10
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00], ["linkedin_id", nil], ["name", "The Flatiron School"], ["updated_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00]]
+  [1m[35m (7.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "company_people" ("company_id", "person_id") VALUES (?, ?)  [["company_id", 16], ["person_id", 2]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "jobtitles" ("company_id", "created_at", "end_date", "person_id", "start_date", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company_id", nil], ["created_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00], ["end_date", nil], ["person_id", nil], ["start_date", Fri, 01 Mar 2013], ["title", "Adviser - Career Services"], ["updated_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "jobtitles" SET "company_id" = 16, "updated_at" = '2014-01-20 02:52:43.797106' WHERE "jobtitles"."id" = 13
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "jobtitles" SET "person_id" = 2, "updated_at" = '2014-01-20 02:52:43.800924' WHERE "jobtitles"."id" = 13[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00], ["linkedin_id", nil], ["name", "WinterWyman"], ["updated_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "company_people" ("company_id", "person_id") VALUES (?, ?)[0m  [["company_id", 17], ["person_id", 2]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "jobtitles" ("company_id", "created_at", "end_date", "person_id", "start_date", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["company_id", nil], ["created_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00], ["end_date", nil], ["person_id", nil], ["start_date", Thu, 01 Feb 2007], ["title", "NY Tech"], ["updated_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mUPDATE "jobtitles" SET "company_id" = 17, "updated_at" = '2014-01-20 02:52:43.819173' WHERE "jobtitles"."id" = 14[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  UPDATE "jobtitles" SET "person_id" = 2, "updated_at" = '2014-01-20 02:52:43.825648' WHERE "jobtitles"."id" = 14
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00], ["linkedin_id", nil], ["name", "Sungard Insurance Systems Inc."], ["updated_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "company_people" ("company_id", "person_id") VALUES (?, ?)  [["company_id", 18], ["person_id", 2]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "jobtitles" ("company_id", "created_at", "end_date", "person_id", "start_date", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company_id", nil], ["created_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00], ["end_date", Thu, 01 Feb 2007], ["person_id", nil], ["start_date", Wed, 01 Jun 2005], ["title", "Software Architect"], ["updated_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  UPDATE "jobtitles" SET "company_id" = 18, "updated_at" = '2014-01-20 02:52:43.848633' WHERE "jobtitles"."id" = 15
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "jobtitles" SET "person_id" = 2, "updated_at" = '2014-01-20 02:52:43.853194' WHERE "jobtitles"."id" = 15[0m
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00], ["linkedin_id", nil], ["name", "Concentra Integrated Services"], ["updated_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "company_people" ("company_id", "person_id") VALUES (?, ?)[0m  [["company_id", 19], ["person_id", 2]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "jobtitles" ("company_id", "created_at", "end_date", "person_id", "start_date", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["company_id", nil], ["created_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00], ["end_date", Sat, 01 Jan 2005], ["person_id", nil], ["start_date", Thu, 01 Jan 2004], ["title", "Reporting Analyst"], ["updated_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "jobtitles" SET "company_id" = 19, "updated_at" = '2014-01-20 02:52:43.867350' WHERE "jobtitles"."id" = 16[0m
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "jobtitles" SET "person_id" = 2, "updated_at" = '2014-01-20 02:52:43.870115' WHERE "jobtitles"."id" = 16
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00], ["linkedin_id", nil], ["name", "State Street Corporation"], ["updated_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "company_people" ("company_id", "person_id") VALUES (?, ?)  [["company_id", 20], ["person_id", 2]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "jobtitles" ("company_id", "created_at", "end_date", "person_id", "start_date", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company_id", nil], ["created_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00], ["end_date", Thu, 01 Jan 2004], ["person_id", nil], ["start_date", Sat, 01 Jan 2000], ["title", "Technology Analyst"], ["updated_at", Mon, 20 Jan 2014 02:52:43 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "jobtitles" SET "company_id" = 20, "updated_at" = '2014-01-20 02:52:43.891020' WHERE "jobtitles"."id" = 17
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mUPDATE "jobtitles" SET "person_id" = 2, "updated_at" = '2014-01-20 02:52:43.894131' WHERE "jobtitles"."id" = 17[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-19 21:53:17 -0500
+Connecting to database specified by database.yml
+Processing by PagesController#index as HTML
+Completed 500 Internal Server Error in 3.0ms
+
+SyntaxError (/Users/sarahransohoff/FIProjects/Future.me/app/models/populate.rb:72: syntax error, unexpected ')'):
+  app/controllers/pages_controller.rb:4:in `index'
+
+
+  Rendered /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/sarahransohoff/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-19 21:53:39 -0500
+Processing by PagesController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  INSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["linkedin_id", 2879109], ["name", "The Flatiron School"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[36m (7.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "industries" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["name", "Higher Education"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "company_industries" ("company_id", "industry_id") VALUES (?, ?)  [["company_id", 21], ["industry_id", 6]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "locations" ("city", "country", "created_at", "lat", "long", "postalcode", "state", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["city", nil], ["country", nil], ["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["lat", nil], ["long", nil], ["postalcode", 10010], ["state", nil], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "company_locations" ("company_id", "location_id") VALUES (?, ?)  [["company_id", 21], ["location_id", 6]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Kainne"], ["lastname", "Hansbury"], ["linkedin_id", "dEUo393ih1"], ["linkedin_url", "http://www.linkedin.com/in/kainnehansbury"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Adam"], ["lastname", "Enbar"], ["linkedin_id", "dT2-2gYQAE"], ["linkedin_url", "http://www.linkedin.com/in/adamenbar"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "private"], ["lastname", "private"], ["linkedin_id", "private"], ["linkedin_url", nil], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Rebekah"], ["lastname", "Rombom"], ["linkedin_id", "MjbuON9bxM"], ["linkedin_url", "http://www.linkedin.com/in/rrombom"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Blake"], ["lastname", "Johnson"], ["linkedin_id", "tzw30Q9ssh"], ["linkedin_url", "http://www.linkedin.com/pub/blake-johnson/4/42a/878"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Bandana Kaur"], ["lastname", "Malik"], ["linkedin_id", "fowPZQRCqx"], ["linkedin_url", "http://www.linkedin.com/pub/bandana-kaur-malik/43/385/b0"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Emily"], ["lastname", "Xie"], ["linkedin_id", "qT9BbXzJBa"], ["linkedin_url", "http://www.linkedin.com/in/xieemily"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Ashley"], ["lastname", "Williams"], ["linkedin_id", "xPbibALzHz"], ["linkedin_url", "http://www.linkedin.com/in/ashleygwilliams"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Charlotte"], ["lastname", "Chang"], ["linkedin_id", "81LtDoifh6"], ["linkedin_url", "http://www.linkedin.com/pub/charlotte-chang/1/742/b65"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Derek"], ["lastname", "Silverman"], ["linkedin_id", "YbYpQPheug"], ["linkedin_url", "http://www.linkedin.com/in/dereksilverman"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Mike"], ["lastname", "Spangler"], ["linkedin_id", "BMKcQi5uQy"], ["linkedin_url", "http://www.linkedin.com/pub/mike-spangler/10/3a0/788"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Sonja"], ["lastname", "Hall"], ["linkedin_id", "nFDyNGab_H"], ["linkedin_url", "http://www.linkedin.com/pub/sonja-hall/9/5b9/27b"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Kelly"], ["lastname", "Allen"], ["linkedin_id", "HyVO3cOQAQ"], ["linkedin_url", "http://www.linkedin.com/in/kellylaurenallen"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Jenya"], ["lastname", "Zueva"], ["linkedin_id", "2fgFEciDSu"], ["linkedin_url", "http://www.linkedin.com/pub/jenya-zueva/20/3b/531"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Sarah"], ["lastname", "Ransohoff"], ["linkedin_id", "l5CN5nVnWr"], ["linkedin_url", "http://www.linkedin.com/pub/sarah-ransohoff/46/301/b51"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Ariel"], ["lastname", "Isaacs"], ["linkedin_id", "5WG-BcY8Sw"], ["linkedin_url", "http://www.linkedin.com/in/ajosepha"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Greg"], ["lastname", "Eng"], ["linkedin_id", "AbLG99ubkB"], ["linkedin_url", "http://www.linkedin.com/in/gregeng"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Avi"], ["lastname", "Flombaum"], ["linkedin_id", "bJeDUQYKOM"], ["linkedin_url", "http://www.linkedin.com/in/aviflombaum"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Daniel"], ["lastname", "Chang"], ["linkedin_id", "4i0XkI6gvO"], ["linkedin_url", "http://www.linkedin.com/in/danielchangnyc"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Nisha"], ["lastname", "Batra"], ["linkedin_id", "uCDwo8vRrG"], ["linkedin_url", "http://www.linkedin.com/pub/nisha-batra/15/291/644"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Andrew"], ["lastname", "Callahan"], ["linkedin_id", "QWB-xseVun"], ["linkedin_url", "http://www.linkedin.com/in/andrewcallahan"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "private"], ["lastname", "private"], ["linkedin_id", "private"], ["linkedin_url", nil], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Alex"], ["lastname", "Chiu"], ["linkedin_id", "Lxx95qaLaR"], ["linkedin_url", "http://www.linkedin.com/pub/alex-chiu/45/748/219"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Desmond"], ["lastname", "Rawls"], ["linkedin_id", "R8BnlHz561"], ["linkedin_url", "http://www.linkedin.com/pub/desmond-rawls/20/262/398"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00], ["firstname", "Jonathan"], ["lastname", "Grover"], ["linkedin_id", "uL-Y3Ox_gQ"], ["linkedin_url", "http://www.linkedin.com/in/jonathanggrover"], ["updated_at", Mon, 20 Jan 2014 02:53:41 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mPerson Load (1.0ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schools" ("created_at", "location_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:53:46 UTC +00:00], ["location_id", nil], ["name", "Wesleyan University"], ["updated_at", Mon, 20 Jan 2014 02:53:46 UTC +00:00]]
+  [1m[35m (8.0ms)[0m  commit transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.9ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "linkedin_id" varchar(255)) 
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "company_departments" ("company_id" integer, "department_id" integer) [0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "company_industries" ("company_id" integer, "industry_id" integer) 
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "company_locations" ("company_id" integer, "location_id" integer) [0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "company_people" ("company_id" integer, "person_id" integer) 
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "educations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "kind" varchar(255), "major" varchar(255), "grad_yr" integer, "school_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "person_id" integer) 
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "industries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "jobtitles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "start_date" date, "end_date" date, "company_id" integer, "person_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.4ms)[0m  [1mCREATE TABLE "locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "city" varchar(255), "state" varchar(255), "country" varchar(255), "lat" decimal, "long" decimal, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "postalcode" integer) [0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "people" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "firstname" varchar(255), "lastname" varchar(255), "linkedin_id" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "linkedin_url" varchar(255)) 
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "person_schools" ("person_id" integer, "school_id" integer) [0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "schools" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "location_id" integer) 
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140117011513')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140114224713')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140114224811')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140114224848')[0m
+  [1m[35m (12.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140114225043')
+  [1m[36m (2.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140114225423')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140114225510')
+  [1m[36m (1.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140114225709')[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140114225802')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140115153150')[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140115154011')
+  [1m[36m (1.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140115154029')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140115154037')
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140115154048')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140115171536')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140115174736')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140115234038')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140116215156')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140116221805')
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-19 21:58:14 -0500
+Connecting to database specified by database.yml
+Processing by PagesController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.2ms)[0m  INSERT INTO "companies" ("created_at", "linkedin_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["linkedin_id", 2879109], ["name", "The Flatiron School"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "industries" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["name", "Higher Education"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "company_industries" ("company_id", "industry_id") VALUES (?, ?)  [["company_id", 1], ["industry_id", 1]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "locations" ("city", "country", "created_at", "lat", "long", "postalcode", "state", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["city", nil], ["country", nil], ["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["lat", nil], ["long", nil], ["postalcode", 10010], ["state", nil], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "company_locations" ("company_id", "location_id") VALUES (?, ?)  [["company_id", 1], ["location_id", 1]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Kainne"], ["lastname", "Hansbury"], ["linkedin_id", "dEUo393ih1"], ["linkedin_url", "http://www.linkedin.com/in/kainnehansbury"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Adam"], ["lastname", "Enbar"], ["linkedin_id", "dT2-2gYQAE"], ["linkedin_url", "http://www.linkedin.com/in/adamenbar"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "private"], ["lastname", "private"], ["linkedin_id", "private"], ["linkedin_url", nil], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Rebekah"], ["lastname", "Rombom"], ["linkedin_id", "MjbuON9bxM"], ["linkedin_url", "http://www.linkedin.com/in/rrombom"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Blake"], ["lastname", "Johnson"], ["linkedin_id", "tzw30Q9ssh"], ["linkedin_url", "http://www.linkedin.com/pub/blake-johnson/4/42a/878"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Bandana Kaur"], ["lastname", "Malik"], ["linkedin_id", "fowPZQRCqx"], ["linkedin_url", "http://www.linkedin.com/pub/bandana-kaur-malik/43/385/b0"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Emily"], ["lastname", "Xie"], ["linkedin_id", "qT9BbXzJBa"], ["linkedin_url", "http://www.linkedin.com/in/xieemily"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Ashley"], ["lastname", "Williams"], ["linkedin_id", "xPbibALzHz"], ["linkedin_url", "http://www.linkedin.com/in/ashleygwilliams"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Charlotte"], ["lastname", "Chang"], ["linkedin_id", "81LtDoifh6"], ["linkedin_url", "http://www.linkedin.com/pub/charlotte-chang/1/742/b65"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Derek"], ["lastname", "Silverman"], ["linkedin_id", "YbYpQPheug"], ["linkedin_url", "http://www.linkedin.com/in/dereksilverman"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Mike"], ["lastname", "Spangler"], ["linkedin_id", "BMKcQi5uQy"], ["linkedin_url", "http://www.linkedin.com/pub/mike-spangler/10/3a0/788"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Sonja"], ["lastname", "Hall"], ["linkedin_id", "nFDyNGab_H"], ["linkedin_url", "http://www.linkedin.com/pub/sonja-hall/9/5b9/27b"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Kelly"], ["lastname", "Allen"], ["linkedin_id", "HyVO3cOQAQ"], ["linkedin_url", "http://www.linkedin.com/in/kellylaurenallen"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Jenya"], ["lastname", "Zueva"], ["linkedin_id", "2fgFEciDSu"], ["linkedin_url", "http://www.linkedin.com/pub/jenya-zueva/20/3b/531"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Sarah"], ["lastname", "Ransohoff"], ["linkedin_id", "l5CN5nVnWr"], ["linkedin_url", "http://www.linkedin.com/pub/sarah-ransohoff/46/301/b51"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Ariel"], ["lastname", "Isaacs"], ["linkedin_id", "5WG-BcY8Sw"], ["linkedin_url", "http://www.linkedin.com/in/ajosepha"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Greg"], ["lastname", "Eng"], ["linkedin_id", "AbLG99ubkB"], ["linkedin_url", "http://www.linkedin.com/in/gregeng"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Avi"], ["lastname", "Flombaum"], ["linkedin_id", "bJeDUQYKOM"], ["linkedin_url", "http://www.linkedin.com/in/aviflombaum"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Daniel"], ["lastname", "Chang"], ["linkedin_id", "4i0XkI6gvO"], ["linkedin_url", "http://www.linkedin.com/in/danielchangnyc"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Nisha"], ["lastname", "Batra"], ["linkedin_id", "uCDwo8vRrG"], ["linkedin_url", "http://www.linkedin.com/pub/nisha-batra/15/291/644"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Andrew"], ["lastname", "Callahan"], ["linkedin_id", "QWB-xseVun"], ["linkedin_url", "http://www.linkedin.com/in/andrewcallahan"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "private"], ["lastname", "private"], ["linkedin_id", "private"], ["linkedin_url", nil], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Alex"], ["lastname", "Chiu"], ["linkedin_id", "Lxx95qaLaR"], ["linkedin_url", "http://www.linkedin.com/pub/alex-chiu/45/748/219"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Desmond"], ["lastname", "Rawls"], ["linkedin_id", "R8BnlHz561"], ["linkedin_url", "http://www.linkedin.com/pub/desmond-rawls/20/262/398"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "linkedin_id", "linkedin_url", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00], ["firstname", "Jonathan"], ["lastname", "Grover"], ["linkedin_id", "uL-Y3Ox_gQ"], ["linkedin_url", "http://www.linkedin.com/in/jonathanggrover"], ["updated_at", Mon, 20 Jan 2014 02:58:16 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mPerson Load (0.4ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "schools" ("created_at", "location_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:24 UTC +00:00], ["location_id", nil], ["name", "Saint Michael's College"], ["updated_at", Mon, 20 Jan 2014 02:58:24 UTC +00:00]]
+  [1m[35m (7.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "person_schools" ("person_id", "school_id") VALUES (?, ?)  [["person_id", 1], ["school_id", 1]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "educations" ("created_at", "grad_yr", "kind", "major", "person_id", "school_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 02:58:24 UTC +00:00], ["grad_yr", 1992], ["kind", "BS, Business Administration"], ["major", nil], ["person_id", nil], ["school_id", 1], ["updated_at", Mon, 20 Jan 2014 02:58:24 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mEducation Load (0.3ms)[0m  [1mSELECT "educations".* FROM "educations" [0m
