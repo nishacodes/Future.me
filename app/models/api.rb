@@ -44,10 +44,12 @@ class Api
     company_employees
   end
 
-  def company_employees
+  def company_employees(company_name)
     i = 0
+
     company_gsub = @company_name.gsub(" ","%20") 
     json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(first-name,last-name,id,public-profile-url))?company-name=#{company_gsub}&current-company=true&sort=connections&count=25&start=#{i}", 'x-li-format' => 'json').body
     @people = JSON.parse(json_txt)["people"]["values"]
   end 
 end 
+

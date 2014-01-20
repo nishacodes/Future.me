@@ -16,7 +16,7 @@ puts JSON.pretty_generate(profile)
 
 # returns all things defined in fields for Derek's profile
 # get_person_profile
-json_txt = access_token.get("http://api.linkedin.com/v1/people/~:(#{fields})", 'x-li-format' => 'json').body
+
 # returns name and linkedin url of a person
 # get_user_profile
 json_txt = access_token.get("http://api.linkedin.com/v1/people::(id=MjbuON9bxM):(first-name,last-name,public-profile-url,headline,industry,num-connections,positions,educations)", 'x-li-format' => 'json').body
