@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   
   def index
-    Populate.new
+    HardWorker.perform_async('derek')
     @companies = Company.all
     @people = Person.all
     @educations = Education.all
