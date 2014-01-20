@@ -79,6 +79,7 @@ class Populate
     @scrape.current_companies.each do |company|
       this_company = Company.create(eval(@scrape.company_params))
       person.companies << this_company
+      debugger
       jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
       person.jobtitles << jobtitle
       # Save this after shoveling
@@ -93,7 +94,6 @@ class Populate
       jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
       person.jobtitles << jobtitle
       # Save this after shoveling
-      debugger
       person.save
     
     end 

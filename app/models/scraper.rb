@@ -20,7 +20,7 @@ class Scraper
 
   # Storing the hash here to keep Populate model clean
   def get_params
-    @company_params ="{:name => company[:company]}"
+    @company_params ="{:name => company[:company], :linkedin_url => company[:website], :address => company[:address]}"
     @school_params = "{:name => school[:name]}"
     @education_params = "{:kind => school[:description], :grad_yr => school[:period], :school_id => this_school.id}" # need location_id
     @jobtitle_params = "{:title => company[:title], :start_date => company[:start_date],
