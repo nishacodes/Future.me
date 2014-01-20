@@ -28,11 +28,12 @@ class Populate
         # update_people
     # end
     @api.find_company(DOMAINS.last)
-    @company = Company.create(:name => @api.company_name, :linkedin_id => @api.company_id)
+    @company = Company.create(:name => @api.company_name, :linkedin_id => @api.company_id, :linkedin_url => "http://www.linkedin.com/company/#{@api.company_id}")
   end
 
   def create_industry    
     @industry = Industry.create(:name => @api.company_industry)
+    debugger
     @industry.companies << @company
     @industry.save
   end

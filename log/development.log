@@ -36542,3 +36542,25 @@ Processing by PagesController#index as HTML
   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
   [1m[35mSQL (0.3ms)[0m  INSERT INTO "company_people" ("company_id", "person_id") VALUES (?, ?)  [["company_id", 282], ["person_id", 76]]
   [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-20 18:33:41 -0500
+Connecting to database specified by database.yml
+Processing by PagesController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.8ms)[0m  INSERT INTO "companies" ("address", "created_at", "linkedin_id", "linkedin_url", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["address", nil], ["created_at", Mon, 20 Jan 2014 23:33:43 UTC +00:00], ["linkedin_id", 2879109], ["linkedin_url", "http://www.linkedin.com/company/{@api.company_id}"], ["name", "The Flatiron School"], ["updated_at", Mon, 20 Jan 2014 23:33:43 UTC +00:00]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "industries" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 23:33:43 UTC +00:00], ["name", "Higher Education"], ["updated_at", Mon, 20 Jan 2014 23:33:43 UTC +00:00]]
+  [1m[35m (1.4ms)[0m  commit transaction
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-20 18:34:12 -0500
+Connecting to database specified by database.yml
+Processing by PagesController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.2ms)[0m  INSERT INTO "companies" ("address", "created_at", "linkedin_id", "linkedin_url", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["address", nil], ["created_at", Mon, 20 Jan 2014 23:34:14 UTC +00:00], ["linkedin_id", 2879109], ["linkedin_url", "http://www.linkedin.com/company/2879109"], ["name", "The Flatiron School"], ["updated_at", Mon, 20 Jan 2014 23:34:14 UTC +00:00]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "industries" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Mon, 20 Jan 2014 23:34:14 UTC +00:00], ["name", "Higher Education"], ["updated_at", Mon, 20 Jan 2014 23:34:14 UTC +00:00]]
+  [1m[35m (1.8ms)[0m  commit transaction
