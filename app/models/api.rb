@@ -1,7 +1,6 @@
 class Api
   attr_reader :company_id, :company_name, :company_industry, :company_postalcode, :firstname, :lastname, :linkedin_id, :linkedin_url, :people
 
-
   CONSUMER = OAuth::Consumer.new("77ze1x9zbqkfe7", "vnVI2BZxFEm8QxNM")
   ACCESS_TOKEN = OAuth::AccessToken.new(CONSUMER, "e974f1f1-9f42-4ab0-af97-b32bd6229e22", 
     "f732020e-436c-4b34-882c-c29973bfb5e3")
@@ -45,12 +44,12 @@ class Api
     company_employees
   end
 
-  def company_employees
+  def company_employees(company_name)
     i = 0
+
     company_gsub = @company_name.gsub(" ","%20") 
     json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(first-name,last-name,id,public-profile-url))?company-name=#{company_gsub}&current-company=true&sort=connections&count=25&start=#{i}", 'x-li-format' => 'json').body
     @people = JSON.parse(json_txt)["people"]["values"]
   end 
 end 
-
 

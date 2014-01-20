@@ -2,18 +2,31 @@ class Populate
   attr_reader :api, :scraper, :company, :location, :person, :industry, :scrape
 
   DOMAINS = ["google.com", "twitter.com", "flatironschool.com"]
+  # DOMAINS = ["google.com", "twitter.com", "flatironschool.com", "amazon.com",
+  # "facebook.com", "linkedin.com", "squareup.com", "apple.com", "squarespace.com",
+  # "tumblr.com", "etsy.com", "yahoo.com", "salesforce.com", "dropbox.com"]
 
   # WHILE TESTING, COMMENT OUT THE METHODS U DONT WANT TO RUN
   def initialize
-   #  @api = Api.new
-   #  create_company
-   #  create_industry
-   #  create_location
-   #  create_people
-   #  update_people
+    @api = Api.new
+    create_company
+    create_industry
+    create_location
+    create_people
+    update_people
   end
 
   def create_company
+    # FOR WHEN WE'RE READY TO POPULATE THE WHOLE DB WITH ALL THE COMPANIES...
+    # MAYBE THIS WILL BE OUR INITIALIZE METHOD? OR INITIALIZE WILL CALL THIS METHOD?
+    # DOMAINS.each do |domain|
+    #   @api.find_company(domain)
+        # @company = Company.create(:name => @api.company_name, :linkedin_id => @api.company_id)
+        # create_industry
+        # create_location
+        # create_people
+        # update_people
+    # end
     @api.find_company(DOMAINS.last)
     @company = Company.create(:name => @api.company_name, :linkedin_id => @api.company_id)
   end
@@ -46,8 +59,10 @@ class Populate
 
           # CREATE SCHOOLS AND EDUCATIONS
           @scrape.educations.each do |school|
-            person.schools << School.create(:name => school[:name])
+            this_school = School.create(:name => school[:name])
+            person.schools << this_school
             education = Education.create(eval(@scrape.education_params)) # eval is a method that removes quotes from a string, so in this case it turns it into a hash
+            education.update_attributes(:school_id => this_school.id)
             # school.educations << education 
             person.educations << education
             # Save these after shoveling
@@ -57,8 +72,10 @@ class Populate
 
           # CREATE CURRENT COMPANIES
           @scrape.current_companies.each do |company|
-            person.companies << Company.create(:name => company[:company])
+            this_company = Company.create(:name => company[:company])
+            person.companies << this_company
             jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
+            jobtitle.update_attributes(:company_id => this_company.id)
             person.jobtitles << jobtitle
             # company.jobtitles << jobtitle
             # Save these after shoveling
@@ -68,8 +85,10 @@ class Populate
 
           # CREATE PAST COMPANIES
           @scrape.past_companies.each do |company|
-            person.companies << Company.create(:name => company[:company])
+            this_company = Company.create(:name => company[:company])
+            person.companies << this_company
             jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
+            jobtitle.update_attributes(:company_id => this_company.id)
             person.jobtitles << jobtitle
             # company.jobtitles << jobtitle
             # Save these after shoveling
