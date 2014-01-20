@@ -1,6 +1,6 @@
 class Scraper
-  attr_accessor :profile, :educations, :current_companies, :past_companies, 
-    :education_params, :jobtitle_params, :school_params
+  attr_reader :profile, :educations, :current_companies, :past_companies, 
+    :education_params, :jobtitle_params, :school_params, :company_params
 
   def initialize(publicprofileurl)
     @profile = Linkedin::Profile.get_profile("#{publicprofileurl}")
@@ -20,6 +20,7 @@ class Scraper
 
   # Storing the hash here to keep Populate model clean
   def get_params
+    @company_params ="{:name => company[:company]}"
     @school_params = "{:name => school[:name]}"
     @education_params = "{:kind => school[:description], :grad_yr => school[:period], :school_id => this_school.id}" # need location_id
     @jobtitle_params = "{:title => company[:title], :start_date => company[:start_date],
