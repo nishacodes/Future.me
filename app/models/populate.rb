@@ -32,13 +32,14 @@ class Populate
   end
 
   def create_industry    
+    # WE STILL NEED TO DO THIS FOR CURRENT / PAST COMPANIES
     @industry = Industry.create(:name => @api.company_industry)
-    debugger
     @industry.companies << @company
     @industry.save
   end
 
   def create_location
+    # WE STILL NEED TO DO THIS FOR CURRENT / PAST COMPANIES
     @location = Location.create(:postalcode => @api.company_postalcode)
     @company.locations << @location
     @company.save
@@ -46,7 +47,6 @@ class Populate
 
   def create_people
     @api.people.each do |personhash|
-      # we can store the params in a variable within class Api, like we did in Scraper
       Person.create(eval(@api.person_params))
     end
   end
@@ -80,7 +80,16 @@ class Populate
     @scrape.current_companies.each do |company|
       this_company = Company.create(eval(@scrape.company_params))
       person.companies << this_company
-      debugger
+      
+      postalcode = this_company.address.match(/\d{5}/)[0]
+      this_location = Location.create(:postalcode => postalcode)
+      this_company.locations << this_location
+      this_company.save
+
+      this_industry = Industry.create(eval(@scrape.company_industry))
+      this_company.industry << this_industry
+      this_company.save
+
       jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
       person.jobtitles << jobtitle
       # Save this after shoveling
@@ -92,6 +101,16 @@ class Populate
     @scrape.past_companies.each do |company|
       this_company = Company.create(eval(@scrape.company_params))
       person.companies << this_company
+
+      postalcode = this_company.address.match(/\d{5}/)[0]
+      this_location = Location.create(:postalcode => postalcode)
+      this_company.locations << this_location
+      this_company.save
+
+      this_industry = Industry.create(eval(@scrape.company_industry))
+      this_company.industry << this_industry
+      this_company.save
+
       jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
       person.jobtitles << jobtitle
       # Save this after shoveling
