@@ -2,6 +2,9 @@ Futureme::Application.routes.draw do
   root :to => 'pages#index'
 
   get 'industries' => 'pages#industries'
+  get 'industries/:id' => 'pages#industry'
+  get 'industries/:id/companies' => 'pages#companies'
+  get 'industries/:id/companies/:id' => 'pages#company'
 
 
   # The priority is based upon order of creation:

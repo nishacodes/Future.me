@@ -54,7 +54,7 @@ class Populate
   def update_people
     Person.all.each do |person|
       @scrape = Scraper.new(person.linkedin_url)
-      unless @scrape.profile.nil? 
+      if @scrape.profile
         create_schools_and_educations(@scrape, person)
         create_current_companies(@scrape, person)
         create_past_companies(@scrape, person)
@@ -81,9 +81,9 @@ class Populate
       this_company = Company.create(eval(@scrape.company_params))
       person.companies << this_company
 
-      unless this_company.address.nil?
+      if this_company.address
         matchdata = this_company.address.match(/\d{5}/)
-        if matchdata[0]
+        if matchdata
           postalcode = matchdata[0]
           this_location = Location.create(:postalcode => postalcode)
         end
@@ -92,7 +92,7 @@ class Populate
       end
 
       this_industry = Industry.create(eval(@scrape.company_industry))
-      unless this_company.industries.nil?
+      if this_company.industries
         this_company.industries << this_industry
         this_company.save
       end
@@ -109,7 +109,7 @@ class Populate
       this_company = Company.create(eval(@scrape.company_params))
       person.companies << this_company
 
-      unless this_company.address.nil?
+      if this_company.address
         matchdata = this_company.address.match(/\d{5}/)
         if matchdata
           postalcode = matchdata[0]
