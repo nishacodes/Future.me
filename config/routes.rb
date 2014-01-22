@@ -1,7 +1,8 @@
 Futureme::Application.routes.draw do
- 
-
   root :to => 'pages#index'
+
+  get 'industries' => 'pages#industries'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

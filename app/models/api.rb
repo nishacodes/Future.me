@@ -38,6 +38,7 @@ class Api
       end
       int += 25
     end
+    get_params
   end
 
   def get_params

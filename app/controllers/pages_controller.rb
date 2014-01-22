@@ -10,4 +10,8 @@ class PagesController < ApplicationController
     @locations = Location.all
   end
 
+  def industries
+    @industries = Industry.all
+  end
+
 end

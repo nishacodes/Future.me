@@ -80,15 +80,22 @@ class Populate
     @scrape.current_companies.each do |company|
       this_company = Company.create(eval(@scrape.company_params))
       person.companies << this_company
-      
-      postalcode = this_company.address.match(/\d{5}/)[0]
-      this_location = Location.create(:postalcode => postalcode)
-      this_company.locations << this_location
-      this_company.save
+
+      unless this_company.address.nil?
+        matchdata = this_company.address.match(/\d{5}/)
+        if matchdata[0]
+          postalcode = matchdata[0]
+          this_location = Location.create(:postalcode => postalcode)
+        end
+        this_company.locations << this_location
+        this_company.save
+      end
 
       this_industry = Industry.create(eval(@scrape.company_industry))
-      this_company.industry << this_industry
-      this_company.save
+      unless this_company.industries.nil?
+        this_company.industries << this_industry
+        this_company.save
+      end
 
       jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
       person.jobtitles << jobtitle
@@ -102,13 +109,19 @@ class Populate
       this_company = Company.create(eval(@scrape.company_params))
       person.companies << this_company
 
-      postalcode = this_company.address.match(/\d{5}/)[0]
-      this_location = Location.create(:postalcode => postalcode)
-      this_company.locations << this_location
-      this_company.save
+      unless this_company.address.nil?
+        matchdata = this_company.address.match(/\d{5}/)
+        if matchdata
+          postalcode = matchdata[0]
+          this_location = Location.create(:postalcode => postalcode)
+        end
+        this_location = Location.create(:postalcode => postalcode)
+        this_company.locations << this_location
+        this_company.save
+      end
 
       this_industry = Industry.create(eval(@scrape.company_industry))
-      this_company.industry << this_industry
+      this_company.industries << this_industry
       this_company.save
 
       jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
