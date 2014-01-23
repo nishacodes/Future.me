@@ -38,6 +38,7 @@ class Api
           @people << person
         end
       end
+      @people.uniq!
     end
   end
 
