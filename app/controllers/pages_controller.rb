@@ -25,7 +25,7 @@ class PagesController < ApplicationController
         company.industries.find_each do |industry|
           @companies << company if industry.id == params[:i_id].to_i
         end
-        @companies
+        @companies.uniq!
       end
   end
 
@@ -39,7 +39,7 @@ class PagesController < ApplicationController
       person.companies.find_each do |company|
         @people << person if company.id == params[:c_id].to_i
       end
-      @people
+      @people.uniq!
     end
   end
 
@@ -54,7 +54,7 @@ class PagesController < ApplicationController
       person.schools.find_each do |school|
         @schools << school if person.companies.include?(@company)
       end
-      @schools
+      @schools.uniq!
     end
   end
 
@@ -65,6 +65,7 @@ class PagesController < ApplicationController
       person.schools.find_each do |school|
         @people << person if person.schools.include?(@school)
       end
+      @people.uniq!
     end
   end
 
