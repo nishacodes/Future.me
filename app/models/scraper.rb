@@ -25,7 +25,7 @@ class Scraper
     @education_params = "{:kind => school[:description], :grad_yr => school[:period], :school_id => this_school.id}" # need location_id
     @jobtitle_params = "{:title => company[:title], :start_date => company[:start_date],
       :end_date => company[:end_date], :company_id => this_company.id}" # this is same for current / past companies
-    @company_params ="{:name => company[:company], :linkedin_url => company[:website], :address => company[:address]}"
+    @company_params ="{:name => company[:company], :url => company[:website], :address => company[:address]}"
     # this one is separated out bc we have to instantiate a new industry
     @company_industry = "{:name => company[:industry]}"
     

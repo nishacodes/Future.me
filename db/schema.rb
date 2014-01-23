@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140120231236) do
+ActiveRecord::Schema.define(:version => 20140123165918) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "linkedin_id"
-    t.string   "linkedin_url"
+    t.string   "url"
     t.string   "address"
   end
 

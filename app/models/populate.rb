@@ -17,18 +17,15 @@ class Populate
   end
 
   def create_company
-    # FOR WHEN WE'RE READY TO POPULATE THE WHOLE DB WITH ALL THE COMPANIES...
-    # MAYBE THIS WILL BE OUR INITIALIZE METHOD? OR INITIALIZE WILL CALL THIS METHOD?
-    # DOMAINS.each do |domain|
-    #   @api.find_company(domain)
-        # @company = Company.create(:name => @api.company_name, :linkedin_id => @api.company_id)
-        # create_industry
-        # create_location
-        # create_people
-        # update_people
-    # end
-    @api.find_company(DOMAINS.last)
-    @company = Company.create(:name => @api.company_name, :linkedin_id => @api.company_id, :linkedin_url => "http://www.linkedin.com/company/#{@api.company_id}")
+    DOMAINS.each do |domain|
+      @api.find_company(domain)
+        url = "http://www." + domain
+        @company = Company.create(:name => @api.company_name, :linkedin_id => @api.company_id, :url => url)
+        create_industry
+        create_location
+        create_people
+        update_people
+    end
   end
 
   def create_industry    
