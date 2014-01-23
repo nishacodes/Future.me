@@ -26,9 +26,11 @@ class Api
   def company_employees
     int = 0
     company_gsub = @company_name.gsub(" ","%20")
-    json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(first-name,last-name,id,public-profile-url))?company-name=#{company_gsub}&current-company=true&sort=connections&count=25&start=#{int}", 'x-li-format' => 'json').body
+    json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(first-name,last-name,id,public-profile-url))?company-name=#{company_gsub}&current-company=true&sort=connections&count=25&start=0", 'x-li-format' => 'json').body
     parsed = JSON.parse(json_txt)
     until parsed["people"]["_total"] < int
+      json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(first-name,last-name,id,public-profile-url))?company-name=#{company_gsub}&current-company=true&sort=connections&count=25&start=#{int}", 'x-li-format' => 'json').body
+      parsed = JSON.parse(json_txt)
       if @people.nil?
         @people = JSON.parse(json_txt)["people"]["values"]
       else
@@ -36,7 +38,6 @@ class Api
           @people << person
         end
       end
-      int += 25
     end
   end
 
