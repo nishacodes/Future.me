@@ -35,7 +35,6 @@ class PagesController < ApplicationController
 
   def people
     @people = []
-
     Person.find_each do |person|
       person.companies.find_each do |company|
         @people << person if company.id == params[:c_id].to_i
@@ -49,19 +48,24 @@ class PagesController < ApplicationController
   end
 
   def schools
-  
+    @company = Company.find(params[:c_id])
     @schools = []
-
     Person.find_each do |person|
       person.schools.find_each do |school|
-        @schools << school if person.companies.include?(Company.find(params[:c_id]))
+        @schools << school if person.companies.include?(@company)
       end
       @schools
     end
   end
 
-  def school
+  def school_people
     @school = School.find(params[:s_id])
+    @people = []
+    Person.find_each do |person|
+      person.schools.find_each do |school|
+        @people << person if person.schools.include?(@school)
+      end
+    end
   end
 
 end

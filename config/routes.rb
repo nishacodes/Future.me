@@ -6,9 +6,8 @@ Futureme::Application.routes.draw do
   get 'industries/:i_id/companies' => 'pages#companies'
   get 'industries/:i_id/companies/:c_id' => 'pages#company'
   get 'industries/:i_id/companies/:c_id/people' => 'pages#people'
-  # get 'industries/:i_id/companies/:c_id/people/:p_id' => 'pages#person'
   get 'industries/:i_id/companies/:c_id/people/schools' => 'pages#schools'
-  get 'industries/:i_id/companies/:c_id/people/schools/:s_id' => 'pages#school'
+  get 'industries/:i_id/companies/:c_id/people/schools/:s_id' => 'pages#school_people'
   get 'industries/:i_id/companies/:c_id/people/schools/:s_id/:p_id' => 'pages#person'
 
 
