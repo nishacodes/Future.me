@@ -20,7 +20,7 @@ class Populate
     DOMAINS.each do |domain|
       @api.find_company(domain)
         url = "http://www." + domain
-        @company = Company.create(:name => @api.company_name, :linkedin_id => @api.company_id, :url => url)
+        @company = Company.find_or_create_by_name_and_linkedin_id_and_url(@api.company_name, @api.company_id, url)
         create_industry
         create_location
         create_people

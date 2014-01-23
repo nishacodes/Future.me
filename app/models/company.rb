@@ -1,5 +1,5 @@
 class Company < ActiveRecord::Base
-  attr_accessible :name, :linkedin_id, :linkedin_url, :address
+  attr_accessible :name, :linkedin_id, :url, :address
   validates :name, presence: true
   validates :url, uniqueness: true
   
