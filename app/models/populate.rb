@@ -30,21 +30,22 @@ class Populate
 
   def create_industry    
     # WE STILL NEED TO DO THIS FOR CURRENT / PAST COMPANIES
-    @industry = Industry.create(:name => @api.company_industry)
+    @industry = Industry.find_or_create_by_name(@api.company_industry)
     @industry.companies << @company
     @industry.save
   end
 
   def create_location
     # WE STILL NEED TO DO THIS FOR CURRENT / PAST COMPANIES
-    @location = Location.create(:postalcode => @api.company_postalcode)
+    @location = Location.find_or_create_by_postalcode(@api.company_postalcode)
     @company.locations << @location
     @company.save
   end
 
   def create_people
     @api.people.each do |personhash|
-      Person.create(eval(@api.person_params))
+      Person.find_or_create_by_firstname_and_lastname_and_linkedin_id_and_linkedin_url(
+        personhash['firstName'], personhash['lastName'], personhash['id'], personhash['publicProfileUrl'])
     end
   end
 
@@ -64,9 +65,10 @@ class Populate
 
   def create_schools_and_educations(scrape, person)
     @scrape.educations.each do |school|
-      this_school = School.create(eval(@scrape.school_params))
+      this_school = School.find_or_create_by_name(school[:name])
       person.schools << this_school
-      education = Education.create(eval(@scrape.education_params)) # eval is a method that removes quotes from a string, so in this case it turns it into a hash
+      education = Education.find_or_create_by_kind_and_grad_yr_and_school_id(
+        school[:description], school[:period], this_school.id) 
       person.educations << education
       # Save this after shoveling
       person.save
@@ -75,26 +77,28 @@ class Populate
 
   def create_current_companies(scrape, person)
     @scrape.current_companies.each do |company|
-      this_company = Company.create(eval(@scrape.company_params))
+      this_company = Company.find_or_create_by_name_and_url_and_address(
+        company[:company], company[:website], company[:address])
       person.companies << this_company
 
       if this_company.address
         matchdata = this_company.address.match(/\d{5}/)
         if matchdata
           postalcode = matchdata[0]
-          this_location = Location.create(:postalcode => postalcode)
+          this_location = Location.find_or_create_by_postalcode(postalcode) 
         end
         this_company.locations << this_location
         this_company.save
       end
 
-      this_industry = Industry.create(eval(@scrape.company_industry))
+      this_industry = Industry.find_or_create_by_name(company[:industry])
       if this_company.industries
         this_company.industries << this_industry
         this_company.save
       end
 
-      jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
+      jobtitle = Jobtitle.find_or_create_by_title_and_start_date_and_end_date_and_company_id(
+        company[:title], company[:start_date], company[:end_date], this_company.id)
       person.jobtitles << jobtitle
       # Save this after shoveling
       person.save
@@ -103,30 +107,32 @@ class Populate
 
   def create_past_companies(scrape, person)
     @scrape.past_companies.each do |company|
-      this_company = Company.create(eval(@scrape.company_params))
+      this_company = Company.find_or_create_by_name_and_url_and_address(
+        company[:company], company[:website], company[:address])
       person.companies << this_company
 
       if this_company.address
         matchdata = this_company.address.match(/\d{5}/)
         if matchdata
           postalcode = matchdata[0]
-          this_location = Location.create(:postalcode => postalcode)
+          this_location = Location.find_or_create_by_postalcode(postalcode) 
         end
-        this_location = Location.create(:postalcode => postalcode)
         this_company.locations << this_location
         this_company.save
       end
 
-      this_industry = Industry.create(eval(@scrape.company_industry))
-      this_company.industries << this_industry
-      this_company.save
+      this_industry = Industry.find_or_create_by_name(company[:industry])
+      if this_company.industries
+        this_company.industries << this_industry
+        this_company.save
+      end
 
-      jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
+      jobtitle = Jobtitle.find_or_create_by_title_and_start_date_and_end_date_and_company_id(
+        company[:title], company[:start_date], company[:end_date], this_company.id)
       person.jobtitles << jobtitle
       # Save this after shoveling
       person.save
-    
-    end 
+    end
   end
 
 end

@@ -38,13 +38,9 @@ class Api
       end
       int += 25
     end
-    get_params
   end
 
-  def get_params
-    @person_params = "{:firstname => personhash['firstName'], :lastname => personhash['lastName'],
-        :linkedin_id => personhash['id'], :linkedin_url => personhash['publicProfileUrl']}"
-  end
+
 
     # NOT BEING USED
   # generalize this thing i keep doing over and over. method would take two arguments: url and hash of k-v pairs
