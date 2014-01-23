@@ -1,12 +1,10 @@
 class Populate
   attr_reader :api, :scraper, :company, :location, :person, :industry, :scrape
 
-  DOMAINS = ["google.com", "twitter.com", "flatironschool.com"]
-  # DOMAINS = ["google.com", "twitter.com", "flatironschool.com", "amazon.com",
-  # "facebook.com", "linkedin.com", "squareup.com", "apple.com", "squarespace.com",
-  # "tumblr.com", "etsy.com", "yahoo.com", "salesforce.com", "dropbox.com"]
+  DOMAINS = ["google.com", "twitter.com", "flatironschool.com", "amazon.com",
+  "facebook.com", "linkedin.com", "squareup.com", "apple.com", "squarespace.com",
+  "tumblr.com", "etsy.com", "yahoo.com", "salesforce.com", "dropbox.com"]
 
-  # WHILE TESTING, COMMENT OUT THE METHODS U DONT WANT TO RUN
   def initialize
     @api = Api.new
     create_company
@@ -29,14 +27,12 @@ class Populate
   end
 
   def create_industry    
-    # WE STILL NEED TO DO THIS FOR CURRENT / PAST COMPANIES
     @industry = Industry.find_or_create_by_name(@api.company_industry)
     @industry.companies << @company
     @industry.save
   end
 
   def create_location
-    # WE STILL NEED TO DO THIS FOR CURRENT / PAST COMPANIES
     @location = Location.find_or_create_by_postalcode(@api.company_postalcode)
     @company.locations << @location
     @company.save
@@ -59,9 +55,6 @@ class Populate
       end
     end
   end
-
-  # THE IDEA HERE IS TO SEPARATE UPDATE_PEOPLE INTO SPECIFIC METHODS BUT THERE'S A SCOPE PROBLEM BC LOCAL VARIABLES DON'T CARRY OVER
-  # ALSO WE ONLY WANT TO CREATE 1 INSTANCE OF SCRAPER PER PERSON, THAT'S WHY ALL THE METHODS ARE
 
   def create_schools_and_educations(scrape, person)
     @scrape.educations.each do |school|
