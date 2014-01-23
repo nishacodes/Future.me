@@ -2,9 +2,13 @@ Futureme::Application.routes.draw do
   root :to => 'pages#index'
 
   get 'industries' => 'pages#industries'
-  get 'industries/:id' => 'pages#industry'
-  get 'industries/:id/companies' => 'pages#companies'
-  get 'industries/:id/companies/:id' => 'pages#company'
+  get 'industries/:i_id' => 'pages#industry'
+  get 'industries/:i_id/companies' => 'pages#companies'
+  get 'industries/:i_id/companies/:c_id' => 'pages#company'
+  get 'industries/:i_id/companies/:c_id/people' => 'pages#people'
+  get 'industries/:i_id/companies/:c_id/people/:p_id' => 'pages#person'
+  get 'industries/:i_id/companies/:c_id/people/:p_id/schools' => 'pages#schools'
+  get 'industries/:i_id/companies/:c_id/people/:p_id/schools/:s_id' => 'pages#school'
 
 
   # The priority is based upon order of creation:
