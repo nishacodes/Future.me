@@ -50,18 +50,18 @@ class PagesController < ApplicationController
 
   def schools
   
-  # @companies = []
+    @schools = []
 
-  # Company.find_each do |company|
-  #     company.industries.find_each do |industry|
-  #       @companies << company if industry.id == params[:i_id].to_i
-  #     end
-  #     @companies
-  #   end
+    Person.find_each do |person|
+      person.schools.find_each do |school|
+        @schools << school if person.companies.include?(Company.find(params[:c_id]))
+      end
+      @schools
+    end
   end
 
   def school
-    # @company = Company.find(params[:c_id])
+    @school = School.find(params[:s_id])
   end
 
 end
