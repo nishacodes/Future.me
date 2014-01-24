@@ -7,6 +7,7 @@ gem 'oauth'
 gem 'json'
 gem 'linkedin-scraper'
 gem 'debugger'
+gem 'devise', '3.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
