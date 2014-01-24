@@ -28,7 +28,8 @@ class Api
     company_gsub = @company_name.gsub(" ","%20")
     json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(first-name,last-name,id,public-profile-url))?company-name=#{company_gsub}&current-company=true&sort=connections&count=25&start=0", 'x-li-format' => 'json').body
     parsed = JSON.parse(json_txt)
-    until parsed["people"]["_total"] < int
+    # set limit so that we don't call more than 10,000 or something
+    until parsed["people"]["_total"] < int #if there are less than 25 on one page then we're missing those few.. UPDATE METHOD
       json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people-search:(people:(first-name,last-name,id,public-profile-url))?company-name=#{company_gsub}&current-company=true&sort=connections&count=25&start=#{int}", 'x-li-format' => 'json').body
       parsed = JSON.parse(json_txt)
       if @people.nil?
@@ -38,7 +39,9 @@ class Api
           @people << person
         end
       end
+      int += 25
     end
+    @people.uniq!
   end
 
 
