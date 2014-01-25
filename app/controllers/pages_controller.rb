@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  
+
   def index
     # Populate.new
     @companies = Company.all

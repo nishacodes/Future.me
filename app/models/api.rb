@@ -2,10 +2,21 @@ class Api
   attr_reader :company_id, :company_name, :company_industry, :company_postalcode, 
   :firstname, :lastname, :linkedin_id, :linkedin_url, :people, :person_params
 
-  CONSUMER = OAuth::Consumer.new("77ze1x9zbqkfe7", "vnVI2BZxFEm8QxNM")
-  ACCESS_TOKEN = OAuth::AccessToken.new(CONSUMER, "e974f1f1-9f42-4ab0-af97-b32bd6229e22", 
+  API_KEY = '77ze1x9zbqkfe7'
+  API_SECRET = 'vnVI2BZxFEm8QxNM'
+
+  CONFIGURATION = {
+    :site => 'https://api.linkedin.com',
+    :authorize_path => '/uas/oauth/authenticate',
+    :request_token_path => '/uas/oauth/requestToken',
+    :access_token_path => '/uas/oauth/accessToken' }
+  
+  CONSUMER = OAuth::Consumer.new(API_KEY, API_SECRET, CONFIGURATION)
+  REQUEST_TOKEN = CONSUMER.get_request_token
+  
+  CONSUMER_ADMIN = OAuth::Consumer.new(API_KEY, API_SECRET)
+  ACCESS_TOKEN = OAuth::AccessToken.new(CONSUMER_ADMIN, "e974f1f1-9f42-4ab0-af97-b32bd6229e22", 
     "f732020e-436c-4b34-882c-c29973bfb5e3")
-  # FIELDS = ['id', 'first-name', 'last-name', 'public-profile-url', 'site-standard-profile-request', 'headline', 'industry', 'distance', 'num-connections', 'positions', 'educations', 'member-url-resources'].join(',')
 
   def find_company(email)
     json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/companies?email-domain=#{email}", 'x-li-format' => 'json').body
