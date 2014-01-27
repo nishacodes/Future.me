@@ -8,7 +8,8 @@ gem 'json'
 gem 'linkedin-scraper'
 gem 'debugger'
 gem 'devise', '3.0'
-gem 'omniauth'
+gem 'omniauth-linkedin-oauth2'
+gem 'omniauth-oauth2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
