@@ -63,6 +63,8 @@ class PagesController < ApplicationController
     @people = []
     Person.find_each do |person|
       person.schools.find_each do |school|
+        # need to add logic here so that only people with this school AND who have worked at 
+        # the company params[:c_id] gets put into the @people array
         @people << person if person.schools.include?(@school)
       end
       @people.uniq!
