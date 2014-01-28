@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140127032339) do
+ActiveRecord::Schema.define(:version => 20140127034507) do
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "linkedin_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "companies", :force => true do |t|
     t.string   "name"
