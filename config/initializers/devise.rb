@@ -24,7 +24,11 @@ Devise.setup do |config|
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
   # config.authentication_keys = [ :email ]
-  config.omniauth :linkedin, '77ze1x9zbqkfe7', 'vnVI2BZxFEm8QxNM'
+  config.omniauth :linkedin, '77ze1x9zbqkfe7', 'vnVI2BZxFEm8QxNM',  
+                  :scope => 'r_fullprofile r_emailaddress r_network', 
+                  :fields => ["id", "email-address", "first-name", "last-name", "positions", "educations",
+                    "headline", "industry", "picture-url", "public-profile-url", 
+                    "location", "connections"]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
