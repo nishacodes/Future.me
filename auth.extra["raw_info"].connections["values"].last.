@@ -1,0 +1,24 @@
+# we get this data from user.rb when we run self.from_omniauth(auth)
+
+# WHEN CREATING A USER'S INFO IN THE DATABASE, THIS IS WHAT WE WANT TO LOOK AT / DO
+auth.extra["raw_info"]
+  .educations.values[1] # array of hashes (schools)
+    #CREATE SCHOOL#
+    .schoolName # name
+    #CREATE EDUCATION#
+    .degree # kind
+    .fieldOfStudy # major
+    .endDate # grad_yr
+    #(saved from above..) # school_id
+  .positions["values"]
+    #CREATE COMPANY#
+    .company # array of hashes
+      .name # name
+      .id # linkedin_id
+      #CREATE INDUSTRY#
+      .industry # name
+      #CREATE JOBTITLE#
+      .endDate # end_date
+      .startDate # start_date
+      .title # title
+      # (saved from above..) # company_id
