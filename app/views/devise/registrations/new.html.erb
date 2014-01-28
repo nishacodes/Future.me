@@ -1,8 +1,11 @@
 <h2>Sign up</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  <%= flash[:notice] = "Please create an account." %>
+  
+  <!-- IT'S DISPLAYING A PASSWORD ERROR WHEN USER GETS TO PAGE -->
+  <%#= devise_error_messages! %> 
+  
+  <h2> <%= flash[:notice] = "Please create an account." %> </h2>
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
