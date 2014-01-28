@@ -6,19 +6,18 @@ class User < ActiveRecord::Base
   # attr_accessible :email, :password, :password_confirmation, :remember_me, :username
 
   def self.from_omniauth(auth)
-  where(auth.slice(:provider, :uid)).first_or_create do |user|
-    user.provider = auth.provider
-    user.uid = auth.uid
-    debugger
-    user.email = auth.info.email
- 	 end
+    where(auth.slice(:provider, :uid)).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+ 	  end
   end
 
   def self.new_with_session(params, session)
   	if session["devise.user_attributes"]
   		new(session["devise.user_attributes"], without_protection: true) do |user|
   			user.attributes = params
-  			user.valid? 
+  			user.valid?
   		end
   	else
   		super
