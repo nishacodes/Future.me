@@ -60,13 +60,10 @@ class PagesController < ApplicationController
 
   def school_people
     @school = School.find(params[:s_id])
-    @company = Company.find(params[:c_id])
     @people = []
     Person.find_each do |person|
       person.schools.find_each do |school|
-        if (person.schools.include?(@school) && person.companies.include?(@company))
-          @people << person
-        end
+        @people << person if person.schools.include?(@school)
       end
       @people.uniq!
     end
