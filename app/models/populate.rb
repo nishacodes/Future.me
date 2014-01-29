@@ -60,8 +60,15 @@ class Populate
     @scrape.educations.each do |school|
       this_school = School.find_or_create_by_name(school[:name])
       person.schools << this_school
-      education = Education.find_or_create_by_kind_and_grad_yr_and_school_id(
-        school[:description], school[:period], this_school.id) 
+      # regex out the kind and major
+      match = /([^,]*),? ?(.*)/.match(school[:description])
+      if match
+        education = Education.find_or_create_by_kind_and_major_and_grad_yr_and_school_id(
+          match[1], match[2], school[:period], this_school.id)
+      else
+        education = Education.find_or_create_by_kind_and_grad_yr_and_school_id(
+          school[:description], school[:period], this_school.id)
+      end
       person.educations << education
       # Save this after shoveling
       person.save
@@ -127,4 +134,3 @@ class Populate
   end
 
 end
-

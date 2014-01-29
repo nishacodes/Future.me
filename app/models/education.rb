@@ -4,3 +4,10 @@ class Education < ActiveRecord::Base
   belongs_to :person
   belongs_to :school
 end
+
+# COMMAND LINE, UPDATE KIND AND MAJOR
+# educations = Education.all
+# educations.each do |e|
+#   match = /([^,]*),? ?(.*)/.match(e.kind)
+#   e.update_attributes(:kind=>match[1],:major=>match[2]) if match
+# end
