@@ -8,6 +8,7 @@ class PagesController < ApplicationController
     @schools = School.all
     @industries = Industry.all
     @locations = Location.all
+    render json: @company, serializer: CompanySerializer
   end
 
   def industries
