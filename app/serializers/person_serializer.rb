@@ -1,3 +1,3 @@
 class PersonSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :firstname, :lastname, :linkedin_url
 end

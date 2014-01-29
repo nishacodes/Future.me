@@ -1,3 +1,3 @@
 class EducationsSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :kind, :grad_yr, :major, :school_id
 end

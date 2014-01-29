@@ -8,17 +8,16 @@ class PagesController < ApplicationController
     @schools = School.all
     @industries = Industry.all
     @locations = Location.all
-    render json: @companies, :each_serializer => CompaniesSerializer, root: "companies"
   end
 
   def industries
     @industries = Industry.all
-    render json: @industries
+    render json: @industries, :each_serializer => IndustriesSerializer, root: "industries"
   end
 
   def industry
     @industry = Industry.find(params[:i_id])
-    render json: @industry
+    render json: @industry, :each_serializer => IndustrySerializer, root: "industry"
   end
 
   def companies
@@ -30,12 +29,12 @@ class PagesController < ApplicationController
       end
       @companies.uniq!
     end
-    render json: @companies
+    render json: @companies, :each_serializer => CompaniesSerializer, root: "companies"
   end
 
   def company
     @company = Company.find(params[:c_id])
-    render json: @company
+    render json: @company, :each_serializer => CompanySerializer, root: "company"
   end
 
   def people
@@ -46,12 +45,12 @@ class PagesController < ApplicationController
       end
       @people.uniq!
     end
-    render json: @people
+    render json: @people, :each_serializer => PeopleSerializer, root: "people"
   end
 
   def person
     @person = Person.find(params[:p_id])
-    render json: @person
+    render json: @person, :each_serializer => PersonSerializer, root: "person"
   end
 
   def schools
@@ -63,7 +62,7 @@ class PagesController < ApplicationController
       end
       @schools.uniq!
     end
-    render json: @schools
+    render json: @schools, :each_serializer => SchoolsSerializer, root: "schools"
   end
 
   def school_people
@@ -75,7 +74,7 @@ class PagesController < ApplicationController
       end
       @people.uniq!
     end
-    render json: @people
+    render json: @school, :each_serializer => SchoolSerializer, root: "school"
   end
 
 end
