@@ -53,6 +53,9 @@ class User < ActiveRecord::Base
       company = Company.find_or_create_by_name_and_linkedin_id(position_hash.company.name, 
         position_hash.company.id)
       industry = Industry.find_or_create_by_name(position_hash.company.industry)
+
+      # Get company location from the API
+      self.company_location(company)
       
       # Format dates because given as separate month and year..WTF!
       startDate = Date.new(position_hash.startDate.year,position_hash.startDate.month)
@@ -73,6 +76,15 @@ class User < ActiveRecord::Base
       person.save
       company.save
     end
+  end
+
+  def self.company_location(company)
+    api = Api.new
+    api.company_id = company.linkedin_id  
+    api.company_details
+    api.company_postalcode
+    location = Location.find_or_create_by_postalcode(api.company_postalcode)
+    company.locations << location
   end
 
   def self.user_schools(person, auth, user)

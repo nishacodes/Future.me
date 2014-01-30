@@ -18,7 +18,7 @@ class Populate
 
   def create_company
     DOMAINS.each do |domain|
-      @api.find_company(domain)
+      @api.run(domain)
         url = "http://www." + domain
         @company = Company.find_or_create_by_name_and_linkedin_id_and_url(@api.company_name, @api.company_id, url)
         display_names
