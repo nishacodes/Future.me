@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
       
       # Format dates because given as separate month and year..WTF!
       startDate = Date.new(position_hash.startDate.year,position_hash.startDate.month)
-      unless position_hash.endDate.nil? # current position has no end date
+      if position_hash.endDate # current position has no end date
         endDate = Date.new(position_hash.endDate.year,position_hash.endDate.month) 
       end
 
@@ -84,6 +84,7 @@ class User < ActiveRecord::Base
       
       # Create education
       grad_yr = edu_hash.endDate.year if edu_hash.endDate
+      
       education = Education.find_or_create_by_kind_and_major_and_grad_yr_and_school_id(
           edu_hash.degree, edu_hash.fieldOfStudy, grad_yr, school.id)
       person.educations << education  
@@ -99,7 +100,6 @@ end
 
 # MISSING INFO TO GET FROM SCRAPER:
 # - company url and address
-# - school address
 
 
 
