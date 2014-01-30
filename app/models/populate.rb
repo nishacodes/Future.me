@@ -18,16 +18,14 @@ class Populate
 
   def create_company
     DOMAINS.each do |domain|
-      @api.find_company(domain)
+      @api.run(domain)
         url = "http://www." + domain
         @company = Company.find_or_create_by_name_and_linkedin_id_and_url(@api.company_name, @api.company_id, url)
+        display_names
         create_industry
         create_location
         create_people
         update_people
-    end
-    if REPEAT_COMPANY_NAMES.keys.include? @company.name 
-      display_names
     end
   end
 
@@ -160,10 +158,9 @@ class Populate
   end
 
   def display_names
-    REPEAT_COMPANY_NAMES.each do |search, display|
-      to_change = Company.where("name LIKE '%#{search}%'")
-      to_change.each do |company|
-        company.update_attribute(:display => "#{display}")
+    @company.name.split(" ").each do |name|
+      if REPEAT_COMPANY_NAMES[name]
+        @company.update_attribute(:display => "#{REPEAT_COMPANY_NAMES[name]}")
       end
     end
   end
