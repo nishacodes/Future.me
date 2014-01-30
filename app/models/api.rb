@@ -1,5 +1,5 @@
 class Api
-  attr_reader :company_id, :company_name, :company_industry, :company_postalcode, 
+  attr_accessor :company_id, :company_name, :company_industry, :company_postalcode, 
   :firstname, :lastname, :linkedin_id, :linkedin_url, :people, :person_params
 
   API_KEY = '77ze1x9zbqkfe7'
@@ -18,20 +18,26 @@ class Api
   ACCESS_TOKEN = OAuth::AccessToken.new(CONSUMER_ADMIN, "e974f1f1-9f42-4ab0-af97-b32bd6229e22", 
     "f732020e-436c-4b34-882c-c29973bfb5e3")
 
+  def run(email)
+    find_company(email)
+    company_details
+    company_employees
+  end
+
   def find_company(email)
     json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/companies?email-domain=#{email}", 'x-li-format' => 'json').body
     parsed = JSON.parse(json_txt)["values"][0]
     @company_id = parsed["id"]
     @company_name = parsed["name"]
-    company_details
   end
 
   def company_details
     json_txt = ACCESS_TOKEN.get("http://api.linkedin.com/v1/companies/#{@company_id}:(name,industries,company-type,locations,employee-count-range)", 'x-li-format' => 'json').body
     parsed = JSON.parse(json_txt)
     @company_industry = parsed["industries"]["values"][0]["name"]
+   
     @company_postalcode = parsed["locations"]["values"][0]["address"]["postalCode"]
-    company_employees
+
   end
 
   def company_employees
