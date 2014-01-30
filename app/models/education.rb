@@ -5,7 +5,7 @@ class Education < ActiveRecord::Base
   belongs_to :school
 end
 
-# COMMAND LINE, UPDATE KIND AND MAJOR
+# COMMAND LINE RAILS C, UPDATE EXISTING RECORDS KIND AND MAJOR
 # educations = Education.all
 # educations.each do |e|
 #   match = /([^,]*),? ?(.*)/.match(e.kind)

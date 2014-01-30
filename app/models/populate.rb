@@ -106,8 +106,13 @@ class Populate
 
   def create_past_companies(scrape, person)
     @scrape.past_companies.each do |company|
-      this_company = Company.find_or_create_by_name_and_url_and_address(
-        company[:company], company[:website], company[:address])
+      # this_company = Company.find_or_create_by_name_and_url_and_address(
+      #   company[:company], company[:website], company[:address])
+      this_company = Company.find_or_create_by_name(
+        company[:company])
+      if this_company.url.nil?
+        this_company.update_attributes(:url=>company[:website],:address=>company[:address])
+      end
       person.companies << this_company
 
       if this_company.address
