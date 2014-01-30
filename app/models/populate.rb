@@ -1,9 +1,11 @@
 class Populate
   attr_reader :api, :scraper, :company, :location, :person, :industry, :scrape
 
-  DOMAINS = ["google.com", "twitter.com", "flatironschool.com", "amazon.com",
-  "facebook.com", "linkedin.com", "squareup.com", "apple.com", "squarespace.com",
+  DOMAINS = ["apple.com", "squarespace.com",
   "tumblr.com", "etsy.com", "yahoo.com", "salesforce.com", "dropbox.com"]
+
+  REPEAT_COMPANY_NAMES = {"google" => "Google", "twitter" => "Twitter"}
+  # "google.com", "twitter.com", "flatironschool.com"
 
   def initialize
     @api = Api.new
@@ -23,6 +25,9 @@ class Populate
         create_location
         create_people
         update_people
+    end
+    if REPEAT_COMPANY_NAMES.keys.include? @company.name 
+      display_names
     end
   end
 
@@ -135,6 +140,15 @@ class Populate
       person.jobtitles << jobtitle
       # Save this after shoveling
       person.save
+    end
+  end
+
+  def display_names
+    REPEAT_COMPANY_NAMES.each do |search, display|
+      to_change = Company.where("name LIKE '%#{search}%'")
+      to_change.each do |company|
+        company.update_attribute(:display => "#{display}")
+      end
     end
   end
 

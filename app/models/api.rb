@@ -2,21 +2,8 @@ class Api
   attr_accessor :company_id, :company_name, :company_industry, :company_postalcode, 
   :firstname, :lastname, :linkedin_id, :linkedin_url, :people, :person_params
 
-  API_KEY = '77ze1x9zbqkfe7'
-  API_SECRET = 'vnVI2BZxFEm8QxNM'
-
-  CONFIGURATION = {
-    :site => 'https://api.linkedin.com',
-    :authorize_path => '/uas/oauth/authenticate',
-    :request_token_path => '/uas/oauth/requestToken',
-    :access_token_path => '/uas/oauth/accessToken' }
-  
-  CONSUMER = OAuth::Consumer.new(API_KEY, API_SECRET, CONFIGURATION)
-  REQUEST_TOKEN = CONSUMER.get_request_token
-  
-  CONSUMER_ADMIN = OAuth::Consumer.new(API_KEY, API_SECRET)
-  ACCESS_TOKEN = OAuth::AccessToken.new(CONSUMER_ADMIN, "e974f1f1-9f42-4ab0-af97-b32bd6229e22", 
-    "f732020e-436c-4b34-882c-c29973bfb5e3")
+  CONSUMER_ADMIN = OAuth::Consumer.new(ENV["LINKEDIN_KEY"], ENV["LINKEDIN_SECRET"])
+  ACCESS_TOKEN = OAuth::AccessToken.new(CONSUMER_ADMIN, ENV["LI_OAUTH_KEY"],ENV["LI_OAUTH_SECRET"])
 
   def run(email)
     find_company(email)
@@ -35,9 +22,9 @@ class Api
     json_txt = ACCESS_TOKEN.get("http://api.linkedin.com/v1/companies/#{@company_id}:(name,industries,company-type,locations,employee-count-range)", 'x-li-format' => 'json').body
     parsed = JSON.parse(json_txt)
     @company_industry = parsed["industries"]["values"][0]["name"]
-   
-    @company_postalcode = parsed["locations"]["values"][0]["address"]["postalCode"]
-
+    if parsed["locations"]
+      @company_postalcode = parsed["locations"]["values"][0]["address"]["postalCode"]
+    end
   end
 
   def company_employees

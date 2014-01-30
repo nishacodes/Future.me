@@ -1,5 +1,5 @@
 class Company < ActiveRecord::Base
-  attr_accessible :name, :linkedin_id, :url, :address
+  attr_accessible :name, :linkedin_id, :url, :address, :display
   # validates :name, presence: true
   # validates :url, uniqueness: true
   
@@ -23,3 +23,9 @@ class Company < ActiveRecord::Base
 
 
 end
+
+# RUN FROM RAILS C LIKE SO
+#  to_change = Company.where("name LIKE '%#{search}%'")
+#  to_change.each do |company|
+#     company.update_attribute(:display => "#{display}")
+#  end

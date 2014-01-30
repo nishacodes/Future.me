@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140127032339) do
+ActiveRecord::Schema.define(:version => 20140130155907) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20140127032339) do
     t.string   "linkedin_id"
     t.string   "url"
     t.string   "address"
+    t.string   "display"
   end
 
   create_table "company_departments", :id => false, :force => true do |t|

@@ -80,14 +80,11 @@ class User < ActiveRecord::Base
 
   def self.company_location(company)
     api = Api.new
-    api.company_id = company.linkedin_id
-    debugger
-    if api.company_details
-    
-      api.company_postalcode
-      location = Location.find_or_create_by_postalcode(api.company_postalcode)
-      company.locations << location
-    end
+    api.company_id = company.linkedin_id  
+    api.company_details
+    api.company_postalcode
+    location = Location.find_or_create_by_postalcode(api.company_postalcode)
+    company.locations << location
   end
 
   def self.user_schools(person, auth, user)
