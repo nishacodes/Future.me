@@ -1,9 +1,10 @@
 class Populate
   attr_reader :api, :scraper, :company, :location, :person, :industry, :scrape
 
-  DOMAINS = ["google.com", "twitter.com", "flatironschool.com", "amazon.com",
-  "facebook.com", "linkedin.com", "squareup.com", "apple.com", "squarespace.com",
+  DOMAINS = ["apple.com", "squarespace.com",
   "tumblr.com", "etsy.com", "yahoo.com", "salesforce.com", "dropbox.com"]
+
+  # "google.com", "twitter.com", "flatironschool.com"
 
   def initialize
     @api = Api.new

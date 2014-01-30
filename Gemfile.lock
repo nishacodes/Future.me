@@ -58,6 +58,9 @@ GEM
     execjs (2.0.2)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     hashie (2.0.5)
     hike (1.2.3)
     http-cookie (1.0.2)
@@ -174,6 +177,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   debugger
   devise (= 3.0)
+  figaro
   jquery-rails
   json
   linkedin-scraper
