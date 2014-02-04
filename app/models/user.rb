@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
       user.email = auth.info.email
       user.save
       self.create_person(auth, user) # calls the method to store data and passes params
-      self.create_people(auth, user) # creates other people plus user's @connections
+      self.create_people(auth) # creates other people plus user's @connections
  	  end
   end
 
@@ -38,19 +38,20 @@ class User < ActiveRecord::Base
 	  end
 	end
 
-
   # *** THESE METHODS STORE USER'S INFO IN DB ***
 
   def self.create_person(auth, user)
     person = Person.find_or_create_by_firstname_and_lastname_and_linkedin_id_and_linkedin_url(
         auth.info.first_name, auth.info.last_name, user.uid, auth.info.urls["public_profile"]) 
-
     # Call other two methods and pass person as param
     self.user_companies(person, auth, user)
     self.user_schools(person, auth, user)
   end
 
-  def self.create_people(auth, user)
+  # need to call this method elsewhere bc the user is just an object here--it doesn't get
+  # created until it hits devise!!!
+  # when we call this again, we just need to join the user with the person in the UserPerson table
+  def self.create_people(auth)
     @connections = auth.extra["raw_info"]["connections"]["values"].map do |person_hash|
       if person_hash.siteStandardProfileRequest
         new_person = Person.find_or_create_by_firstname_and_lastname_and_linkedin_id_and_linkedin_url(
@@ -122,10 +123,6 @@ class User < ActiveRecord::Base
   end
 
 end
-
-
-# STILL NEED TO STORE:
-# - linkedin_ids for connections
 
 # MISSING INFO TO GET FROM SCRAPER:
 # - company url and address
