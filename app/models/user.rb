@@ -5,12 +5,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable, :recoverable, :rememberable, :trackable, :validatable
   # attr_accessible :email, :password, :password_confirmation, :remember_me, :username
 
+  has_many :user_people
+  has_many :people, :through => :user_people
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
+      user.save
       self.create_person(auth, user) # calls the method to store data and passes params
+      self.create_people(auth, user) # creates other people plus user's @connections
  	  end
   end
 
@@ -43,6 +48,18 @@ class User < ActiveRecord::Base
     # Call other two methods and pass person as param
     self.user_companies(person, auth, user)
     self.user_schools(person, auth, user)
+  end
+
+  def self.create_people(auth, user)
+    @connections = auth.extra["raw_info"]["connections"]["values"].map do |person_hash|
+      if person_hash.siteStandardProfileRequest
+        new_person = Person.find_or_create_by_firstname_and_lastname_and_linkedin_id_and_linkedin_url(
+          person_hash.firstName, person_hash.lastName, person_hash.id, person_hash.siteStandardProfileRequest.url)
+      else
+        new_person = Person.find_or_create_by_firstname_and_lastname_and_linkedin_id(
+          person_hash.firstName, person_hash.lastName, person_hash.id)
+      end
+    end
   end
 
   def self.user_companies(person, auth, user)
