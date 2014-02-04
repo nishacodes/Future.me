@@ -10,9 +10,13 @@ class PagesController < ApplicationController
     @locations = Location.all
   end
 
+  def d3test
+    
+  end
+
   def industries
     @industries = Industry.all
-    render json: @industries, :each_serializer => IndustriesSerializer, root: "industries"
+    render json: @industries, :each_serializer => IndustriesSerializer, root: false
   end
 
   def industry
