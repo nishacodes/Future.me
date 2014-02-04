@@ -4,6 +4,7 @@
     <title>Futureme</title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -11,6 +12,7 @@
     <% flash.each do |name, msg| %>
       <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
     <% end %>
+    <%= render 'layouts/d3' %>
     <%= yield %>
   </body>
 </html>

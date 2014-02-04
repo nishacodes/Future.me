@@ -12,6 +12,7 @@ class PagesController < ApplicationController
 
   def industries
     @industries = Industry.all
+
     render json: @industries, :each_serializer => IndustriesSerializer, root: "industries"
   end
 
