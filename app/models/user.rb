@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable, :recoverable, :rememberable, :trackable, :validatable
   # attr_accessible :email, :password, :password_confirmation, :remember_me, :username
   after_save :create_connections
+  # attr_reader :connections
 
   has_many :user_people
   has_many :people, :through => :user_people
@@ -15,8 +16,8 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.email = auth.info.email
       user.save
-      self.create_person(auth, user) # calls the method to store data and passes params
       self.create_people(auth) # creates other people plus user's @connections
+      self.create_person(auth, user) # calls the method to store data and passes params
  	  end
   end
 
@@ -51,13 +52,8 @@ class User < ActiveRecord::Base
 
   # need to call this method elsewhere bc the user is just an object here--it doesn't get
   # created until it hits devise!!!
-  # when we call this again, we just need to join the user with the person in the UserPerson table
-  # this User object (e.g. @user) will have to be passed to the sidekiq, and then you can call this method..
-  # @user.connections.each do |person|
-  #   @user.people << person
-  # end
   def self.create_people(auth)
-    @connections = auth.extra["raw_info"]["connections"]["values"].map do |person_hash|
+    @@connections = auth.extra["raw_info"]["connections"]["values"].map do |person_hash|
       if person_hash.siteStandardProfileRequest
         new_person = Person.find_or_create_by_firstname_and_lastname_and_linkedin_id_and_linkedin_url(
           person_hash.firstName, person_hash.lastName, person_hash.id, person_hash.siteStandardProfileRequest.url)
@@ -65,6 +61,12 @@ class User < ActiveRecord::Base
         new_person = Person.find_or_create_by_firstname_and_lastname_and_linkedin_id(
           person_hash.firstName, person_hash.lastName, person_hash.id)
       end
+    end
+  end
+
+  def create_connections
+    @@connections.each do |person|
+      self.people << person unless self.people.include? person
     end
   end
 
