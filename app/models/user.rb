@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable, :recoverable, :rememberable, :trackable, :validatable
   # attr_accessible :email, :password, :password_confirmation, :remember_me, :username
   after_save :create_connections
-  # attr_reader :connections
 
   has_many :user_people
   has_many :people, :through => :user_people
@@ -50,8 +49,6 @@ class User < ActiveRecord::Base
     self.user_schools(person, auth, user)
   end
 
-  # need to call this method elsewhere bc the user is just an object here--it doesn't get
-  # created until it hits devise!!!
   def self.create_people(auth)
     @@connections = auth.extra["raw_info"]["connections"]["values"].map do |person_hash|
       if person_hash.siteStandardProfileRequest
@@ -134,9 +131,3 @@ end
 
 # MISSING INFO TO GET FROM SCRAPER:
 # - company url and address
-
-
-
-
-
-
