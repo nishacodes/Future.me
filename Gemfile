@@ -12,6 +12,7 @@ gem 'omniauth-linkedin-oauth2'
 gem 'omniauth-oauth2'
 gem 'active_model_serializers'
 gem 'figaro'
+gem 'area'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

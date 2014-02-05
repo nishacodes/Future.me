@@ -37,6 +37,7 @@ class Populate
 
   def create_location
     @location = Location.find_or_create_by_postalcode(@api.company_postalcode)
+    city_state_lon_lat
     @company.locations << @location
     @company.save
   end
@@ -87,8 +88,9 @@ class Populate
       if this_company.address
         matchdata = this_company.address.match(/\d{5}/)
         if matchdata
-          this_location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
-          this_company.locations << this_location
+          @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
+          city_state_lon_lat
+          this_company.locations << @location
           this_company.save
         end
       end
@@ -121,8 +123,9 @@ class Populate
       if this_company.address
         matchdata = this_company.address.match(/\d{5}/)
         if matchdata
-          this_location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
-          this_company.locations << this_location
+          @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
+          city_state_lon_lat
+          this_company.locations << @location
           this_company.save
         end
       end
@@ -139,6 +142,19 @@ class Populate
       # Save this after shoveling
       person.save
     end
+  end
+
+  def city_state_lon_lat
+    # locations = Location.all
+    # locations.each do |location|
+      postalcode = @location.postalcode.to_s 
+      if postalcode.length == 5 
+        @location.update_attributes(:city => postalcode.to_region(:city => true),
+          :state => postalcode.to_region(:state => true), 
+          :long => postalcode.to_lon, 
+          :lat => postalcode.to_lat)
+      end
+    # end
   end
 
   def display_names
