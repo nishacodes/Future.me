@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable, :recoverable, :rememberable, :trackable, :validatable
   # attr_accessible :email, :password, :password_confirmation, :remember_me, :username
+  after_save :create_connections
 
   has_many :user_people
   has_many :people, :through => :user_people
@@ -121,6 +122,7 @@ class User < ActiveRecord::Base
       person.save    
     end 
   end
+  
 
 end
 
