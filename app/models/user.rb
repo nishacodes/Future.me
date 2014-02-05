@@ -51,6 +51,10 @@ class User < ActiveRecord::Base
   # need to call this method elsewhere bc the user is just an object here--it doesn't get
   # created until it hits devise!!!
   # when we call this again, we just need to join the user with the person in the UserPerson table
+  # this User object (e.g. @user) will have to be passed to the sidekiq, and then you can call this method..
+  # @user.connections.each do |person|
+  #   @user.people << person
+  # end
   def self.create_people(auth)
     @connections = auth.extra["raw_info"]["connections"]["values"].map do |person_hash|
       if person_hash.siteStandardProfileRequest
