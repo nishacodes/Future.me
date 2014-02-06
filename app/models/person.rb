@@ -11,4 +11,7 @@ class Person < ActiveRecord::Base
 
   has_many :company_people
   has_many :companies, :through => :company_people 
+
+  has_many :user_people
+  has_many :users, :through => :user_people
 end

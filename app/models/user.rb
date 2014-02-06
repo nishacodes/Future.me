@@ -4,13 +4,19 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable, :recoverable, :rememberable, :trackable, :validatable
   # attr_accessible :email, :password, :password_confirmation, :remember_me, :username
+  after_save :create_connections
+
+  has_many :user_people
+  has_many :people, :through => :user_people
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
-      
+
+      self.create_people(auth) # creates other people plus user's @connections
+
       self.create_person(auth, user) # calls the method to store data and passes params
  	  end
   end
@@ -34,16 +40,32 @@ class User < ActiveRecord::Base
 	  end
 	end
 
-
   # *** THESE METHODS STORE USER'S INFO IN DB ***
 
   def self.create_person(auth, user)
     person = Person.find_or_create_by_firstname_and_lastname_and_linkedin_id_and_linkedin_url(
         auth.info.first_name, auth.info.last_name, user.uid, auth.info.urls["public_profile"]) 
-
     # Call other two methods and pass person as param
     self.user_companies(person, auth, user)
     self.user_schools(person, auth, user)
+  end
+
+  def self.create_people(auth)
+    @@connections = auth.extra["raw_info"]["connections"]["values"].map do |person_hash|
+      if person_hash.siteStandardProfileRequest
+        new_person = Person.find_or_create_by_firstname_and_lastname_and_linkedin_id_and_linkedin_url(
+          person_hash.firstName, person_hash.lastName, person_hash.id, person_hash.siteStandardProfileRequest.url)
+      else
+        new_person = Person.find_or_create_by_firstname_and_lastname_and_linkedin_id(
+          person_hash.firstName, person_hash.lastName, person_hash.id)
+      end
+    end
+  end
+
+  def create_connections
+    @@connections.each do |person|
+      self.people << person unless self.people.include? person
+    end
   end
 
   def self.user_companies(person, auth, user)
@@ -104,18 +126,9 @@ class User < ActiveRecord::Base
       person.save    
     end 
   end
+  
 
 end
 
-
-# STILL NEED TO STORE:
-# - linkedin_ids for connections
-
 # MISSING INFO TO GET FROM SCRAPER:
 # - company url and address
-
-
-
-
-
-
