@@ -1,3 +1,3 @@
-class CompaniesSerializer < ActiveModel::Serializer#ArraySerializer
+class CompaniesSerializer < ActiveModel::Serializer
   attributes :id, :name, :value
 end

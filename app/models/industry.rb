@@ -7,7 +7,7 @@ class Industry < ActiveRecord::Base
   has_many :companies, :through => :company_industries
 
  def value
-  	self.people.uniq.size
+  	self.companies.uniq.size
   end
   
 end
