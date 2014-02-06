@@ -21,11 +21,11 @@ class Company < ActiveRecord::Base
   
   # validates_uniqueness_of :name
 
+  def value
+    self.people.uniq.size
+  end
+
+
 
 end
 
-# RUN FROM RAILS C LIKE SO
-#  to_change = Company.where("name LIKE '%#{search}%'")
-#  to_change.each do |company|
-#     company.update_attribute(:display => "#{display}")
-#  end

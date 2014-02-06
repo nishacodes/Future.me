@@ -3,7 +3,7 @@ Futureme::Application.routes.draw do
   controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   root :to => 'pages#index'
-
+  get 'd3test_derek' => "pages#d3test_derek"
   get 'industries' => 'pages#industries'
   get 'industries/:i_id' => 'pages#industry'
   get 'industries/:i_id/companies' => 'pages#companies'
