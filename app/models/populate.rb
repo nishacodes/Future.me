@@ -17,16 +17,14 @@ class Populate
 
   def create_company
     DOMAINS.each do |domain|
-      @api.find_company(domain)
+      @api.run(domain)
         url = "http://www." + domain
         @company = Company.find_or_create_by_name_and_linkedin_id_and_url(@api.company_name, @api.company_id, url)
+        display_names
         create_industry
         create_location
         create_people
         update_people
-    end
-    if REPEAT_COMPANY_NAMES.keys.include? @company.name 
-      display_names
     end
   end
 
@@ -38,8 +36,10 @@ class Populate
 
   def create_location
     @location = Location.find_or_create_by_postalcode(@api.company_postalcode)
+    @company.locations << @location 
+    city_state_lon_lat
     @company.locations << @location unless @company.locations.include? @location
-    # @company.save
+    @company.save
   end
 
   def create_people
@@ -88,9 +88,10 @@ class Populate
       if this_company.address
         matchdata = this_company.address.match(/\d{5}/)
         if matchdata
-          this_location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
-          this_company.locations << this_location unless this_company.locations.include? this_location
-          # this_company.save
+          @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
+          city_state_lon_lat
+          this_company.locations << @location unless this_company.locations.include? this_location
+          this_company.save
         end
       end
 
@@ -123,8 +124,12 @@ class Populate
         matchdata = this_company.address.match(/\d{5}/)
         if matchdata
           this_location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
-          this_company.locations << this_location unless this_company.locations.include? this_location
+          this_company.locations << this_location 
+          @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
+          city_state_lon_lat
+          this_company.locations << @location unless this_company.locations.include? this_location
           # this_company.save
+          this_company.save
         end
       end
 
@@ -142,15 +147,26 @@ class Populate
     end
   end
 
+  def city_state_lon_lat
+    # locations = Location.all
+    # locations.each do |location|
+      postalcode = @location.postalcode.to_s 
+      if postalcode.length == 5 
+        @location.update_attributes(:city => postalcode.to_region(:city => true),
+          :state => postalcode.to_region(:state => true), 
+          :long => postalcode.to_lon, 
+          :lat => postalcode.to_lat)
+      end
+    # end
+  end
+
   def display_names
-    REPEAT_COMPANY_NAMES.each do |search, display|
-      to_change = Company.where("name LIKE '%#{search}%'")
-      to_change.each do |company|
-        company.update_attributes(:display => "#{display}")
+    @company.name.split(" ").each do |name|
+      if REPEAT_COMPANY_NAMES[name]
+        @company.update_attribute(:display => "#{REPEAT_COMPANY_NAMES[name]}")
       end
     end
   end
-
 end
 
 
