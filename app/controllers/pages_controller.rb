@@ -12,11 +12,9 @@ class PagesController < ApplicationController
 
 
   def d3test
-    # render
   end
 
   def d3test_derek
-
   end
 
   def industries

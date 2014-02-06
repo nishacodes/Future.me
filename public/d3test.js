@@ -37,16 +37,24 @@ d3.json("industries.json", function(error, root) {
 
   node.append("circle")
       .attr("r", function(d) { return d.r; })
-      .style("fill", function(d) { 
-        console.log(d); 
+      // .style("opacity", "0.8")
+      .style("fill", function(d) {
         return color(d.id); });
 
   // give elements a title!
-  node.append("text")
-      //  don't know if we need this?
-      // .attr("dy", ".3em")
-      .style("text-anchor", "middle") // verticaly center the text
-      .text(function(d) { return d.name; });
+  // node.append("text")
+  //     //  don't know if we need this?
+  //     .attr("dy", ".3em")
+  //     .style("text-anchor", "middle") // verticaly center the text
+  //     .text(function(d) { return d.name; });
+  node.append("line")
+      .attr("x1", function(d){return d;})
+      .attr("y1", function(d){return d;})
+      .attr("x2", 100)
+      .attr("y2", 600)
+      .style("stroke", function(d) {
+        return color(d.id); })
+      .style("stroke-width", "10px");
 });
 
 // returns an object of the data... 
