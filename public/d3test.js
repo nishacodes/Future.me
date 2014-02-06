@@ -15,7 +15,7 @@ var svg = d3.select("body").append("svg")
 d3.json("industries.json", function(error, root) {
   var node = svg.selectAll(".node")
       .data(bubble.nodes(classes(root))
-      .filter(function(d) { return !d.children; }))
+      .filter(function(d) { return !d.children; })) //!d.children
     .enter().append("g")
       .attr("class", "node")
       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
