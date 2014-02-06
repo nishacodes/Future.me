@@ -1,11 +1,10 @@
 class Populate
   attr_reader :api, :scraper, :company, :location, :person, :industry, :scrape
 
-  DOMAINS = ["apple.com", "squarespace.com",
-  "tumblr.com", "etsy.com", "yahoo.com", "salesforce.com", "dropbox.com"]
+  DOMAINS = ["flatironschool.com"]
 
   REPEAT_COMPANY_NAMES = {"google" => "Google", "twitter" => "Twitter"}
-  # "google.com", "twitter.com", "flatironschool.com"
+  # "google.com", "twitter.com", "flatironschool.com" "tumblr.com", "etsy.com", "yahoo.com", "salesforce.com", "dropbox.com", "apple.com", "squarespace.com"
 
   def initialize
     @api = Api.new
@@ -31,14 +30,15 @@ class Populate
 
   def create_industry    
     @industry = Industry.find_or_create_by_name(@api.company_industry)
-    @industry.companies << @company
-    @industry.save
+    @industry.companies << @company unless @industry.companies.include? @company
+    # @industry.save
   end
 
   def create_location
     @location = Location.find_or_create_by_postalcode(@api.company_postalcode)
+    @company.locations << @location 
     city_state_lon_lat
-    @company.locations << @location
+    @company.locations << @location unless @company.locations.include? @location
     @company.save
   end
 
@@ -73,9 +73,9 @@ class Populate
         education = Education.find_or_create_by_kind_and_grad_yr_and_school_id(
           school[:description], school[:period], this_school.id)
       end
-      person.educations << education
+      person.educations << education unless person.educations.include? education
       # Save this after shoveling
-      person.save
+      # person.save
     end
   end
 
@@ -83,29 +83,29 @@ class Populate
     @scrape.current_companies.each do |company|
       this_company = Company.find_or_create_by_name_and_url_and_address(
         company[:company], company[:website], company[:address])
-      person.companies << this_company
+      person.companies << this_company unless person.companies.include? this_company
 
       if this_company.address
         matchdata = this_company.address.match(/\d{5}/)
         if matchdata
           @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
           city_state_lon_lat
-          this_company.locations << @location
+          this_company.locations << @location unless this_company.locations.include? this_location
           this_company.save
         end
       end
 
       this_industry = Industry.find_or_create_by_name(company[:industry])
       if this_company.industries
-        this_company.industries << this_industry
-        this_company.save
+        this_company.industries << this_industry unless this_company.industries.include? this_industry
+        # this_company.save
       end
 
       jobtitle = Jobtitle.find_or_create_by_title_and_start_date_and_end_date_and_company_id(
         company[:title], company[:start_date], company[:end_date], this_company.id)
-      person.jobtitles << jobtitle
+      person.jobtitles << jobtitle unless person.jobtitles.include? jobtitle
       # Save this after shoveling
-      person.save
+      # person.save
     end
   end
 
@@ -118,29 +118,32 @@ class Populate
       if this_company.url.nil?
         this_company.update_attributes(:url=>company[:website],:address=>company[:address])
       end
-      person.companies << this_company
+      person.companies << this_company unless person.companies.include? this_company
 
       if this_company.address
         matchdata = this_company.address.match(/\d{5}/)
         if matchdata
+          this_location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
+          this_company.locations << this_location 
           @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
           city_state_lon_lat
-          this_company.locations << @location
+          this_company.locations << @location unless this_company.locations.include? this_location
+          # this_company.save
           this_company.save
         end
       end
 
       this_industry = Industry.find_or_create_by_name(company[:industry])
       if this_company.industries
-        this_company.industries << this_industry
-        this_company.save
+        this_company.industries << this_industry unless this_company.industries.include? this_industry
+        # this_company.save
       end
 
       jobtitle = Jobtitle.find_or_create_by_title_and_start_date_and_end_date_and_company_id(
         company[:title], company[:start_date], company[:end_date], this_company.id)
-      person.jobtitles << jobtitle
+      person.jobtitles << jobtitle unless person.jobtitles.include? jobtitle
       # Save this after shoveling
-      person.save
+      # person.save
     end
   end
 
@@ -164,5 +167,8 @@ class Populate
       end
     end
   end
-
 end
+
+
+
+

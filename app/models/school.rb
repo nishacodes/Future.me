@@ -6,4 +6,9 @@ class School < ActiveRecord::Base
   has_many :people, :through => :person_schools
   has_many :educations
   has_one :location
+
+  def value
+  	self.people.uniq.size
+  end
+
 end

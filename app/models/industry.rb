@@ -6,7 +6,9 @@ class Industry < ActiveRecord::Base
   has_many :company_industries
   has_many :companies, :through => :company_industries
 
-  def value
-    self.companies.length
+ def value
+  	self.companies.uniq.size
   end
+ 
 end
+
