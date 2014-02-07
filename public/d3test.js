@@ -15,10 +15,14 @@ var svg = d3.select("body").append("svg")
     .attr("height", diameter)
     .attr("class", "bubble"); 
 
-(function showMeDaMoney(route){
+
+(function showMeDaMoney(source,selection){
+  console.log("source:" + source); // ex "industries/2/companies.json"
+  console.log("selection:" + selection); // the id of the selected element in our table
+  
   // Bind data to the nodes
-  console.log(route);
-  d3.json(route, function(error, root) { // root is the data object
+  // sub actual route with 'route' in production
+  d3.json("industries.json", function(error, root) { // root is the data object
     
     var node = svg.selectAll(".node") // selects all g's with the class "node"
         .data(bubble.nodes(classes(root)) // ????
@@ -33,10 +37,11 @@ var svg = d3.select("body").append("svg")
     node.append("circle")
         .attr("r", function(d) { return d.r; }) // how does it know d.r?
         .style("fill", function(d) { 
-          return color(d.id); })
-        .on("click", function(){
-          showMeDaMoney("industries/1/companies.json");
-        }); // fills circle with color given by category 20c
+          return color(d.id); }) // fills circle with color given by category 20c
+        .on("click", function(d){
+          showMeDaMoney(d.source, d.id); // need to define this in all the serializers
+          $(".node").fadeOut(); // this not currently working
+        }); 
 
     node.append("text")
         .attr("dy", ".3em")
@@ -51,7 +56,7 @@ var svg = d3.select("body").append("svg")
 
   d3.select(self.frameElement).style("height", diameter + "px");
 
-})("industries/8/companies.json");
+})("industries");
 
 
 
