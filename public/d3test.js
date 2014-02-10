@@ -22,7 +22,7 @@ var svg = d3.select("body").append("svg")
   
   // Bind data to the nodes
   // sub actual route with 'route' in production
-  d3.json("industries.json", function(error, root) { // root is the data object
+  d3.json(source, function(error, root) { // root is the data object
     
     var node = svg.selectAll(".node") // selects all g's with the class "node"
         .data(bubble.nodes(classes(root)) // ????
@@ -39,14 +39,15 @@ var svg = d3.select("body").append("svg")
         .style("fill", function(d) { 
           return color(d.id); }) // fills circle with color given by category 20c
         .on("click", function(d){
+          // d3.selectAll(".node").remove(); // this not currently working
           showMeDaMoney(d.source, d.id); // need to define this in all the serializers
-          $(".node").fadeOut(); // this not currently working
+          
         }); 
 
     node.append("text")
         .attr("dy", ".3em")
         .style("text-anchor", "middle")
-        .text(function(d) { return d.name; }); // This is the label as a text element
+        .text(function(d) { return d.r; }); // This is the label as a text element
   });
 
   function classes(root) {
