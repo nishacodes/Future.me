@@ -1,12 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.16'
-gem 'sqlite3'
 gem 'jquery-rails'
 gem 'oauth'
 gem 'json'
 gem 'linkedin-scraper'
-gem 'debugger'
 gem 'devise', '3.0'
 gem 'omniauth-linkedin-oauth2'
 gem 'omniauth-oauth2'
@@ -26,7 +24,12 @@ group :assets do
 end
 
 group :development do
-# gem 'debugger'
+  gem 'debugger'
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
 end
 
 
