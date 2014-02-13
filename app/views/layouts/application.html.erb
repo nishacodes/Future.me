@@ -2,8 +2,13 @@
 <html>
   <head>
     <title>Futureme</title>
-    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
     <%= csrf_meta_tags %>
+    <style>
+      title {
+        font-style: sans-serif !important;
+      }
+    </style>
   </head>
   <body>
     <%= render 'layouts/header' %>
