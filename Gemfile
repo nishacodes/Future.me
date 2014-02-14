@@ -26,12 +26,19 @@ end
 group :development do
   gem 'debugger'
   gem 'sqlite3'
+<<<<<<< HEAD
 end
 
 
 group :production do
   gem 'pg'
+=======
+>>>>>>> ecdaa8807f5c2b74e8ebdcac24fbccac80f90d87
 end
+
+# group :production do
+#   gem 'pg', '0.17.1'
+# end
 
 
 # To use ActiveModel has_secure_password
