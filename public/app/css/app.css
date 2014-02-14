@@ -1,2 +1,19 @@
+.section {
+  width: 100%;
+  padding: 30px;
+  text-align: center;
+}
 
+#welcome {
+  background-color: blue;
+  min-height: 600px;  
+}
 
+#description {
+  background-color: red;
+
+}
+
+#getstarted {
+  background-color: yellow;
+}

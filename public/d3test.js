@@ -36,6 +36,7 @@ var svg = d3.select("body").append("svg")
     //  UPDATE
     node.append("circle")
         .attr("r", function(d) { return d.r; }) // how does it know d.r?
+        .attr("ng-click", "showIndustry(d.id)")
         .style("fill", function(d) { 
           return color(d.id); }) // fills circle with color given by category 20c
         .on("click", function(d){
