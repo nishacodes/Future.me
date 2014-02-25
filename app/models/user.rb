@@ -62,8 +62,10 @@ class User < ActiveRecord::Base
   end
 
   def create_connections
-    @@connections.each do |person|
-      self.people << person unless self.people.include? person
+    if @@connections
+      @@connections.each do |person|
+        self.people << person unless self.people.include? person
+      end
     end
   end
 
