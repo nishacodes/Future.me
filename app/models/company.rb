@@ -25,5 +25,9 @@ class Company < ActiveRecord::Base
     self.people.uniq.size
   end
 
+  def source
+    "industries/#{self.industries.first.id}/companies/#{self.id}"
+  end
+
 end
 

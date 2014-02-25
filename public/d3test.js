@@ -16,16 +16,16 @@ var svg = d3.select("body").append("svg")
     .attr("class", "bubble"); 
 
 
-(function showBubbles(source,selection){
+(function showBubbles(source, selection){
   console.log("source:" + source); // ex "industries/2/companies.json"
   console.log("selection:" + selection); // the id of the selected element in our table
   
   // Bind data to the nodes
   // sub actual route with 'route' in production
-  d3.json(source, function(error, root) { // root is the data object
+  d3.json(source, function(error, data) { // data is the data object
     
     var node = svg.selectAll(".node") // selects all g's with the class "node"
-        .data(bubble.nodes(classes(root)) // ????
+        .data(bubble.nodes(classes(data)) // ????
         .filter(function(d) { return !d.children; })) 
       
       // ENTER - create nodes for datapoints
@@ -51,20 +51,18 @@ var svg = d3.select("body").append("svg")
         .text(function(d) { return d.name; }); // This is the label as a text element
   });
 
-  function classes(root) {
-    return {children: root};
+  function classes(data) {
+    return {children: data};
   }
 
 
   d3.select(self.frameElement).style("height", diameter + "px");
 
-})("industries");
+})("industries/1/companies/5/people");
 
 
-
-
-  // Returns a flattened hierarchy containing all leaf nodes under the root.
-  // function classes(root) {
+  // Returns a flattened hierarchy containing all leaf nodes under the data.
+  // function classes(data) {
   //   var classes = [];
 
   //   function recurse(name, node) {
@@ -72,6 +70,6 @@ var svg = d3.select("body").append("svg")
   //     else classes.push({packageName: name, className: node.name, value: node.size});
   //   }
 
-  //   recurse(null, root);
+  //   recurse(null, data);
   //   return {totalcompanies: classes}; //{children: classes}
   // }

@@ -14,4 +14,8 @@ class Person < ActiveRecord::Base
 
   has_many :user_people
   has_many :users, :through => :user_people
+
+  def value
+    return 1
+  end
 end
