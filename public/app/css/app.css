@@ -1,3 +1,17 @@
+h1 {
+  font-size: 50pt;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 10px auto;
+}
+
+
+h2 {
+  font-size: 25pt;
+  letter-spacing: 2px;
+  margin: 10px auto;
+}
+
 .section {
   width: 100%;
   padding: 30px;
@@ -5,15 +19,14 @@
 }
 
 #welcome {
-  background-color: blue;
   min-height: 600px;  
 }
 
 #description {
-  background-color: red;
+  /*background-color: red;*/
 
 }
 
 #getstarted {
-  background-color: yellow;
+  /*background-color: blue;*/
 }
