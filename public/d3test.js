@@ -58,7 +58,7 @@ var svg = d3.select("body").append("svg")
 
   d3.select(self.frameElement).style("height", diameter + "px");
 
-})("industries/1/companies/5/people");
+})("industries/1/companies/32/people/schools");
 
 
   // Returns a flattened hierarchy containing all leaf nodes under the data.

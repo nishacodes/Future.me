@@ -18,4 +18,9 @@ class Person < ActiveRecord::Base
   def value
     return 1
   end
+
+  def name
+    return firstname + lastname
+  end
+
 end
