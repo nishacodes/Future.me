@@ -29,6 +29,6 @@ futureMeApp.config(['$routeProvider',
         controller: 'industriesCtrl'
       }).
       otherwise({
-        redirectTo: '/'
+        redirectTo: '/view'
       });
   }]);
