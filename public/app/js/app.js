@@ -21,21 +21,13 @@ futureMeApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/', {
+        templateUrl: 'app/partials/home.html',
+        controller: 'homeCtrl'
+      }).
+      when('/view',{
         templateUrl: 'app/partials/industries.html',
         controller: 'industriesCtrl'
       }).
-      // when('/dashboard', {
-      //   templateUrl: 'partials/cat-dashboard.html',
-      //   controller: 'industriesCtrl'
-      // }).
-      // when('/new', {
-      //   templateUrl: 'partials/cat-form.html',
-      //   controller: 'industriesCtrl'
-      // }).
-      // when('/cats/:catId', {
-      //   templateUrl: 'partials/cat-detail.html',
-      //   controller: 'CatDetailCtrl'
-      // }).
       otherwise({
         redirectTo: '/'
       });
