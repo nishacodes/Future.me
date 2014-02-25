@@ -4,8 +4,8 @@ Future.me
 LinkedIn Data Visualization Tool
 
 DOCUMENTATION
-
 (If you want to play with the repo, follow these steps)
+
 1. fork and clone the repo
 2. bundle
 3. rake db:migrate
@@ -15,5 +15,5 @@ DOCUMENTATION
 6. sign in with linkedin
 7. then sign UP, not sign in
 8. then wait for ~30 seconds for visualization to load
-9. 
+
 --end as of 2/25/14--
