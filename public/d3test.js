@@ -48,7 +48,7 @@ var svg = d3.select("body").append("svg")
     node.append("text")
         .attr("dy", ".3em")
         .style("text-anchor", "middle")
-        .text(function(d) { return d.r; }); // This is the label as a text element
+        .text(function(d) { return d.name; }); // This is the label as a text element
   });
 
   function classes(root) {
