@@ -16,7 +16,7 @@ var svg = d3.select("body").append("svg")
     .attr("class", "bubble"); 
 
 
-(function showMeDaMoney(source,selection){
+(function showBubbles(source,selection){
   console.log("source:" + source); // ex "industries/2/companies.json"
   console.log("selection:" + selection); // the id of the selected element in our table
   
@@ -41,7 +41,7 @@ var svg = d3.select("body").append("svg")
           return color(d.id); }) // fills circle with color given by category 20c
         .on("click", function(d){
           // d3.selectAll(".node").remove(); // this not currently working
-          showMeDaMoney(d.source, d.id); // need to define this in all the serializers
+          showBubbles(d.source, d.id); // need to define this in all the serializers
           
         }); 
 
