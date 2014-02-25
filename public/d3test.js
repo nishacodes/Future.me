@@ -16,7 +16,7 @@ var svg = d3.select("body").append("svg")
     .attr("class", "bubble"); 
 
 
-(function showBubbles(source, selection){
+function showBubbles(source, selection){
   console.log("source:" + source); // ex "industries/2/companies.json"
   console.log("selection:" + selection); // the id of the selected element in our table
   
@@ -58,8 +58,9 @@ var svg = d3.select("body").append("svg")
 
   d3.select(self.frameElement).style("height", diameter + "px");
 
-})("industries/1/companies/32/people/schools");
+};
 
+showBubbles("industries");
 
   // Returns a flattened hierarchy containing all leaf nodes under the data.
   // function classes(data) {
