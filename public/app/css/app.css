@@ -1,10 +1,15 @@
+/*$mainFont:  'Open Sans', sans-serif;
+$titleFont: 'Nixie One', sans-serif;
+*/
+
 h1 {
-  font-size: 50pt;
+  font-family: 'Nixie One', sans-serif;
+  font-size: 60pt;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin: 10px auto;
+  color: white;
 }
-
 
 h2 {
   font-size: 25pt;
@@ -19,8 +24,13 @@ h2 {
 }
 
 #welcome {
-  min-height: 600px;  
+  min-height: 700px;  
+  background-color: rgba(0,0,0,0.5); /* not working */
+  background: url('path.jpg'); 
+  background-size: 100%;
 }
+
+
 
 #description {
   /*background-color: red;*/
