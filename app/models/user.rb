@@ -162,7 +162,7 @@ class User < ActiveRecord::Base
             if matchdata
               @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
               # city_state_lon_lat
-              this_company.locations << @location unless this_company.locations.include? this_location
+              this_company.locations << @location unless this_company.locations.include? @location
               this_company.save
             end
           end
@@ -193,11 +193,11 @@ class User < ActiveRecord::Base
           if this_company.address
             matchdata = this_company.address.match(/\d{5}/)
             if matchdata
-              this_location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
-              this_company.locations << this_location 
+              @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
+              this_company.locations << @location 
               @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
               # city_state_lon_lat
-              this_company.locations << @location unless this_company.locations.include? this_location
+              this_company.locations << @location unless this_company.locations.include? @location
               # this_company.save
               this_company.save
             end
