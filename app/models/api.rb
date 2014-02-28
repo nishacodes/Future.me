@@ -21,11 +21,8 @@ class Api
   def company_details
     json_txt = ACCESS_TOKEN.get("http://api.linkedin.com/v1/companies/#{@company_id}:(name,industries,company-type,locations,employee-count-range)", 'x-li-format' => 'json').body
     parsed = JSON.parse(json_txt)
-    debugger
-    begin
+    if parsed["industries"]
       @company_industry = parsed["industries"]["values"][0]["name"]
-    rescue
-      next
     end
     if parsed["locations"]
       @company_postalcode = parsed["locations"]["values"][0]["address"]["postalCode"]
@@ -51,6 +48,12 @@ class Api
       int += 25
     end
     @people.uniq!
+  end
+
+  def get_public_profile_url(linkedin_id)
+    json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people/#{linkedin_id}", 'x-li-format' => 'json').body
+    debugger 
+    puts "hi"
   end
 
 

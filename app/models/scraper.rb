@@ -4,7 +4,9 @@ class Scraper
     :company_location, :company_industry
 
   def initialize(publicprofileurl)
-    @profile = Linkedin::Profile.get_profile("#{publicprofileurl}")
+    debugger
+    @profile = Linkedin::Profile.get_profile(publicprofileurl)
+    debugger
     # It seems that for people w/private profiles @profile will be nil
     unless @profile.nil?
       get_profile_info
