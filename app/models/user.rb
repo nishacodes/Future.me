@@ -14,10 +14,10 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
+      debugger
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
-      debugger
       self.create_people(auth) # creates other people plus user's @connections
 
       self.create_person(auth, user) # calls the method to store data and passes params
@@ -46,11 +46,13 @@ class User < ActiveRecord::Base
   # *** THESE METHODS STORE USER'S INFO IN DB ***
 
   def self.create_person(auth, user)
+    debugger
     person = Person.find_or_create_by_firstname_and_lastname_and_linkedin_id_and_linkedin_url(
         auth.info.first_name, auth.info.last_name, user.uid, auth.info.urls["public_profile"]) 
     # Call other two methods and pass person as param
     self.user_companies(person, auth, user)
     self.user_schools(person, auth, user)
+    self.add_connection_details(user)
   end
 
   def self.create_people(auth)
@@ -132,6 +134,13 @@ class User < ActiveRecord::Base
       person.educations << education  
       person.save    
     end 
+  end
+
+  def self.add_connection_details
+    user.people.each do |person|
+      debugger
+      puts "hi"
+    end
   end
   
 
