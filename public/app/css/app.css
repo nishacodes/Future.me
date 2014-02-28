@@ -1,15 +1,27 @@
-h1 {
-  font-size: 50pt;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin: 10px auto;
+/*$mainFont:  'Open Sans', sans-serif;
+$titleFont: 'Nixie One', sans-serif;
+*/
+
+body {
+  font-family: 'Open Sans', sans-serif;
 }
 
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 60pt;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin: 10px auto;
+  color: white;
+}
 
 h2 {
+  font-family: 'Nixie One', sans-serif;
   font-size: 25pt;
-  letter-spacing: 2px;
-  margin: 10px auto;
+  letter-spacing: 3px;
+  margin: 20px auto;
+  color: white;
 }
 
 .section {
@@ -19,8 +31,18 @@ h2 {
 }
 
 #welcome {
-  min-height: 600px;  
+  min-height: 700px;  
+  
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.45), 
+      rgba(0, 0, 0, 0.45)
+    ),
+    url('../img/path.jpg'); 
+  background-size: 100%;
 }
+
+
 
 #description {
   /*background-color: red;*/

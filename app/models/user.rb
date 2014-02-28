@@ -10,14 +10,14 @@ class User < ActiveRecord::Base
   has_many :user_people
   has_many :people, :through => :user_people
 
+  @@connections = []
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
-
       self.create_people(auth) # creates other people plus user's @connections
-
       self.create_person(auth, user) # calls the method to store data and passes params
  	  end
   end
@@ -49,10 +49,11 @@ class User < ActiveRecord::Base
     # Call other two methods and pass person as param
     self.user_companies(person, auth, user)
     self.user_schools(person, auth, user)
+    self.add_connection_details(user)
   end
 
   def self.create_people(auth)
-    @connections = auth.extra["raw_info"]["connections"]["values"].map do |person_hash|
+    @@connections = auth.extra["raw_info"]["connections"]["values"].map do |person_hash|
       if person_hash.siteStandardProfileRequest
         new_person = Person.find_or_create_by_firstname_and_lastname_and_linkedin_id_and_linkedin_url(
           person_hash.firstName, person_hash.lastName, person_hash.id, person_hash.siteStandardProfileRequest.url)
@@ -64,8 +65,8 @@ class User < ActiveRecord::Base
   end
 
   def create_connections
-    if @connections
-      @connections.each do |person|
+    if @@connections
+      @@connections.each do |person|
         self.people << person unless self.people.include? person
       end
     end
@@ -73,7 +74,7 @@ class User < ActiveRecord::Base
 
   def self.user_companies(person, auth, user)
     positions_array = auth.extra["raw_info"].positions["values"]
-  
+    
     positions_array.each do |position_hash|
       # Create companies
       company = Company.find_or_create_by_name_and_linkedin_id(position_hash.company.name, 
@@ -128,6 +129,35 @@ class User < ActiveRecord::Base
       person.educations << education  
       person.save    
     end 
+  end
+
+  def self.add_connection_details(user)
+    @@connections.each do |person|
+      @api = Api.new.get_public_profile_url(person.linkedin_id)
+      @scrape = Scraper.new(person.linkedin_url)
+      debugger
+      if @scrape.profile
+         @scrape.educations.each do |school|
+            this_school = School.find_or_create_by_name(school[:name])
+            person.schools << this_school
+            # regex out the kind and major
+            match = /([^,]*),? ?(.*)/.match(school[:description])
+            if match
+              education = Education.find_or_create_by_kind_and_major_and_grad_yr_and_school_id(
+                match[1], match[2], school[:period], this_school.id)
+            else
+              education = Education.find_or_create_by_kind_and_grad_yr_and_school_id(
+                school[:description], school[:period], this_school.id)
+            end
+            person.educations << education unless person.educations.include? education
+            # Save this after shoveling
+            # person.save
+          end
+        debugger
+        puts "hi"
+        
+      end
+    end
   end
   
 
