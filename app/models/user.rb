@@ -196,11 +196,7 @@ class User < ActiveRecord::Base
               @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
               this_company.locations << @location 
               @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
-<<<<<<< HEAD
-              # city_state_lon_lat
-=======
               # self.city_state_lon_lat
->>>>>>> 38049436fac86ccd675c11cafcdeae1f95a21c70
               this_company.locations << @location unless this_company.locations.include? @location
               # this_company.save
               this_company.save
