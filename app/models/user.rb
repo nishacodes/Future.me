@@ -133,31 +133,103 @@ class User < ActiveRecord::Base
 
   def self.add_connection_details(user)
     @@connections.each do |person|
-      @api = Api.new.get_public_profile_url(person.linkedin_id)
-      @scrape = Scraper.new(person.linkedin_url)
-      debugger
+      public_profile_url = Api.new.get_public_profile_url(person.linkedin_id) # need this bc oauth gives a diff url
+      @scrape = Scraper.new(public_profile_url)
       if @scrape.profile
-         @scrape.educations.each do |school|
-            this_school = School.find_or_create_by_name(school[:name])
-            person.schools << this_school
-            # regex out the kind and major
-            match = /([^,]*),? ?(.*)/.match(school[:description])
-            if match
-              education = Education.find_or_create_by_kind_and_major_and_grad_yr_and_school_id(
-                match[1], match[2], school[:period], this_school.id)
-            else
-              education = Education.find_or_create_by_kind_and_grad_yr_and_school_id(
-                school[:description], school[:period], this_school.id)
-            end
-            person.educations << education unless person.educations.include? education
-            # Save this after shoveling
-            # person.save
+        @scrape.educations.each do |school|
+          this_school = School.find_or_create_by_name(school[:name])
+          person.schools << this_school
+          # regex out the kind and major
+          match = (/([^,]*),? ?(.*)/).match(school[:description])
+          if match
+            education = Education.find_or_create_by_kind_and_major_and_grad_yr_and_school_id(
+              match[1], match[2], school[:period], this_school.id)
+          else
+            education = Education.find_or_create_by_kind_and_grad_yr_and_school_id(
+              school[:description], school[:period], this_school.id)
           end
-        debugger
-        puts "hi"
-        
+          person.educations << education unless person.educations.include? education
+          # Save this after shoveling
+          person.save
+        end
+        @scrape.current_companies.each do |company|
+          this_company = Company.find_or_create_by_name_and_url_and_address(
+            company[:company], company[:website], company[:address])
+          person.companies << this_company unless person.companies.include? this_company
+
+          if this_company.address
+            matchdata = this_company.address.match(/\d{5}/)
+            if matchdata
+              @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
+              # city_state_lon_lat
+              this_company.locations << @location unless this_company.locations.include? this_location
+              this_company.save
+            end
+          end
+
+          this_industry = Industry.find_or_create_by_name(company[:industry])
+          if this_company.industries
+            this_company.industries << this_industry unless this_company.industries.include? this_industry
+            # this_company.save
+          end
+
+          jobtitle = Jobtitle.find_or_create_by_title_and_start_date_and_end_date_and_company_id(
+            company[:title], company[:start_date], company[:end_date], this_company.id)
+          person.jobtitles << jobtitle unless person.jobtitles.include? jobtitle
+          # Save this after shoveling
+          # person.save
+        end
+
+        @scrape.past_companies.each do |company|
+          # this_company = Company.find_or_create_by_name_and_url_and_address(
+          #   company[:company], company[:website], company[:address])
+          this_company = Company.find_or_create_by_name(
+            company[:company])
+          if this_company.url.nil?
+            this_company.update_attributes(:url=>company[:website],:address=>company[:address])
+          end
+          person.companies << this_company unless person.companies.include? this_company
+
+          if this_company.address
+            matchdata = this_company.address.match(/\d{5}/)
+            if matchdata
+              this_location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
+              this_company.locations << this_location 
+              @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
+              # city_state_lon_lat
+              this_company.locations << @location unless this_company.locations.include? this_location
+              # this_company.save
+              this_company.save
+            end
+          end
+
+          this_industry = Industry.find_or_create_by_name(company[:industry])
+          if this_company.industries
+            this_company.industries << this_industry unless this_company.industries.include? this_industry
+            # this_company.save
+          end
+
+          jobtitle = Jobtitle.find_or_create_by_title_and_start_date_and_end_date_and_company_id(
+            company[:title], company[:start_date], company[:end_date], this_company.id)
+          person.jobtitles << jobtitle unless person.jobtitles.include? jobtitle
+          # Save this after shoveling
+          # person.save
+        end
       end
     end
+  end
+
+  def city_state_lon_lat
+    # locations = Location.all
+    # locations.each do |location|
+      postalcode = @location.postalcode.to_s 
+      if postalcode.length == 5 
+        @location.update_attributes(:city => postalcode.to_region(:city => true),
+          :state => postalcode.to_region(:state => true), 
+          :long => postalcode.to_lon, 
+          :lat => postalcode.to_lat)
+      end
+    # end
   end
   
 
