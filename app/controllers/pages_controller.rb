@@ -11,13 +11,7 @@ class PagesController < ApplicationController
     # @locations = Location.all
   end
 
-
-
   def d3test
-    # render
-  end
-
-  def d3test_derek
 
   end
 

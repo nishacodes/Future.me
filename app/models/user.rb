@@ -73,35 +73,37 @@ class User < ActiveRecord::Base
   end
 
   def self.user_companies(person, auth, user)
-    positions_array = auth.extra["raw_info"].positions["values"]
-    
-    positions_array.each do |position_hash|
-      # Create companies
-      company = Company.find_or_create_by_name_and_linkedin_id(position_hash.company.name, 
-        position_hash.company.id)
-      industry = Industry.find_or_create_by_name(position_hash.company.industry)
-
-      # Get company location from the API
-      self.company_location(company)
+    if auth.extra["raw_info"].positions["values"] != nil
+      positions_array = auth.extra["raw_info"].positions["values"]
       
-      # Format dates because given as separate month and year..WTF!
-      startDate = Date.new(position_hash.startDate.year,position_hash.startDate.month)
-      if position_hash.endDate # current position has no end date
-        endDate = Date.new(position_hash.endDate.year,position_hash.endDate.month) 
+      positions_array.each do |position_hash|
+        # Create companies
+        company = Company.find_or_create_by_name_and_linkedin_id(position_hash.company.name, 
+          position_hash.company.id)
+        industry = Industry.find_or_create_by_name(position_hash.company.industry)
+
+        # Get company location from the API
+        self.company_location(company)
+        
+        # Format dates because given as separate month and year..WTF!
+        startDate = Date.new(position_hash.startDate.year,position_hash.startDate.month)
+        if position_hash.endDate # current position has no end date
+          endDate = Date.new(position_hash.endDate.year,position_hash.endDate.month) 
+        end
+
+        # Create jobtitle
+        jobtitle = Jobtitle.find_or_create_by_title_and_start_date_and_end_date_and_company_id(position_hash.title, 
+          startDate, endDate, company.id)
+        
+        # Make associations
+        person.companies << company
+        company.industries << industry
+        person.jobtitles << jobtitle
+
+        # Save the ones that had associations
+        person.save
+        company.save
       end
-
-      # Create jobtitle
-      jobtitle = Jobtitle.find_or_create_by_title_and_start_date_and_end_date_and_company_id(position_hash.title, 
-        startDate, endDate, company.id)
-      
-      # Make associations
-      person.companies << company
-      company.industries << industry
-      person.jobtitles << jobtitle
-
-      # Save the ones that had associations
-      person.save
-      company.save
     end
   end
 
