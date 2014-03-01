@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
 
   @@connections = []
 
+  def self.connections
+    @@connections
+  end
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
@@ -222,16 +226,13 @@ class User < ActiveRecord::Base
   end
 
   def self.city_state_lon_lat
-    # locations = Location.all
-    # locations.each do |location|
-      postalcode = @location.postalcode.to_s 
-      if postalcode.length == 5 
-        @location.update_attributes(:city => postalcode.to_region(:city => true),
-          :state => postalcode.to_region(:state => true), 
-          :long => postalcode.to_lon, 
-          :lat => postalcode.to_lat)
-      end
-    # end
+    postalcode = @location.postalcode.to_s 
+    if postalcode.length == 5 
+      @location.update_attributes(:city => postalcode.to_region(:city => true),
+        :state => postalcode.to_region(:state => true), 
+        :long => postalcode.to_lon, 
+        :lat => postalcode.to_lat)
+    end
   end
   
 
