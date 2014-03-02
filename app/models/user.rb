@@ -85,9 +85,15 @@ class User < ActiveRecord::Base
       self.company_location(company)
       
       # Format dates because given as separate month and year..WTF!
-      startDate = Date.new(position_hash.startDate.year,position_hash.startDate.month)
+      if position_hash.startDate
+        startYr = position_hash.startDate.year
+        startMth = position_hash.startDate.month || 1
+        startDate = Date.new(startYr, startMth) 
+      end
       if position_hash.endDate # current position has no end date
-        endDate = Date.new(position_hash.endDate.year,position_hash.endDate.month) 
+        endYr = position_hash.endDate.year
+        endMth = position_hash.endDate.month || 1
+        endDate = Date.new(endYr,endMth)
       end
 
       # Create jobtitle
@@ -160,9 +166,9 @@ class User < ActiveRecord::Base
           if this_company.address
             matchdata = this_company.address.match(/\d{5}/)
             if matchdata
-              @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
+              this_location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
               # self.city_state_lon_lat
-              this_company.locations << @location unless this_company.locations.include? @location
+              this_company.locations << this_location unless this_company.locations.include? this_location
               this_company.save
             end
           end
@@ -192,12 +198,10 @@ class User < ActiveRecord::Base
 
           if this_company.address
             matchdata = this_company.address.match(/\d{5}/)
-            if matchdata
+            if matchdata 
               this_location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
-              this_company.locations << this_location 
-              @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
               # self.city_state_lon_lat
-              this_company.locations << @location unless this_company.locations.include? @location
+              this_company.locations << this_location unless this_company.locations.include? this_location
               # this_company.save
               this_company.save
             end
@@ -222,9 +226,9 @@ class User < ActiveRecord::Base
   def self.city_state_lon_lat
     # locations = Location.all
     # locations.each do |location|
-      postalcode = @location.postalcode.to_s 
+      postalcode = this_location.postalcode.to_s 
       if postalcode.length == 5 
-        @location.update_attributes(:city => postalcode.to_region(:city => true),
+        this_location.update_attributes(:city => postalcode.to_region(:city => true),
           :state => postalcode.to_region(:state => true), 
           :long => postalcode.to_lon, 
           :lat => postalcode.to_lat)
