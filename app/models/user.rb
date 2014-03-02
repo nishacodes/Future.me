@@ -75,6 +75,7 @@ class User < ActiveRecord::Base
     if auth.extra["raw_info"].positions["values"] != nil
       positions_array = auth.extra["raw_info"].positions["values"]
       
+<<<<<<< HEAD
       positions_array.each do |position_hash|
         # Create companies
         company = Company.find_or_create_by_name_and_linkedin_id(position_hash.company.name, 
@@ -89,6 +90,19 @@ class User < ActiveRecord::Base
         if position_hash.endDate # current position has no end date
           endDate = Date.new(position_hash.endDate.year,position_hash.endDate.month) 
         end
+=======
+      # Format dates because given as separate month and year..WTF!
+      if position_hash.startDate
+        startYr = position_hash.startDate.year
+        startMth = position_hash.startDate.month || 1
+        startDate = Date.new(startYr, startMth) 
+      end
+      if position_hash.endDate # current position has no end date
+        endYr = position_hash.endDate.year
+        endMth = position_hash.endDate.month || 1
+        endDate = Date.new(endYr,endMth)
+      end
+>>>>>>> fixed_user_model
 
         # Create jobtitle
         jobtitle = Jobtitle.find_or_create_by_title_and_start_date_and_end_date_and_company_id(position_hash.title, 
@@ -165,9 +179,15 @@ class User < ActiveRecord::Base
           if this_company.address
             matchdata = this_company.address.match(/\d{5}/)
             if matchdata
+<<<<<<< HEAD
               @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
               # city_state_lon_lat
               this_company.locations << @location unless this_company.locations.include? @location
+=======
+              this_location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
+              # self.city_state_lon_lat
+              this_company.locations << this_location unless this_company.locations.include? this_location
+>>>>>>> fixed_user_model
               this_company.save
             end
           end
@@ -197,12 +217,19 @@ class User < ActiveRecord::Base
 
           if this_company.address
             matchdata = this_company.address.match(/\d{5}/)
+<<<<<<< HEAD
             if matchdata
               @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
               this_company.locations << @location 
               @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
               # city_state_lon_lat
               this_company.locations << @location unless this_company.locations.include? @location
+=======
+            if matchdata 
+              this_location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
+              # self.city_state_lon_lat
+              this_company.locations << this_location unless this_company.locations.include? this_location
+>>>>>>> fixed_user_model
               # this_company.save
               this_company.save
             end
@@ -223,6 +250,22 @@ class User < ActiveRecord::Base
       end
     end
   end
+<<<<<<< HEAD
+=======
+
+  def self.city_state_lon_lat
+    # locations = Location.all
+    # locations.each do |location|
+      postalcode = this_location.postalcode.to_s 
+      if postalcode.length == 5 
+        this_location.update_attributes(:city => postalcode.to_region(:city => true),
+          :state => postalcode.to_region(:state => true), 
+          :long => postalcode.to_lon, 
+          :lat => postalcode.to_lat)
+      end
+    # end
+  end
+>>>>>>> fixed_user_model
   
 end
 
