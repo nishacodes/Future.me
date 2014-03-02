@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable, :recoverable, :rememberable, :trackable, :validatable
   # attr_accessible :email, :password, :password_confirmation, :remember_me, :username
   after_save :create_connections
-  attr_reader :connections, :api
 
   has_many :user_people
   has_many :people, :through => :user_people
@@ -15,7 +14,7 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
-      user.create_people(auth) # creates other people plus user's @connections
+      user.create_people(auth) # creates other people plus user's @@connections
       user.create_person(auth, user) # calls the method to store data and passes params
  	  end
   end
@@ -53,7 +52,7 @@ class User < ActiveRecord::Base
   end
 
   def create_people(auth)
-    @connections = auth.extra["raw_info"]["connections"]["values"].map do |person_hash|
+    @@connections = auth.extra["raw_info"]["connections"]["values"].map do |person_hash|
       if person_hash.siteStandardProfileRequest
         new_person = Person.find_or_create_by_firstname_and_lastname_and_linkedin_id_and_linkedin_url(
           person_hash.firstName, person_hash.lastName, person_hash.id, person_hash.siteStandardProfileRequest.url)
@@ -65,13 +64,11 @@ class User < ActiveRecord::Base
   end
 
   def create_connections
-    # this is after save... instead of iterating, i just sent people = @connections
-    people = @connections
-    # if @connections
-    #   @connections.each do |person|
-    #     people << person unless people.include? person
-    #   end
-    # end
+    if @@connections
+      @@connections.each do |person|
+        people << person unless people.include? person
+      end
+    end
   end
 
   def user_companies(person, auth, user)
@@ -138,7 +135,7 @@ class User < ActiveRecord::Base
   # this is where things slowwwww dowwwwwwwwnnnn
   # somewhere in here the absolute URL needed (not nil) is called
   def add_connection_details(user)
-    @connections.each do |person|
+    @@connections.each do |person|
       # this takes a long time
       public_profile_url = Api.new.get_public_profile_url(person.linkedin_id) # need this bc oauth gives a diff url
       @scrape = Scraper.new(public_profile_url)
@@ -224,16 +221,6 @@ class User < ActiveRecord::Base
           # person.save
         end
       end
-    end
-  end
-
-  def city_state_lon_lat
-    postalcode = @location.postalcode.to_s 
-    if postalcode.length == 5 
-      @location.update_attributes(:city => postalcode.to_region(:city => true),
-        :state => postalcode.to_region(:state => true), 
-        :long => postalcode.to_lon, 
-        :lat => postalcode.to_lat)
     end
   end
   
