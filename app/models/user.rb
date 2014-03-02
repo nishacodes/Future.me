@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :user_people
   has_many :people, :through => :user_people
 
+  @@connections = []
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
@@ -74,8 +76,7 @@ class User < ActiveRecord::Base
   def user_companies(person, auth, user)
     if auth.extra["raw_info"].positions["values"] != nil
       positions_array = auth.extra["raw_info"].positions["values"]
-      
-<<<<<<< HEAD
+
       positions_array.each do |position_hash|
         # Create companies
         company = Company.find_or_create_by_name_and_linkedin_id(position_hash.company.name, 
@@ -83,14 +84,8 @@ class User < ActiveRecord::Base
         industry = Industry.find_or_create_by_name(position_hash.company.industry)
 
         # Get company location from the API
-        company_location(company)
-        
-        # Format dates because given as separate month and year..WTF!
-        startDate = Date.new(position_hash.startDate.year,position_hash.startDate.month)
-        if position_hash.endDate # current position has no end date
-          endDate = Date.new(position_hash.endDate.year,position_hash.endDate.month) 
-        end
-=======
+        company_location(company)        
+
       # Format dates because given as separate month and year..WTF!
       if position_hash.startDate
         startYr = position_hash.startDate.year
@@ -102,7 +97,7 @@ class User < ActiveRecord::Base
         endMth = position_hash.endDate.month || 1
         endDate = Date.new(endYr,endMth)
       end
->>>>>>> fixed_user_model
+
 
         # Create jobtitle
         jobtitle = Jobtitle.find_or_create_by_title_and_start_date_and_end_date_and_company_id(position_hash.title, 
@@ -179,15 +174,10 @@ class User < ActiveRecord::Base
           if this_company.address
             matchdata = this_company.address.match(/\d{5}/)
             if matchdata
-<<<<<<< HEAD
-              @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
-              # city_state_lon_lat
-              this_company.locations << @location unless this_company.locations.include? @location
-=======
               this_location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
               # self.city_state_lon_lat
               this_company.locations << this_location unless this_company.locations.include? this_location
->>>>>>> fixed_user_model
+
               this_company.save
             end
           end
@@ -217,19 +207,12 @@ class User < ActiveRecord::Base
 
           if this_company.address
             matchdata = this_company.address.match(/\d{5}/)
-<<<<<<< HEAD
-            if matchdata
-              @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
-              this_company.locations << @location 
-              @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
-              # city_state_lon_lat
-              this_company.locations << @location unless this_company.locations.include? @location
-=======
+
             if matchdata 
               this_location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
               # self.city_state_lon_lat
               this_company.locations << this_location unless this_company.locations.include? this_location
->>>>>>> fixed_user_model
+
               # this_company.save
               this_company.save
             end
@@ -250,8 +233,6 @@ class User < ActiveRecord::Base
       end
     end
   end
-<<<<<<< HEAD
-=======
 
   def self.city_state_lon_lat
     # locations = Location.all
@@ -265,7 +246,7 @@ class User < ActiveRecord::Base
       end
     # end
   end
->>>>>>> fixed_user_model
+
   
 end
 
