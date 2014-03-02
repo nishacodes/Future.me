@@ -5,28 +5,22 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable, :recoverable, :rememberable, :trackable, :validatable
   # attr_accessible :email, :password, :password_confirmation, :remember_me, :username
   after_save :create_connections
-  # attr_reader :connections
+  attr_reader :connections, :api
 
   has_many :user_people
   has_many :people, :through => :user_people
-
-  @@connections = []
-
-  def self.connections
-    @@connections
-  end
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
-      self.create_people(auth) # creates other people plus user's @connections
-      self.create_person(auth, user) # calls the method to store data and passes params
+      user.create_people(auth) # creates other people plus user's @connections
+      user.create_person(auth, user) # calls the method to store data and passes params
  	  end
   end
 
-  def self.new_with_session(params, session)
+  def new_with_session(params, session)
   	if session["devise.user_attributes"]
   		new(session["devise.user_attributes"], without_protection: true) do |user|
   			user.attributes = params
@@ -47,17 +41,19 @@ class User < ActiveRecord::Base
 
   # *** THESE METHODS STORE USER'S INFO IN DB ***
 
-  def self.create_person(auth, user)
+  # create person object for the user
+  def create_person(auth, user)
+     # connections are lots of people objects!
     person = Person.find_or_create_by_firstname_and_lastname_and_linkedin_id_and_linkedin_url(
         auth.info.first_name, auth.info.last_name, user.uid, auth.info.urls["public_profile"]) 
     # Call other two methods and pass person as param
-    self.user_companies(person, auth, user)
-    self.user_schools(person, auth, user)
-    self.add_connection_details(user)
+    user_companies(person, auth, user)
+    user_schools(person, auth, user)
+    add_connection_details(user)
   end
 
-  def self.create_people(auth)
-    @@connections = auth.extra["raw_info"]["connections"]["values"].map do |person_hash|
+  def create_people(auth)
+    @connections = auth.extra["raw_info"]["connections"]["values"].map do |person_hash|
       if person_hash.siteStandardProfileRequest
         new_person = Person.find_or_create_by_firstname_and_lastname_and_linkedin_id_and_linkedin_url(
           person_hash.firstName, person_hash.lastName, person_hash.id, person_hash.siteStandardProfileRequest.url)
@@ -69,14 +65,16 @@ class User < ActiveRecord::Base
   end
 
   def create_connections
-    if @@connections
-      @@connections.each do |person|
-        self.people << person unless self.people.include? person
-      end
-    end
+    # this is after save... instead of iterating, i just sent people = @connections
+    people = @connections
+    # if @connections
+    #   @connections.each do |person|
+    #     people << person unless people.include? person
+    #   end
+    # end
   end
 
-  def self.user_companies(person, auth, user)
+  def user_companies(person, auth, user)
     if auth.extra["raw_info"].positions["values"] != nil
       positions_array = auth.extra["raw_info"].positions["values"]
       
@@ -87,7 +85,7 @@ class User < ActiveRecord::Base
         industry = Industry.find_or_create_by_name(position_hash.company.industry)
 
         # Get company location from the API
-        self.company_location(company)
+        company_location(company)
         
         # Format dates because given as separate month and year..WTF!
         startDate = Date.new(position_hash.startDate.year,position_hash.startDate.month)
@@ -111,7 +109,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.company_location(company)
+  def company_location(company)
     api = Api.new
     api.company_id = company.linkedin_id  
     api.company_details
@@ -120,7 +118,7 @@ class User < ActiveRecord::Base
     company.locations << location
   end
 
-  def self.user_schools(person, auth, user)
+  def user_schools(person, auth, user)
     edu_array = auth.extra["raw_info"].educations.values[1]
     edu_array.each do |edu_hash|
       # Create school
@@ -137,8 +135,11 @@ class User < ActiveRecord::Base
     end 
   end
 
-  def self.add_connection_details(user)
-    @@connections.each do |person|
+  # this is where things slowwwww dowwwwwwwwnnnn
+  # somewhere in here the absolute URL needed (not nil) is called
+  def add_connection_details(user)
+    @connections.each do |person|
+      # this takes a long time
       public_profile_url = Api.new.get_public_profile_url(person.linkedin_id) # need this bc oauth gives a diff url
       @scrape = Scraper.new(public_profile_url)
       if @scrape.profile
@@ -158,6 +159,7 @@ class User < ActiveRecord::Base
           # Save this after shoveling
           person.save
         end
+
         @scrape.current_companies.each do |company|
           this_company = Company.find_or_create_by_name_and_url_and_address(
             company[:company], company[:website], company[:address])
@@ -167,7 +169,7 @@ class User < ActiveRecord::Base
             matchdata = this_company.address.match(/\d{5}/)
             if matchdata
               @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
-              # self.city_state_lon_lat
+              # city_state_lon_lat
               this_company.locations << @location unless this_company.locations.include? @location
               this_company.save
             end
@@ -202,7 +204,7 @@ class User < ActiveRecord::Base
               @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
               this_company.locations << @location 
               @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
-              # self.city_state_lon_lat
+              # city_state_lon_lat
               this_company.locations << @location unless this_company.locations.include? @location
               # this_company.save
               this_company.save
@@ -225,7 +227,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.city_state_lon_lat
+  def city_state_lon_lat
     postalcode = @location.postalcode.to_s 
     if postalcode.length == 5 
       @location.update_attributes(:city => postalcode.to_region(:city => true),
@@ -235,7 +237,6 @@ class User < ActiveRecord::Base
     end
   end
   
-
 end
 
 # MISSING INFO TO GET FROM SCRAPER:

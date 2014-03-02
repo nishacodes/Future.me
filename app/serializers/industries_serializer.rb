@@ -2,7 +2,7 @@ class IndustriesSerializer < ActiveModel::Serializer
   attributes :id, :source, :name, :value
 
   def name
-    object.delete if object.name == "" || object.name == "null"
+    object.delete if object.name == "" || object.name == "null" || object.name == nil
     object.name
   end
 
