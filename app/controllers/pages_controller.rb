@@ -12,7 +12,14 @@ class PagesController < ApplicationController
   end
 
   def d3test
+  end
 
+  # here we would render json for just the current user's & their connections
+  def userdata
+    @user = User.find() # find id of this user... how do you get the id of the current user?
+    @user.people
+    # more...
+    render json: @connections, :each_serializer => UserDataSerializer, root: false
   end
 
   def industries
