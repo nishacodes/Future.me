@@ -35,10 +35,10 @@ h2 {
   
   background: 
     linear-gradient(
-      rgba(0, 0, 0, 0.45), 
-      rgba(0, 0, 0, 0.45)
+      rgba(0, 0, 0, 0.3), 
+      rgba(0, 0, 0, 0.3)
     ),
-    url('../img/path.jpg'); 
+    url('../img/path-bw.jpg'); 
   background-size: 100%;
 }
 
