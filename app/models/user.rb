@@ -9,10 +9,11 @@ class User < ActiveRecord::Base
   has_many :user_people
   has_many :people, :through => :user_people
 
-  @@connections = []
+  @@connections = [] # DO NOT REMOVE
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
+      debugger
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
@@ -39,6 +40,27 @@ class User < ActiveRecord::Base
 	    super
 	  end
 	end
+
+  # def get_profile_ppl
+  #   self.people
+  # end
+
+  # def get_profile_companies(people)
+  #   companies = []
+  #   people.each do |person|
+  #     person.companies.each do |company|
+  #       companies << company unless companies.include?(company)
+  #     end
+  #   end
+  #   return companies
+  # end
+
+  # def get_profile_industries(companies)
+  #   industries = []
+  #   companies.each do |company|
+  #     industries << company.industries[0] unless industries.include?(company.industries[0])
+  #   end
+  # end
 
   # *** THESE METHODS STORE USER'S INFO IN DB ***
 
@@ -250,5 +272,3 @@ class User < ActiveRecord::Base
   
 end
 
-# MISSING INFO TO GET FROM SCRAPER:
-# - company url and address
