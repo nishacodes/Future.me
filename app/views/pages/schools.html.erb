@@ -1,0 +1,5 @@
+<h1>Schools</h1>
+<% @schools.each do |school| %>
+  <li><%= link_to "#{school.name}", "schools/#{school.id}" %></li>
+  <!-- <li><%= school.id %></li> -->
+<% end %>

@@ -1,7 +1,8 @@
 class Company < ActiveRecord::Base
-  attr_accessible :name, :linkedin_id
+  attr_accessible :name, :linkedin_id, :url, :address, :display
   # validates :name, presence: true
-  # validates :linkedin_id, uniqueness: true
+  # validates :url, uniqueness: true
+  
 
   has_many :jobtitles
   has_many :schools
@@ -20,5 +21,13 @@ class Company < ActiveRecord::Base
   
   # validates_uniqueness_of :name
 
+  def value
+    self.people.uniq.size
+  end
+
+  def source
+    "industries/#{self.industries.first.id}/companies/#{self.id}"
+  end
 
 end
+

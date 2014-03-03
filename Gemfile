@@ -1,13 +1,18 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.16'
-gem 'sqlite3'
 gem 'jquery-rails'
 gem 'oauth'
 gem 'json'
 gem 'linkedin-scraper'
 gem 'sidekiq'
 gem 'debugger'
+gem 'devise', '3.0'
+gem 'omniauth-linkedin-oauth2'
+gem 'omniauth-oauth2'
+gem 'active_model_serializers'
+gem 'figaro'
+gem 'area'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -21,8 +26,18 @@ group :assets do
 end
 
 group :development do
-# gem 'debugger'
+  gem 'debugger'
+  gem 'sqlite3'
 end
+
+
+# group :production do
+#   gem 'pg'
+# end
+
+# # group :production do
+#   gem 'pg', '0.17.1'
+# end
 
 
 # To use ActiveModel has_secure_password

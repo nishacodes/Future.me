@@ -1,0 +1,83 @@
+/*$mainFont:  'Open Sans', sans-serif;
+$titleFont: 'Nixie One', sans-serif;
+*/
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+svg {
+  margin-left: 15%;
+}
+
+/*TEXT STYLES*/ 
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 60pt;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin: 10px auto;
+  color: white;
+}
+
+h2{
+  font-family: 'Nixie One', sans-serif;
+  font-size: 25pt;
+  letter-spacing: 3px;
+  margin: 20px auto;
+  color: white;
+}
+
+h3 {
+  font-family: 'Nixie One', sans-serif;
+  font-size: 25pt;
+  letter-spacing: 3px;
+  margin: 18px auto;
+  text-transform: uppercase;
+}
+
+p.large {
+  font-size: 18pt;
+  line-height: 2;
+  margin: 70px;
+  font-weight: 200;
+}
+
+.strong {
+  font-weight: 4500;
+}
+
+hr {
+  width: 50px;
+  border: 3px solid #36B336;
+  margin: 0 auto;
+}
+
+/*SCAFFOLDING*/
+.section {
+  width: 100%;
+  padding: 30px;
+  text-align: center;
+}
+
+#welcome {
+  min-height: 700px;  
+  
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.3), 
+      rgba(0, 0, 0, 0.3)
+    ),
+    url('../img/path-bw.jpg'); 
+  background-size: 100%;
+}
+
+#description {
+  background-color: #F7F7F5;
+
+}
+
+#getstarted {
+  /*background-color: blue;*/
+}

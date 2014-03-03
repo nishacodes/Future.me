@@ -1,7 +1,20 @@
 Futureme::Application.routes.draw do
- 
+  devise_for :users,
+  controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   root :to => 'pages#index'
+
+  get 'd3test' => 'pages#d3test'
+  get 'd3test_derek' => "pages#d3test_derek"
+  
+  get 'industries' => 'pages#industries'
+  get 'industries/:i_id' => 'pages#industry'
+  get 'industries/:i_id/companies' => 'pages#companies'
+  get 'industries/:i_id/companies/:c_id' => 'pages#company'
+  get 'industries/:i_id/companies/:c_id/people' => 'pages#people'
+  get 'industries/:i_id/companies/:c_id/people/schools' => 'pages#schools'
+  get 'industries/:i_id/companies/:c_id/people/schools/:s_id' => 'pages#school_people'
+  get 'industries/:i_id/companies/:c_id/people/schools/:s_id/:p_id' => 'pages#person'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

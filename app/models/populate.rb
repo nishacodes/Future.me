@@ -1,12 +1,11 @@
 class Populate
   attr_reader :api, :scraper, :company, :location, :person, :industry, :scrape
 
-  DOMAINS = ["google.com", "twitter.com", "flatironschool.com"]
-  # DOMAINS = ["google.com", "twitter.com", "flatironschool.com", "amazon.com",
-  # "facebook.com", "linkedin.com", "squareup.com", "apple.com", "squarespace.com",
-  # "tumblr.com", "etsy.com", "yahoo.com", "salesforce.com", "dropbox.com"]
+  DOMAINS = ["flatironschool.com"]
 
-  # WHILE TESTING, COMMENT OUT THE METHODS U DONT WANT TO RUN
+  REPEAT_COMPANY_NAMES = {"google" => "Google", "twitter" => "Twitter"}
+  # "google.com", "twitter.com", "flatironschool.com" "tumblr.com", "etsy.com", "yahoo.com", "salesforce.com", "dropbox.com", "apple.com", "squarespace.com"
+
   def initialize
     @api = Api.new
     create_company
@@ -17,105 +16,159 @@ class Populate
   end
 
   def create_company
-    # FOR WHEN WE'RE READY TO POPULATE THE WHOLE DB WITH ALL THE COMPANIES...
-    # MAYBE THIS WILL BE OUR INITIALIZE METHOD? OR INITIALIZE WILL CALL THIS METHOD?
-    # DOMAINS.each do |domain|
-    #   @api.find_company(domain)
-        # @company = Company.create(:name => @api.company_name, :linkedin_id => @api.company_id)
-        # create_industry
-        # create_location
-        # create_people
-        # update_people
-    # end
-    @api.find_company(DOMAINS.last)
-    @company = Company.create(:name => @api.company_name, :linkedin_id => @api.company_id)
+    DOMAINS.each do |domain|
+      @api.run(domain)
+        url = "http://www." + domain
+        @company = Company.find_or_create_by_name_and_linkedin_id_and_url(@api.company_name, @api.company_id, url)
+        display_names
+        create_industry
+        create_location
+        create_people
+        update_people
+    end
   end
 
   def create_industry    
-    @industry = Industry.create(:name => @api.company_industry)
-    @industry.companies << @company
-    @industry.save
+    @industry = Industry.find_or_create_by_name(@api.company_industry)
+    @industry.companies << @company unless @industry.companies.include? @company
+    # @industry.save
   end
 
   def create_location
-    @location = Location.create(:postalcode => @api.company_postalcode)
-    @company.locations << @location
+    @location = Location.find_or_create_by_postalcode(@api.company_postalcode)
+    @company.locations << @location 
+    city_state_lon_lat
+    @company.locations << @location unless @company.locations.include? @location
     @company.save
   end
 
   def create_people
     @api.people.each do |personhash|
-      # we can store the params in a variable within class Api, like we did in Scraper
-      Person.create(:firstname => personhash["firstName"], :lastname => personhash["lastName"],
-        :linkedin_id => personhash["id"], :linkedin_url => personhash["publicProfileUrl"])
+      Person.find_or_create_by_firstname_and_lastname_and_linkedin_id_and_linkedin_url(
+        personhash['firstName'], personhash['lastName'], personhash['id'], personhash['publicProfileUrl'])
     end
   end
 
-  # NEEDS REFACTORING
   def update_people
     Person.all.each do |person|
-       @scrape = Scraper.new(person.linkedin_url)
-        unless @scrape.profile.nil? 
-
-          # CREATE SCHOOLS AND EDUCATIONS
-          @scrape.educations.each do |school|
-            this_school = School.create(:name => school[:name])
-            person.schools << this_school
-            education = Education.create(eval(@scrape.education_params)) # eval is a method that removes quotes from a string, so in this case it turns it into a hash
-            education.update_attributes(:school_id => this_school.id)
-            # school.educations << education 
-            person.educations << education
-            # Save these after shoveling
-            # school.save
-            person.save
-          end
-
-          # CREATE CURRENT COMPANIES
-          @scrape.current_companies.each do |company|
-            this_company = Company.create(:name => company[:company])
-            person.companies << this_company
-            jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
-            jobtitle.update_attributes(:company_id => this_company.id)
-            person.jobtitles << jobtitle
-            # company.jobtitles << jobtitle
-            # Save these after shoveling
-            person.save
-            # company.save
-          end
-
-          # CREATE PAST COMPANIES
-          @scrape.past_companies.each do |company|
-            this_company = Company.create(:name => company[:company])
-            person.companies << this_company
-            jobtitle = Jobtitle.create(eval(@scrape.jobtitle_params))
-            jobtitle.update_attributes(:company_id => this_company.id)
-            person.jobtitles << jobtitle
-            # company.jobtitles << jobtitle
-            # Save these after shoveling
-            person.save
-            # company.save
-          end 
-        end
+      @scrape = Scraper.new(person.linkedin_url)
+      if @scrape.profile
+        create_schools_and_educations(@scrape, person)
+        create_current_companies(@scrape, person)
+        create_past_companies(@scrape, person)
+      end
     end
+  end
 
-    # THE IDEA HERE IS TO SEPARATE UPDATE_PEOPLE INTO SPECIFIC METHODS BUT THERE'S A SCOPE PROBLEM BC LOCAL VARIABLES DON'T CARRY OVER
-    # ALSO WE ONLY WANT TO CREATE 1 INSTANCE OF SCRAPER PER PERSON, THAT'S WHY ALL THE METHODS ARE
+  def create_schools_and_educations(scrape, person)
+    @scrape.educations.each do |school|
+      this_school = School.find_or_create_by_name(school[:name])
+      person.schools << this_school
+      # regex out the kind and major
+      match = (/([^,]*),? ?(.*)/).match(school[:description])
+      if match
+        education = Education.find_or_create_by_kind_and_major_and_grad_yr_and_school_id(
+          match[1], match[2], school[:period], this_school.id)
+      else
+        education = Education.find_or_create_by_kind_and_grad_yr_and_school_id(
+          school[:description], school[:period], this_school.id)
+      end
+      person.educations << education unless person.educations.include? education
+      # Save this after shoveling
+      # person.save
+    end
+  end
 
-    # def create_schools
+  def create_current_companies(scrape, person)
+    @scrape.current_companies.each do |company|
+      this_company = Company.find_or_create_by_name_and_url_and_address(
+        company[:company], company[:website], company[:address])
+      person.companies << this_company unless person.companies.include? this_company
+
+      if this_company.address
+        matchdata = this_company.address.match(/\d{5}/)
+        if matchdata
+          @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
+          city_state_lon_lat
+          this_company.locations << @location unless this_company.locations.include? this_location
+          this_company.save
+        end
+      end
+
+      this_industry = Industry.find_or_create_by_name(company[:industry])
+      if this_company.industries
+        this_company.industries << this_industry unless this_company.industries.include? this_industry
+        # this_company.save
+      end
+
+      jobtitle = Jobtitle.find_or_create_by_title_and_start_date_and_end_date_and_company_id(
+        company[:title], company[:start_date], company[:end_date], this_company.id)
+      person.jobtitles << jobtitle unless person.jobtitles.include? jobtitle
+      # Save this after shoveling
+      # person.save
+    end
+  end
+
+  def create_past_companies(scrape, person)
+    @scrape.past_companies.each do |company|
+      # this_company = Company.find_or_create_by_name_and_url_and_address(
+      #   company[:company], company[:website], company[:address])
+      this_company = Company.find_or_create_by_name(
+        company[:company])
+      if this_company.url.nil?
+        this_company.update_attributes(:url=>company[:website],:address=>company[:address])
+      end
+      person.companies << this_company unless person.companies.include? this_company
+
+      if this_company.address
+        matchdata = this_company.address.match(/\d{5}/)
+        if matchdata
+          this_location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
+          this_company.locations << this_location 
+          @location = Location.find_or_create_by_postalcode(matchdata[0].to_i)
+          city_state_lon_lat
+          this_company.locations << @location unless this_company.locations.include? this_location
+          # this_company.save
+          this_company.save
+        end
+      end
+
+      this_industry = Industry.find_or_create_by_name(company[:industry])
+      if this_company.industries
+        this_company.industries << this_industry unless this_company.industries.include? this_industry
+        # this_company.save
+      end
+
+      jobtitle = Jobtitle.find_or_create_by_title_and_start_date_and_end_date_and_company_id(
+        company[:title], company[:start_date], company[:end_date], this_company.id)
+      person.jobtitles << jobtitle unless person.jobtitles.include? jobtitle
+      # Save this after shoveling
+      # person.save
+    end
+  end
+
+  def city_state_lon_lat
+    # locations = Location.all
+    # locations.each do |location|
+      postalcode = @location.postalcode.to_s 
+      if postalcode.length == 5 
+        @location.update_attributes(:city => postalcode.to_region(:city => true),
+          :state => postalcode.to_region(:state => true), 
+          :long => postalcode.to_lon, 
+          :lat => postalcode.to_lat)
+      end
     # end
+  end
 
-    # def create_educations
-    # end
-
-    # def create_current_companies
-    # end
-
-    # def create_past_companies
-    # end
-
-    # def create_jobtitles
-    # end
-
+  def display_names
+    @company.name.split(" ").each do |name|
+      if REPEAT_COMPANY_NAMES[name]
+        @company.update_attribute(:display => "#{REPEAT_COMPANY_NAMES[name]}")
+      end
+    end
   end
 end
+
+
+
 
