@@ -16,8 +16,7 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
-      user.create_people(auth) # creates other people plus user's @@connections
-      user.create_person(auth, user) # calls the method to store data and passes params
+      HardWorker.perform_async(user, auth)
  	  end
   end
 

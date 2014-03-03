@@ -15,19 +15,6 @@ class Populate
     update_people
   end
 
-  def create_company
-    DOMAINS.each do |domain|
-      @api.run(domain)
-        url = "http://www." + domain
-        @company = Company.find_or_create_by_name_and_linkedin_id_and_url(@api.company_name, @api.company_id, url)
-        display_names
-        create_industry
-        create_location
-        create_people
-        update_people
-    end
-  end
-
   def create_industry    
     @industry = Industry.find_or_create_by_name(@api.company_industry)
     @industry.companies << @company unless @industry.companies.include? @company
