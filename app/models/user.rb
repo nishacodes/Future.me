@@ -232,13 +232,13 @@ class User < ActiveRecord::Base
     json[schools] = []
     people.each do |person|
       person.companies.each do |company|
-        json[companies] << company unless json[company].include? company
+        json[companies] << company unless json[companies].include? company
       end
       json[companies].each do |industry|
         json[industries] << industry unless json[industries].include? industry
       end
       person.schools.each do |school|
-        json[schools] << school unless json[school].include? school
+        json[schools] << school unless json[schools].include? school
       end
     end
     @json = json
