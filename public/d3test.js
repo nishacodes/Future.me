@@ -59,6 +59,25 @@ function showBubbles(source, selection){
           };
         });
 
+    // THESE DON'T WORK YET BAH WHY NOT
+    // z index for text
+    node.sort(function(a,b) {
+      if (a.id != b.id) { 
+        return -1
+         }
+      else { return 1 };
+    });
+
+    // attempt at hovering
+    svg.selectAll("circle").classed(".name-shown", false)
+        .on("mouseover", function(d) {
+          d3.select(this)
+          .attr("class", ".name-shown-temp")
+          .text(function(d) { return d.name; });
+        })
+        .on("mouseout", function(d) {
+          d3.select(".name-shown-temp").text().remove();
+        })
   });
 
   function classes(data) {
