@@ -47,13 +47,18 @@ function showBubbles(source, selection){
         .on("click", function(d){
           // d3.selectAll(".node").remove(); // this not currently working
           showBubbles(d.source, d.id); // need to define this in all the serializers
-          
         }); 
 
     node.append("text")
         .attr("dy", ".3em")
         .style("text-anchor", "middle")
-        .text(function(d) { return d.name; }); // This is the label as a text element
+        .text(function(d) {
+          if (d.r > 15) { 
+            $(this).siblings().attr("class", "name-shown")
+            return d.name;
+          };
+        });
+
   });
 
   function classes(data) {
