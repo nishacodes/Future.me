@@ -1,7 +1,9 @@
 class PagesController < ApplicationController
 
   def index
-
+    if current_user
+      current_user.get_data
+    end
     render 'public/app/index.html'
     # Populate.new
     # @companies = Company.all

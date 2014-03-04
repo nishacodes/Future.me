@@ -269,6 +269,30 @@ class User < ActiveRecord::Base
     # end
   end
 
+  def get_data
+    data = []
+    industries = {}
+    self.people.each do |person|
+      person.companies.each do |company|
+        company.industries.each do |industry|
+          if industries[industry.id]
+            if industries[industry.id]["companies"][company.id] 
+              industries[industry.id]["companies"][company.id]["people"] << person.name
+            else
+              industries[industry.id]["companies"][company.id] = {"name"=>company.name, "people" => [person.name]}
+            end
+          else
+            industries[industry.id] = {"name"=> industry.name, "companies" => {}}
+          end
+        end
+      end
+    end
+    # gets rid of outer layer to be more like original json
+    industries.each do |id, hash|
+      data << hash
+    end
+    return data
+  end
   
 end
 
