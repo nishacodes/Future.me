@@ -47,17 +47,46 @@ function showBubbles(source, selection){
         .on("click", function(d){
           // d3.selectAll(".node").remove(); // this not currently working
           showBubbles(d.source, d.id); // need to define this in all the serializers
-        }); 
-
-    node.append("text")
-        .attr("dy", ".3em")
-        .style("text-anchor", "middle")
-        .text(function(d) {
-          if (d.r > 15) { 
-            $(this).siblings().attr("class", "name-shown")
-            return d.name;
-          };
+        })
+        // THIS ISN'T WORKING WHY NOT
+        .on("mouseover", function(d) {
+          node.append("text") // d3.select(this) doesn't work
+          .attr("dy", ".3em")
+          .style("text-anchor", "middle")
+          .text(function(d) {
+            if (d.r > 15) { 
+              console.log("here");
+              $(this).siblings().attr("class", "name-shown");
+              return d.name;
+            };
+          })
+        .on("mouseout", function(d) {
+          d3.select(this).text().remove();
+          });
         });
+
+    // svg.select("circle")
+    //     .on("mouseover", function(d) {
+    //       node.append("text")
+    //       .attr("dy", ".3em")
+    //       .style("text-anchor", "middle")
+    //       .text(function(d) {
+    //         if (d.r > 15) { 
+    //           $(this).siblings().attr("class", "name-shown")
+    //           return d.name;
+    //         };
+    //       });
+    //     });
+
+    // node.append("text")
+    //     .attr("dy", ".3em")
+    //     .style("text-anchor", "middle")
+    //     .text(function(d) {
+    //       if (d.r > 15) { 
+    //         $(this).siblings().attr("class", "name-shown")
+    //         return d.name;
+    //       };
+    //     });
 
     // THESE DON'T WORK YET BAH WHY NOT
     // z index for text
@@ -66,18 +95,18 @@ function showBubbles(source, selection){
         return -1
          }
       else { return 1 };
-    });
+      });
 
     // attempt at hovering
-    svg.selectAll("circle").classed(".name-shown", false)
-        .on("mouseover", function(d) {
-          d3.select(this)
-          .attr("class", ".name-shown-temp")
-          .text(function(d) { return d.name; });
-        })
-        .on("mouseout", function(d) {
-          d3.select(".name-shown-temp").text().remove();
-        })
+    // svg.selectAll("circle").classed(".name-shown", false)
+    //     .on("mouseover", function(d) {
+    //       d3.select(this)
+    //       .attr("class", ".name-shown-temp")
+    //       .text(function(d) { return d.name; });
+    //     })
+    //     .on("mouseout", function(d) {
+    //       d3.select(".name-shown-temp").text().remove();
+    //     })
   });
 
   function classes(data) {
