@@ -53,6 +53,7 @@ class Api
   def get_public_profile_url(linkedin_id)
     json_txt = ACCESS_TOKEN.get("https://api.linkedin.com/v1/people/id=#{linkedin_id}:(public-profile-url)", 'x-li-format' => 'json').body
     parsed = JSON.parse(json_txt)
+    # debugger
     return parsed["publicProfileUrl"]
   end
 

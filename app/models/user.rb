@@ -147,6 +147,8 @@ class User < ActiveRecord::Base
     @@connections.each do |person|
       # this takes a long time
       public_profile_url = Api.new.get_public_profile_url(person.linkedin_id) # need this bc oauth gives a diff url
+      person.linkedin_url = public_profile_url
+      # debugger
       @scrape = Scraper.new(public_profile_url)
       if @scrape.profile
         @scrape.educations.each do |school|
